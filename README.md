@@ -10,7 +10,7 @@ Student project : designing, build and program an autonomous plane in order to m
 +    **[DONE]** Tag camera images
 +    **[TODO]** Assemble camera images to build a map
 +    **[DONE]** Easy UI to manage and monitor robot(s)
-+    **[TODO]** Test on Raspberry Pi
++    **[DONE]** Test on Raspberry Pi
 
 ## Dependencies
 +    **CMake**
@@ -32,3 +32,9 @@ Student project : designing, build and program an autonomous plane in order to m
 +    Press `+`/`-` to activate or desactivate remote control
 +    Press `UP`/`DOWN` to step on the gas or slow down
 +    Press `LEFT`/`RIGHT` to turn to left or right
+
+## For Raspberry Pi
+    apt-get install build-essential cmake g++-4.8 git libopencv-dev v4l-utils
+    sudo modprobe bcm2835-v4l2
+    v4l2-ctl --set-fmt-video=width=400,height=300,pixelformat="H264" -d /dev/video0
+    ./drone

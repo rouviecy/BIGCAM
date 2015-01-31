@@ -4,13 +4,15 @@ using namespace std;
 
 Camera::Camera() : Exteroceptive(){
 	capture = cv::VideoCapture(-1);
+	capture.set(CV_CAP_PROP_FRAME_WIDTH, 400);
+	capture.set(CV_CAP_PROP_FRAME_HEIGHT, 300);
 	num_image = 0;
 }
 
 void Camera::IO(){
 	Link_input("x", &x);
 	Link_input("y", &y);
-	Link_input("z", &z);	
+	Link_input("z", &z);
 }
 
 void Camera::Job(){

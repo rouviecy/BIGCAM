@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8)
 project(BIGCAM)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_COMPILER g++-4.8)
 
 find_package(PkgConfig)
 find_package(OpenCV REQUIRED)
