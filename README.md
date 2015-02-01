@@ -34,7 +34,21 @@ Student project : designing, build and program an autonomous plane in order to m
 +    Press `LEFT`/`RIGHT` to turn to left or right
 
 ## For Raspberry Pi
-    apt-get install build-essential cmake g++-4.8 git libopencv-dev v4l-utils
+Install packages to compile
+
+    sudo apt-get install build-essential cmake g++-4.8 git libopencv-dev
+
+Enable camera (load module and v4l2-ctl after each boot)
+
+    sudo raspi-config
+    sudo apt-get install v4l-utils
     sudo modprobe bcm2835-v4l2
-    v4l2-ctl --set-fmt-video=width=400,height=300,pixelformat="H264" -d /dev/video0
-    ./drone
+    sudo v4l2-ctl --set-fmt-video=width=400,height=300,pixelformat="H264" -d /dev/video0
+
+Enable I2C (local module and chmod after each boot)
+
+    sudo raspi-config
+    sudo modprobe i2c-dev
+    sudo chmod o+rw /dev/i2c
+
+Compile and execute ...
