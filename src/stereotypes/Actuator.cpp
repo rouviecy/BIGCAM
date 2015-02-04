@@ -3,6 +3,6 @@
 using namespace std;
 
 // Constructeur
-Actuator::Actuator(){
+Actuator::Actuator() : ComThread(){
 
 }

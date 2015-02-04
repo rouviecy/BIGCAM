@@ -11,13 +11,20 @@
 #ifndef COMTHREAD
 #define COMTHREAD
 
+#include <thread>
+
 class ComThread{
 
 public:
 
 	ComThread();
+	void Close();
 
 private:
+
+	char* name;
+	std::thread thr;
+	virtual void job();
 
 };
 

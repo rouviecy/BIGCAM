@@ -3,6 +3,6 @@
 using namespace std;
 
 // Constructeur
-Sensor::Sensor(){
+Sensor::Sensor() : ComThread(){
 
 }

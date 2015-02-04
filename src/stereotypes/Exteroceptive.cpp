@@ -3,6 +3,6 @@
 using namespace std;
 
 // Constructeur
-Exteroceptive::Exteroceptive(){
+Exteroceptive::Exteroceptive() : Sensor(){
 
 }

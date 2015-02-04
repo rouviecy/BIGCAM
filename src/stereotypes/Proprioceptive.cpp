@@ -3,6 +3,6 @@
 using namespace std;
 
 // Constructeur
-Proprioceptive::Proprioceptive(){
+Proprioceptive::Proprioceptive() : Sensor(){
 
 }
