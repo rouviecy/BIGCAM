@@ -38,10 +38,11 @@ protected:
 	virtual void Job() = 0;			// Overwrite : job for the thread
 	void Subscribe(					// Listen a topic
 		const char* topic_name,			// Name of the topic : "/XXX"
-		bool create = false);			// If topic creation is allowed
+		bool create = false,			// If topic creation is allowed
+		bool block = true);				// Blocking wait message
 	void Send(						// Send a message
 		const char* topic_name,			// Name of the topic : "/XXX"
-		const char* message,			// Message to send
+		std::string message,			// Message to send
 		int priority = 10);				// Priority (0 = very important)
 	std::string Read(				// Receive a message from a topic
 		const char* topic_name);		// Name of the topic : "/XXX"

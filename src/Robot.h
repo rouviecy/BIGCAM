@@ -11,6 +11,7 @@
 #ifndef ROBOT
 #define ROBOT
 
+#include <vector>
 #include "Camera.h"
 #include "Compas.h"
 #include "Gps.h"
@@ -27,8 +28,6 @@ public:
 	Robot();
 
 private:
-
-
 
 };
 

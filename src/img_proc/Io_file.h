@@ -19,9 +19,7 @@ typedef struct{
 	cv::Mat img;
 	std::string path;
 	int number;
-	float x;
-	float y;
-	float z;
+	float x, y, z;
 } struct_img;
 
 class Io_file{

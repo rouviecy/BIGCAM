@@ -17,7 +17,7 @@ class Topic : public ComThread{
 
 public:
 
-	Topic(const char* topic_name);
+	Topic(const char* topic_name, bool block = true);
 	void Close();
 
 private:
