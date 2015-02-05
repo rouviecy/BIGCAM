@@ -24,7 +24,7 @@ private:
 
 	char* name;
 	std::thread thr;
-	virtual void job();
+	virtual void Job() = 0;
 
 };
 

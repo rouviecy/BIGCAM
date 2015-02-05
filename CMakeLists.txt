@@ -5,6 +5,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 find_package(PkgConfig)
 find_package(OpenCV REQUIRED)
+find_package(Threads REQUIRED)
 
 add_library(MYLIBS
 	src/stereotypes/Actuator.h			src/stereotypes/Actuator.cpp
@@ -12,8 +13,10 @@ add_library(MYLIBS
 	src/stereotypes/Exteroceptive.h		src/stereotypes/Exteroceptive.cpp
 	src/stereotypes/Proprioceptive.h	src/stereotypes/Proprioceptive.cpp
 	src/stereotypes/Sensor.h			src/stereotypes/Sensor.cpp
+	src/Robot.h							src/Robot.cpp
+	src/State.h							src/State.cpp
 )
 
 # Projet Minority-Report
 add_executable(drone src/mains/drone.cpp)
-target_link_libraries(drone ${OpenCV_LIBS} MYLIBS)
+target_link_libraries(drone ${OpenCV_LIBS} ${CMAKE_THREAD_LIBS_INIT} MYLIBS)

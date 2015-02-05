@@ -9,13 +9,12 @@
  */
 
 #include "../Robot.h"
+#include <iostream>
 
 using namespace std;
 
 int main(){
-
-	Robot drone();
-
+	Robot drone;
 	return 0;
 
 }

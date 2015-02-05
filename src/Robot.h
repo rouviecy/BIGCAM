@@ -11,6 +11,8 @@
 #ifndef ROBOT
 #define ROBOT
 
+#include "State.h"
+
 class Robot{
 
 public:
@@ -18,6 +20,8 @@ public:
 	Robot();
 
 private:
+
+
 
 };
 
