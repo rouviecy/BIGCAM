@@ -12,6 +12,8 @@
 #define COMTHREAD
 
 #include <thread>
+#include <queue>
+#include <map>
 
 class ComThread{
 
@@ -22,8 +24,9 @@ public:
 
 private:
 
-	char* name;
 	std::thread thr;
+	std::map<std::string, std::queue <std::string> > channels;
+
 	virtual void Job() = 0;
 
 };

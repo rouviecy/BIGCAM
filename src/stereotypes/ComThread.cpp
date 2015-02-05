@@ -4,7 +4,6 @@ using namespace std;
 
 // Constructeur
 ComThread::ComThread(){
-	this->name = name;
 	thr = thread(&ComThread::Job, this);
 }
 
