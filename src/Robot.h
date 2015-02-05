@@ -11,7 +11,9 @@
 #ifndef ROBOT
 #define ROBOT
 
+#include "Compas.h"
 #include "State.h"
+#include "Topic.h"
 
 class Robot{
 

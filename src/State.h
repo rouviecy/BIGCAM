@@ -22,6 +22,11 @@ public:
 
 private:
 
+	float x, y, z;
+	float vx, vy, vz;
+	float thx, thy, thz;
+	float vthx, vthy, vthz;
+
 	void Job();
 
 };
