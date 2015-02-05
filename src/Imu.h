@@ -1,23 +1,23 @@
 /*
- * @(#)		Compas.h
+ * @(#)		Imu.h
  * @version	1.0
  * @autor	C. Rouvière
  */
 
 /**
- * Information from compas
+ * Information from IMU
  */
 
-#ifndef COMPAS
-#define COMPAS
+#ifndef IMU
+#define IMU
 
 #include "stereotypes/Proprioceptive.h"
 
-class Compas : public Proprioceptive {
+class Imu : public Proprioceptive{
 
 public:
 
-	Compas();
+	Imu();
 
 private:
 

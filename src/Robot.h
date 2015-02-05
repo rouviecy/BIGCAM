@@ -12,6 +12,8 @@
 #define ROBOT
 
 #include "Compas.h"
+#include "Gps.h"
+#include "Imu.h"
 #include "State.h"
 #include "Topic.h"
 

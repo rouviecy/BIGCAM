@@ -8,6 +8,7 @@ State::State() : ComThread(){
 	thx = 0.;	thy = 0.;	thz = 0.;
 	vthx = 0.;	vthy = 0.;	vthz = 0.;
 	Subscribe("/from_compas");
+	Subscribe("/from_gps");
 }
 
 void State::Job(){

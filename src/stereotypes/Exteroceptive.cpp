@@ -2,7 +2,6 @@
 
 using namespace std;
 
-// Constructeur
 Exteroceptive::Exteroceptive() : Sensor(){
 
 }

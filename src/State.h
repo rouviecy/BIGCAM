@@ -12,7 +12,6 @@
 #define STATE
 
 #include "stereotypes/ComThread.h"
-#include <iostream>
 
 class State : public ComThread{
 

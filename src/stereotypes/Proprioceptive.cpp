@@ -2,7 +2,6 @@
 
 using namespace std;
 
-// Constructeur
 Proprioceptive::Proprioceptive() : Sensor(){
 
 }

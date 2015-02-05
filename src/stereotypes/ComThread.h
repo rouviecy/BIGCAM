@@ -1,6 +1,6 @@
 /*
  * @(#)		ComThread.h
- * @version	1.0
+ * @version	1.1
  * @autor	C. Rouvière
  */
 
@@ -11,12 +11,10 @@
 #ifndef COMTHREAD
 #define COMTHREAD
 
+#include <map>
 #include <thread>
 #include <mqueue.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <map>
 #include <unistd.h>
 #include <iostream>
 

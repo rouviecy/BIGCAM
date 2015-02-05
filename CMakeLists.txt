@@ -13,11 +13,12 @@ add_library(MYLIBS
 	src/stereotypes/Proprioceptive.h	src/stereotypes/Proprioceptive.cpp
 	src/stereotypes/Sensor.h			src/stereotypes/Sensor.cpp
 	src/Compas.h						src/Compas.cpp
+	src/Gps.h							src/Gps.cpp
+	src/Imu.h							src/Imu.cpp
 	src/Robot.h							src/Robot.cpp
 	src/State.h							src/State.cpp
 	src/Topic.h							src/Topic.cpp
 )
 
-# Projet Minority-Report
 add_executable(drone src/mains/drone.cpp)
 target_link_libraries(drone ${OpenCV_LIBS} MYLIBS)

@@ -1,23 +1,23 @@
 /*
- * @(#)		Compas.h
+ * @(#)		Gps.h
  * @version	1.0
  * @autor	C. Rouvière
  */
 
 /**
- * Information from compas
+ * Information from GPS
  */
 
-#ifndef COMPAS
-#define COMPAS
+#ifndef GPS
+#define GPS
 
 #include "stereotypes/Proprioceptive.h"
 
-class Compas : public Proprioceptive {
+class Gps : public Proprioceptive{
 
 public:
 
-	Compas();
+	Gps();
 
 private:
 
