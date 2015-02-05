@@ -27,10 +27,12 @@ public:
 	ComThread();
 	void Join(bool kill_topic = false);
 
-	void Send(const char* topic_name, const char* message);
+	void Send(const char* topic_name, const char* message, int priority = 10);
 
 private:
 
+	#define MAXMSG	10
+	#define MSGLEN	1024
 	std::thread thr;
 	std::map<const char*, mqd_t> channels;
 
