@@ -11,6 +11,7 @@
 #ifndef CAMERA
 #define CAMERA
 
+#include <opencv2/opencv.hpp>
 #include "stereotypes/Exteroceptive.h"
 
 class Camera : public Exteroceptive{
@@ -22,6 +23,9 @@ public:
 private:
 
 	void Job();
+	
+	cv::VideoCapture capture;
+	cv::Mat img_cam;
 
 };
 

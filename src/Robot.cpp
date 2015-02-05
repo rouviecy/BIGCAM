@@ -10,6 +10,7 @@ Robot::Robot(){
 	Topic topic_motor	("/to_motor");
 	Topic topic_servo	("/to_servo");
 	State state;
+	Camera camera;
 	Compas compas;
 	Gps gps;
 	Imu imu;
@@ -19,6 +20,7 @@ Robot::Robot(){
 	usleep(5000000);
 
 	state.Join();
+	camera.Join();
 	compas.Join();
 	gps.Join();
 	imu.Join();
