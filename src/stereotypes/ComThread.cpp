@@ -14,10 +14,6 @@ void ComThread::Join(bool kill_topic){
 	thr.join();
 }
 
-void ComThread::Send(const char* topic_name, const char* message, int priority){
-	mq_send(channels[topic_name], message, strlen(message), priority);
-}
-
 void ComThread::Subscribe(const char* topic_name, bool create){
 	struct mq_attr attr;
 	attr.mq_flags = 0;
@@ -26,6 +22,10 @@ void ComThread::Subscribe(const char* topic_name, bool create){
 	attr.mq_curmsgs = 0;
 	int flag = create ? O_RDWR | O_CREAT : O_RDWR;
 	channels[topic_name] = mq_open(topic_name, flag, 0644, &attr);
+}
+
+void ComThread::Send(const char* topic_name, const char* message, int priority){
+	mq_send(channels[topic_name], message, strlen(message), priority);
 }
 
 string ComThread::Read(const char* topic_name){

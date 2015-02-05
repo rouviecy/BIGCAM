@@ -5,7 +5,7 @@
  */
 
 /**
- * Thread with queue communication
+ * Thread with message queue communication
  */
 
 #ifndef COMTHREAD
@@ -24,10 +24,9 @@ class ComThread{
 
 public:
 
-	ComThread();
-	void Join(bool kill_topic = false);
-
-	void Send(const char* topic_name, const char* message, int priority = 10);
+	ComThread();					// Create the thread
+	void Join(						// Wait the end of the thread
+		bool kill_topic = false);		// If topics must be killed
 
 private:
 
@@ -38,9 +37,16 @@ private:
 
 protected:
 
-	virtual void Job() = 0;
-	void Subscribe(const char* topic_name, bool create = false);
-	std::string Read(const char* topic_name);
+	virtual void Job() = 0;			// Overwrite : job for the thread
+	void Subscribe(					// Listen a topic
+		const char* topic_name,			// Name of the topic : "/XXX"
+		bool create = false);			// If topic creation is allowed
+	void Send(						// Send a message
+		const char* topic_name,			// Name of the topic : "/XXX"
+		const char* message,			// Message to send
+		int priority = 10);				// Priority (0 = very important)
+	std::string Read(				// Receive a message from a topic
+		const char* topic_name);		// Name of the topic : "/XXX"
 
 };
 
