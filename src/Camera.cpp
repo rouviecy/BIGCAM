@@ -10,8 +10,14 @@ void Camera::Job(){
 	int i = 0;
 	while(true){
 		usleep(1000000);
-		capture >> img_cam;
-//		cv::imwrite("test/img" + to_string(i) + ".png", img_cam);
+		struct_img message;
+		capture >> message.img;
+		message.path = "test/img";
+		message.number = i;
+		message.x = 42.;
+		message.y = 42.;
+		message.z = 42.;
+		io_file.Write(message);
 		i++;
 	}
 }
