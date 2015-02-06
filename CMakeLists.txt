@@ -13,6 +13,7 @@ add_library(MYLIBS
 	src/stereotypes/Exteroceptive.h		src/stereotypes/Exteroceptive.cpp
 	src/stereotypes/Proprioceptive.h	src/stereotypes/Proprioceptive.cpp
 	src/stereotypes/Sensor.h			src/stereotypes/Sensor.cpp
+	src/utils/Modem.h					src/utils/Modem.cpp
 	src/Camera.h						src/Camera.cpp
 	src/Compas.h						src/Compas.cpp
 	src/Gps.h							src/Gps.cpp

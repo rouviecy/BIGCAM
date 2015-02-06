@@ -17,6 +17,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <iostream>
+#include "../utils/Modem.h"
 
 class ComThread{
 

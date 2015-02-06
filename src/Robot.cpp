@@ -19,7 +19,7 @@ Robot::Robot(){
 	Motor motor;
 	Servo servo;
 
-	usleep(5000000);
+	usleep(50000000);
 
 	state.Join();
 	camera.Join();

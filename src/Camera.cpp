@@ -5,7 +5,7 @@ using namespace std;
 Camera::Camera() : Exteroceptive(){
 	capture = cv::VideoCapture(-1);
 	Subscribe("/odom_to_cam");
-	x = 0., y = 0., z = 0;
+	coord.a = 0.; coord.b = 0.; coord.c = 0;
 }
 
 void Camera::Job(){
@@ -17,11 +17,11 @@ void Camera::Job(){
 		message.path = "test/img";
 		message.number = i;
 		if(!IsEmptyTopic("/odom_to_cam")){
-			x = stof(Read("/odom_to_cam"));
+			coord = Modem::Dec_3f(Read("/odom_to_cam"));
 		}
-		message.x = x;
-		message.y = y;
-		message.z = z;
+		message.x = coord.a;
+		message.y = coord.b;
+		message.z = coord.c;
 		io_file.Write(message);
 		i++;
 	}
