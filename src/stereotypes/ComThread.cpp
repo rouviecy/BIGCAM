@@ -25,6 +25,7 @@ void ComThread::Subscribe(const char* topic_name, bool create, bool block){
 }
 
 void ComThread::Send(const char* topic_name, string message, int priority){
+	if(priority == -1){Clear_topic(topic_name);}
 	mq_send(channels[topic_name], message.c_str(), strlen(message.c_str()), priority);
 }
 

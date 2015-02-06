@@ -44,7 +44,7 @@ protected:
 	void Send(						// Send a message
 		const char* topic_name,			// Name of the topic : "/XXX"
 		std::string message,			// Message to send
-		int priority = 10);				// Priority (0 = very important)
+		int priority = 10);				// Priority (-1 = clear before, 0 = very important)
 	std::string Read(				// Receive a message from a topic
 		const char* topic_name);		// Name of the topic : "/XXX"
 	bool Is_empty_topic(				// If there is any message in topic
