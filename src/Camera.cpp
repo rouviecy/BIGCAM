@@ -16,7 +16,7 @@ void Camera::Job(){
 		capture >> message.img;
 		message.path = "test/img";
 		message.number = i;
-		if(!IsEmptyTopic("/odom_to_cam")){
+		if(!Is_empty_topic("/odom_to_cam")){
 			coord = Modem::Dec_3f(Read("/odom_to_cam"));
 		}
 		message.x = coord.a;

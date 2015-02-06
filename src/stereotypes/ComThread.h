@@ -47,7 +47,9 @@ protected:
 		int priority = 10);				// Priority (0 = very important)
 	std::string Read(				// Receive a message from a topic
 		const char* topic_name);		// Name of the topic : "/XXX"
-	bool IsEmptyTopic(				// If there is any message in topic
+	bool Is_empty_topic(				// If there is any message in topic
+		const char* topic_name);		// Name of the topic : "/XXX"
+	void Clear_topic(				// Clear all messages in topic
 		const char* topic_name);		// Name of the topic : "/XXX"
 
 };

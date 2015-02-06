@@ -35,9 +35,15 @@ string ComThread::Read(const char* topic_name){
 	return string(message);
 }
 
-bool ComThread::IsEmptyTopic(const char* topic_name){
+bool ComThread::Is_empty_topic(const char* topic_name){
 	struct mq_attr attr;
 	mq_getattr(channels[topic_name], &attr);
 	int nb_messages = attr.mq_curmsgs;
 	return nb_messages == 0;
+}
+
+void ComThread::Clear_topic(const char* topic_name){
+	while(!Is_empty_topic(topic_name)){
+		Read(topic_name);
+	}
 }

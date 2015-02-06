@@ -18,6 +18,7 @@ void State::Job(){
 		usleep(100000);
 		string message = Read("/from_compas");
 		float x = stof(message);
+		Clear_topic("/odom_to_cam");
 		Send("/odom_to_cam", Modem::Enc_3f(x, 42., 42.));
 	}
 }
