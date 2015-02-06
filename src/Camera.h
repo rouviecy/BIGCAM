@@ -1,6 +1,6 @@
 /*
  * @(#)		Camera.h
- * @version	1.0
+ * @version	1.2
  * @autor	C. Rouvière
  */
 
@@ -28,7 +28,6 @@ private:
 	Io_file io_file;
 	cv::VideoCapture capture;
 	cv::Mat img_cam;
-	struct_3f coord;
 
 };
 

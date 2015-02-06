@@ -1,6 +1,6 @@
 /*
  * @(#)		Robot.h
- * @version	1.0
+ * @version	1.2
  * @autor	C. Rouvière
  */
 
@@ -18,8 +18,8 @@
 #include "Imu.h"
 #include "Motor.h"
 #include "Servo.h"
+#include "Share.h"
 #include "State.h"
-#include "Topic.h"
 
 class Robot{
 
@@ -28,6 +28,15 @@ public:
 	Robot();
 
 private:
+
+	Share share;
+	State state;
+	Camera camera;
+	Compas compas;
+	Gps gps;
+	Imu imu;
+	Motor motor;
+	Servo servo;
 
 };
 

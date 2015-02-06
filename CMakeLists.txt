@@ -13,7 +13,6 @@ add_library(MYLIBS
 	src/stereotypes/Exteroceptive.h		src/stereotypes/Exteroceptive.cpp
 	src/stereotypes/Proprioceptive.h	src/stereotypes/Proprioceptive.cpp
 	src/stereotypes/Sensor.h			src/stereotypes/Sensor.cpp
-	src/utils/Modem.h					src/utils/Modem.cpp
 	src/Camera.h						src/Camera.cpp
 	src/Compas.h						src/Compas.cpp
 	src/Gps.h							src/Gps.cpp
@@ -21,8 +20,8 @@ add_library(MYLIBS
 	src/Motor.h							src/Motor.cpp
 	src/Robot.h							src/Robot.cpp
 	src/Servo.h							src/Servo.cpp
+	src/Share.h							src/Share.cpp
 	src/State.h							src/State.cpp
-	src/Topic.h							src/Topic.cpp
 )
 
 add_executable(drone src/mains/drone.cpp)

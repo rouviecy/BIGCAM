@@ -1,6 +1,6 @@
 /*
  * @(#)		State.h
- * @version	1.0
+ * @version	1.2
  * @autor	C. Rouvière
  */
 
@@ -21,12 +21,15 @@ public:
 
 private:
 
-	float x, y, z;
-	float vx, vy, vz;
-	float thx, thy, thz;
-	float vthx, vthy, vthz;
+	float	t;
+	float	x,		y,		z;
+	float	vx,		vy,		vz;
+	float	thx,	thy,	thz;
+	float	vthx,	vthy,	vthz;
 
 	void Job();
+
+	void Send_state();
 
 };
 
