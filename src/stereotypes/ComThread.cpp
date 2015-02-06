@@ -34,3 +34,10 @@ string ComThread::Read(const char* topic_name){
 	mq_receive(channels[topic_name], message, MSGLEN, NULL);
 	return string(message);
 }
+
+bool ComThread::IsEmptyTopic(const char* topic_name){
+	struct mq_attr attr;
+	mq_getattr(channels[topic_name], &attr);
+	int nb_messages = attr.mq_curmsgs;
+	return nb_messages == 0;
+}

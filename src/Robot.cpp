@@ -10,7 +10,7 @@ Robot::Robot(){
 	Topic topic_gps		("/from_gps");
 	Topic topic_motor	("/to_motor");
 	Topic topic_servo	("/to_servo");
-	Topic topic_odomcam	("/odom_to_cam", false);
+	Topic topic_odomcam	("/odom_to_cam");
 	State state;
 	Camera camera;
 	Compas compas;

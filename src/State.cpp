@@ -10,7 +10,7 @@ State::State() : ComThread(){
 	Subscribe("/from_compas");
 	Subscribe("/from_gps");
 	Subscribe("/from_imu");
-	Subscribe("/odomto_cam");
+	Subscribe("/odom_to_cam");
 }
 
 void State::Job(){
@@ -18,7 +18,6 @@ void State::Job(){
 		usleep(100000);
 		string message = Read("/from_compas");
 		x = stof(message);
-		cout << "x = " << x << endl;
 		Send("/odom_to_cam", message);
 	}
 }

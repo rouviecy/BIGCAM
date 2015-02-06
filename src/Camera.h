@@ -28,6 +28,7 @@ private:
 	Io_file io_file;
 	cv::VideoCapture capture;
 	cv::Mat img_cam;
+	float x, y, z;
 
 };
 
