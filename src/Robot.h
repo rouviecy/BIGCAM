@@ -1,6 +1,6 @@
 /*
  * @(#)		Robot.h
- * @version	1.2
+ * @version	1.3
  * @autor	C. Rouvière
  */
 
@@ -12,6 +12,7 @@
 #define ROBOT
 
 #include <vector>
+#include "Autonomy.h"
 #include "Camera.h"
 #include "Clock.h"
 #include "Compas.h"
