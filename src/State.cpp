@@ -28,7 +28,6 @@ void State::IO(){
 
 void State::Job(){
 	Critical_receive();
-	cout << "t = " << t << endl;
 	thx = compas;
 	x = gps_x;
 	y = gps_y;

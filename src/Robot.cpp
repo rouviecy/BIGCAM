@@ -31,7 +31,7 @@ Robot::Robot(){
 	Link_all();
 	Launch_all();
 
-	usleep(5000000);
+	remote.Wait_quit_from_user();
 
 	Join_all();
 }
