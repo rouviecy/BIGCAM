@@ -6,6 +6,7 @@ using namespace std;
 Robot::Robot(){
 	state.Link(&share);
 	camera.Link(&share);
+	clock.Link(&share);
 	compas.Link(&share);
 	gps.Link(&share);
 //	imu.Link(&share);
@@ -14,6 +15,7 @@ Robot::Robot(){
 
 	state.Launch();
 	camera.Launch();
+	clock.Launch();
 	compas.Launch();
 	gps.Launch();
 //	imu.Launch();
@@ -24,6 +26,7 @@ Robot::Robot(){
 
 	state.Join();
 	camera.Join();
+	clock.Join();
 	compas.Join();
 	gps.Join();
 //	imu.Join();

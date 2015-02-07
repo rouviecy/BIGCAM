@@ -13,6 +13,7 @@
 
 #include <vector>
 #include "Camera.h"
+#include "Clock.h"
 #include "Compas.h"
 #include "Gps.h"
 //#include "Imu.h"
@@ -32,6 +33,7 @@ private:
 	Share share;
 	State state;
 	Camera camera;
+	Clock clock;
 	Compas compas;
 	Gps gps;
 //	Imu imu;
