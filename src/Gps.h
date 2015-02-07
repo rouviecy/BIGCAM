@@ -1,6 +1,6 @@
 /*
  * @(#)		Gps.h
- * @version	1.2
+ * @version	1.3
  * @autor	C. Rouvière
  */
 
@@ -22,6 +22,9 @@ public:
 private:
 
 	void Job();
+	void IO();
+	
+	float gps_x, gps_y;
 
 };
 

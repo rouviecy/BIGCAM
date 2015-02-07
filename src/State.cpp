@@ -10,24 +10,24 @@ State::State() : ComThread(){
 	vthx = 0.;	vthy = 0.;	vthz = 0.;
 }
 
+void State::IO(){
+	Link_output("t", &t);
+	Link_output("x", &x);		Link_output("y", &y);		Link_output("z", &z);
+	Link_output("vx", &vx);		Link_output("vy", &vy);		Link_output("vz", &vz);
+	Link_output("thx", &thx);	Link_output("thy", &thy);	Link_output("thz", &thz);
+	Link_output("vthx", &vthx);	Link_output("vthy", &vthy);	Link_output("vthz", &vthz);
+	Link_input("compas", &compas);
+	Link_input("gps_x", &gps_x);
+	Link_input("gps_y", &gps_y);
+}
+
 void State::Job(){
 	while(true){
 		usleep(1000000);
-		s->Lock();
-		thx = s->compas;
-		x = s->gps_x;
-		y = s->gps_y;
-		s->Unlock();
-		Send_state();
+		Critical_receive();
+		thx = compas;
+		x = gps_x;
+		y = gps_y;
+		Critical_send();
 	}
-}
-
-void State::Send_state(){
-	s->Lock();
-	s->t = t;
-	s->x = x;		s->y = y;		s->z = z;
-	s->vx = vx;		s->vy = vy;		s->vz = vz;
-	s->thx = thx;	s->thy = thy;	s->thz = thz;
-	s->vthx = vthx;	s->vthy = vthy;	s->vthz = vthz;
-	s->Unlock();
 }

@@ -8,7 +8,7 @@ find_package(OpenCV REQUIRED)
 
 add_library(MYLIBS
 	src/img_proc/Io_file.h				src/img_proc/Io_file.cpp
-	src/stereotypes/Actuator.h			src/stereotypes/Actuator.cpp
+#	src/stereotypes/Actuator.h			src/stereotypes/Actuator.cpp
 	src/stereotypes/ComThread.h			src/stereotypes/ComThread.cpp
 	src/stereotypes/Exteroceptive.h		src/stereotypes/Exteroceptive.cpp
 	src/stereotypes/Proprioceptive.h	src/stereotypes/Proprioceptive.cpp
@@ -16,10 +16,10 @@ add_library(MYLIBS
 	src/Camera.h						src/Camera.cpp
 	src/Compas.h						src/Compas.cpp
 	src/Gps.h							src/Gps.cpp
-	src/Imu.h							src/Imu.cpp
-	src/Motor.h							src/Motor.cpp
+#	src/Imu.h							src/Imu.cpp
+#	src/Motor.h							src/Motor.cpp
 	src/Robot.h							src/Robot.cpp
-	src/Servo.h							src/Servo.cpp
+#	src/Servo.h							src/Servo.cpp
 	src/Share.h							src/Share.cpp
 	src/State.h							src/State.cpp
 )

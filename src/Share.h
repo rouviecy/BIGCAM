@@ -1,6 +1,6 @@
 /*
  * @(#)		Share.h
- * @version	1.2
+ * @version	1.3
  * @autor	C. Rouvière
  */
 
@@ -12,28 +12,30 @@
 #define SHARE
 
 #include <mutex>
+#include <vector>
+#include <map>
+#include <iostream>
+
+typedef std::map <std::string, float> FloatMap;
+typedef std::map <std::string, float*> PFloatMap;
+typedef std::vector <std::string> StringVec;
 
 class Share{
 
 public:
 
 	Share();
-	void Lock();
-	void Unlock();
-	
-	float	t;
-	float	x,		y,		z;
-	float	vx,		vy,		vz;
-	float	thx,	thy,	thz;
-	float	vthx,	vthy,	vthz;
-	float	compas;
-	float	gps_x,	gps_y;
-
+	void Create_data(std::string key);
+	void Send(PFloatMap input);
+	FloatMap Receive(StringVec keys);
 
 private:
 
 	std::mutex mu;
+	FloatMap data;
 
+	void Lock();
+	void Unlock();
 };
 
 #endif

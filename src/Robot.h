@@ -15,9 +15,9 @@
 #include "Camera.h"
 #include "Compas.h"
 #include "Gps.h"
-#include "Imu.h"
-#include "Motor.h"
-#include "Servo.h"
+//#include "Imu.h"
+//#include "Motor.h"
+//#include "Servo.h"
 #include "Share.h"
 #include "State.h"
 
@@ -34,9 +34,9 @@ private:
 	Camera camera;
 	Compas compas;
 	Gps gps;
-	Imu imu;
-	Motor motor;
-	Servo servo;
+//	Imu imu;
+//	Motor motor;
+//	Servo servo;
 
 };
 

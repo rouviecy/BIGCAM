@@ -1,6 +1,6 @@
 /*
  * @(#)		State.h
- * @version	1.2
+ * @version	1.3
  * @autor	C. Rouvière
  */
 
@@ -26,10 +26,11 @@ private:
 	float	vx,		vy,		vz;
 	float	thx,	thy,	thz;
 	float	vthx,	vthy,	vthz;
+	float	compas;
+	float	gps_x,	gps_y;
 
 	void Job();
-
-	void Send_state();
+	void IO();
 
 };
 

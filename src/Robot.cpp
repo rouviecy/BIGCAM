@@ -4,13 +4,21 @@ using namespace std;
 
 // Constructeur
 Robot::Robot(){
-	state.Launch(&share);
-	camera.Launch(&share);
-	compas.Launch(&share);
-	gps.Launch(&share);
-	imu.Launch(&share);
-	motor.Launch(&share);
-	servo.Launch(&share);
+	state.Link(&share);
+	camera.Link(&share);
+	compas.Link(&share);
+	gps.Link(&share);
+//	imu.Link(&share);
+//	motor.Link(&share);
+//	servo.Link(&share);
+
+	state.Launch();
+	camera.Launch();
+	compas.Launch();
+	gps.Launch();
+//	imu.Launch();
+//	motor.Launch();
+//	servo.Launch();
 
 	usleep(5000000);
 
@@ -18,7 +26,7 @@ Robot::Robot(){
 	camera.Join();
 	compas.Join();
 	gps.Join();
-	imu.Join();
-	motor.Join();
-	servo.Join();
+//	imu.Join();
+//	motor.Join();
+//	servo.Join();
 }

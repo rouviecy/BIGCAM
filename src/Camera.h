@@ -1,6 +1,6 @@
 /*
  * @(#)		Camera.h
- * @version	1.2
+ * @version	1.3
  * @autor	C. Rouvière
  */
 
@@ -23,7 +23,10 @@ public:
 
 private:
 
+	float x, y, z;
+
 	void Job();
+	void IO();
 
 	Io_file io_file;
 	cv::VideoCapture capture;
