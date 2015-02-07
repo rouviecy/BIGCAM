@@ -1,6 +1,6 @@
 /*
  * @(#)		Imu.h
- * @version	1.0
+ * @version	1.3
  * @autor	C. Rouvière
  */
 
@@ -22,6 +22,12 @@ public:
 private:
 
 	void Job();
+	void IO();
+
+	float imu_x,	imu_y,		imu_z;
+	float imu_vx,	imu_vy,		imu_vz;
+	float imu_thx,	imu_thy,	imu_thz;
+	float imu_vthx,	imu_vthy,	imu_vthz;
 
 };
 

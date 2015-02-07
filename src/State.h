@@ -26,6 +26,12 @@ private:
 	float	vx,		vy,		vz;
 	float	thx,	thy,	thz;
 	float	vthx,	vthy,	vthz;
+	
+	float	imu_x,		imu_y,		imu_z;
+	float	imu_vx,		imu_vy,		imu_vz;
+	float	imu_thx,	imu_thy,	imu_thz;
+	float	imu_vthx,	imu_vthy,	imu_vthz;
+
 	float	compas;
 	float	gps_x,	gps_y;
 

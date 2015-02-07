@@ -1,11 +1,11 @@
 /*
  * @(#)		Servo.h
- * @version	1.0
+ * @version	1.3
  * @autor	C. Rouvière
  */
 
 /**
- * Motor control
+ * Servo control (steering and wings)
  */
 
 #ifndef SERVO
@@ -22,6 +22,10 @@ public:
 private:
 
 	void Job();
+	void IO();
+
+	float steer;
+	float wing_left, wing_right;
 
 };
 

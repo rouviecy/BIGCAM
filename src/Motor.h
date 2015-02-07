@@ -1,6 +1,6 @@
 /*
  * @(#)		Motor.h
- * @version	1.0
+ * @version	1.3
  * @autor	C. Rouvière
  */
 
@@ -22,6 +22,9 @@ public:
 private:
 
 	void Job();
+	void IO();
+
+	float v_motor;
 
 };
 
