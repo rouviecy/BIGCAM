@@ -27,6 +27,10 @@ private:
 	float	thx,	thy,	thz;
 	float	vthx,	vthy,	vthz;
 
+	float	is_remote;
+	float	remote_power;
+	float	remote_turn;
+
 	float	v_motor;
 	float	steer;
 	float	wing_left, wing_right;

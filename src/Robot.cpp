@@ -14,6 +14,7 @@ Robot::Robot(){
 	threads.push_back(&gps);
 	threads.push_back(&imu);
 	threads.push_back(&motor);
+	threads.push_back(&remote);
 	threads.push_back(&servo);
 
 	clock.Set_freq(1000);		// 1 ms
@@ -22,6 +23,7 @@ Robot::Robot(){
 	gps.Set_freq(10000000);		// 10 s
 	autonomy.Set_freq(50000);	// 50 ms
 	state.Set_freq(50000);		// 50 ms
+	remote.Set_freq(-1);		// manual loop
 	motor.Set_freq(100000);		// 100 ms
 	servo.Set_freq(100000);		// 100 ms
 	camera.Set_freq(1000000);	// 1 s

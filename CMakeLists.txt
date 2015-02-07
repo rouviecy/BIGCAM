@@ -20,6 +20,7 @@ add_library(MYLIBS
 	src/Gps.h							src/Gps.cpp
 	src/Imu.h							src/Imu.cpp
 	src/Motor.h							src/Motor.cpp
+	src/Remote.h						src/Remote.cpp
 	src/Robot.h							src/Robot.cpp
 	src/Servo.h							src/Servo.cpp
 	src/Share.h							src/Share.cpp

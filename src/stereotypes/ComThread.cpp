@@ -23,9 +23,14 @@ void ComThread::Join(){
 }
 
 void ComThread::Loop_job(){
-	while(job_go_on){
+	if(dt_microseconds > 0){
+		while(job_go_on){
+			Job();
+			usleep(dt_microseconds);
+		}
+	}
+	else{
 		Job();
-		usleep(dt_microseconds);
 	}
 }
 

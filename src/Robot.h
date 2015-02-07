@@ -19,6 +19,7 @@
 #include "Gps.h"
 #include "Imu.h"
 #include "Motor.h"
+#include "Remote.h"
 #include "Servo.h"
 #include "Share.h"
 #include "State.h"
@@ -39,7 +40,6 @@ private:
 
 	Share share;
 
-	State state;
 	Autonomy autonomy;
 	Camera camera;
 	Clock clock;
@@ -47,7 +47,9 @@ private:
 	Gps gps;
 	Imu imu;
 	Motor motor;
+	Remote remote;
 	Servo servo;
+	State state;
 
 };
 
