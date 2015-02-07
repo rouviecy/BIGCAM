@@ -30,6 +30,12 @@ public:
 
 private:
 
+	std::vector <ComThread*> threads;
+
+	void Link_all();
+	void Launch_all();
+	void Join_all();
+
 	Share share;
 	State state;
 	Camera camera;

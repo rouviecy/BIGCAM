@@ -4,32 +4,39 @@ using namespace std;
 
 // Constructeur
 Robot::Robot(){
-	state.Link(&share);
-	camera.Link(&share);
-	clock.Link(&share);
-	compas.Link(&share);
-	gps.Link(&share);
-	imu.Link(&share);
-	motor.Link(&share);
-	servo.Link(&share);
 
-	state.Launch();
-	camera.Launch();
-	clock.Launch();
-	compas.Launch();
-	gps.Launch();
-	imu.Launch();
-	motor.Launch();
-	servo.Launch();
+	// Warning : pass-by-reference to avoid slicing !
+	threads.push_back(&state);
+	threads.push_back(&camera);
+	threads.push_back(&clock);
+	threads.push_back(&compas);
+	threads.push_back(&gps);
+	threads.push_back(&imu);
+	threads.push_back(&motor);
+	threads.push_back(&servo);
 
-	usleep(5000000);
+	Link_all();
+	Launch_all();
 
-	state.Join();
-	camera.Join();
-	clock.Join();
-	compas.Join();
-	gps.Join();
-	imu.Join();
-	motor.Join();
-	servo.Join();
+	usleep(50000000);
+
+	Join_all();
+}
+
+void Robot::Link_all(){
+	for(size_t i = 0; i < threads.size(); i++){
+		threads[i]->Link(&share);
+	}
+}
+
+void Robot::Launch_all(){
+	for(size_t i = 0; i < threads.size(); i++){
+		threads[i]->Launch();
+	}
+}
+
+void Robot::Join_all(){
+	for(size_t i = 0; i < threads.size(); i++){
+		threads[i]->Launch();
+	}
 }
