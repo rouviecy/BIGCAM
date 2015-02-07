@@ -39,9 +39,8 @@ void Remote::Wait_quit_from_user(){
 }
 
 void Remote::Smooth_order(){
-	if		(remote_power > +1.)							{remote_power = +1.;}
-	else if	(remote_power < -1.)							{remote_power = -1.;}
-	else if (remote_power < +0.05 && remote_power > -0.05)	{remote_power = +0.;}
+	if		(remote_power > +1.)	{remote_power = +1.;}
+	else if (remote_power < +0.05)	{remote_power = +0.;}
 	
 	if		(remote_turn > +1.)		{remote_turn = +1.;}
 	else if	(remote_turn < -1.)		{remote_turn = -1.;}
@@ -57,6 +56,8 @@ void Remote::Draw_remote(){
 	int dx = + (int) (((float) POD_SIZE / 2) * remote_turn);
 	int dy = - (int) (((float) POD_SIZE / 2) * remote_power);
 	cv::Point pt = pod_center + cv::Point(dx, dy);
-	cv::circle(img_remote, pt, 3, is_remote > 0 ? green : red, -1);
+	cv::Scalar color = is_remote > 0 ? green : red;
+	cv::line(img_remote, pod_center, pt, color);
+	cv::circle(img_remote, pt, 3, color, -1);
 	cv::imshow(WINDOW_NAME, img_remote);
 }

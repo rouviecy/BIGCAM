@@ -25,3 +25,9 @@ Student project : designing, build and program an autonomous plane in order to m
     cmake ..
     make
     ./drone
+
+## GUI
++    Press `q` to quit
++    Press `+`/`-` to activate or desactivate remote control
++    Press `8`/`2` to step on the gas or slow down
++    Press `4`/`6` to turn to left or right
