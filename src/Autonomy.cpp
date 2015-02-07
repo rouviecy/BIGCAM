@@ -20,10 +20,7 @@ void Autonomy::IO(){
 }
 
 void Autonomy::Job(){
-	while(true){
-		usleep(1000000);
-		Critical_receive();
+	Critical_receive();
 
-		Critical_send();
-	}
+	Critical_send();
 }

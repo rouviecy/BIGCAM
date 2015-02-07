@@ -38,7 +38,9 @@ private:
 	void Join_all();
 
 	Share share;
+
 	State state;
+	Autonomy autonomy;
 	Camera camera;
 	Clock clock;
 	Compas compas;

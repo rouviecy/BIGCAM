@@ -17,8 +17,5 @@ void Imu::IO(){
 }
 
 void Imu::Job(){
-	while(true){
-		usleep(100000);
-		Critical_send();
-	}
+	Critical_send();
 }

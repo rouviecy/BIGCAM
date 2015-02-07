@@ -24,6 +24,8 @@ public:
 private:
 
 	float x, y, z;
+	
+	int num_image;
 
 	void Job();
 	void IO();

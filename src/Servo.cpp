@@ -15,8 +15,5 @@ void Servo::IO(){
 }
 
 void Servo::Job(){
-	while(true){
-		usleep(1000000);
-		Critical_receive();
-	}
+	Critical_receive();
 }

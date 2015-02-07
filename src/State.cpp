@@ -27,13 +27,10 @@ void State::IO(){
 }
 
 void State::Job(){
-	while(true){
-		usleep(1000000);
-		Critical_receive();
-		cout << t << endl;
-		thx = compas;
-		x = gps_x;
-		y = gps_y;
-		Critical_send();
-	}
+	Critical_receive();
+	cout << "t = " << t << endl;
+	thx = compas;
+	x = gps_x;
+	y = gps_y;
+	Critical_send();
 }

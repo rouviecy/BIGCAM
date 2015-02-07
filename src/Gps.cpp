@@ -12,10 +12,7 @@ void Gps::IO(){
 }
 
 void Gps::Job(){
-	for(int i = 0; i < 10000; i++){
-		usleep(100000);
-		gps_x = 1.;
-		gps_y = (float) 2*i;
-		Critical_send();
-	}
+	gps_x = 1.;
+	gps_y = (float) 2*42;
+	Critical_send();
 }

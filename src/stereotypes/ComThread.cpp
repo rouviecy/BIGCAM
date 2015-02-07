@@ -3,7 +3,7 @@
 using namespace std;
 
 ComThread::ComThread(){
-	
+	dt_microseconds = 1000000;
 }
 
 void ComThread::Link(Share *s){
@@ -12,11 +12,21 @@ void ComThread::Link(Share *s){
 }
 
 void ComThread::Launch(){
-	thr = thread(&ComThread::Job, this);
+	job_go_on = true;
+	thr = thread(&ComThread::Loop_job, this);
+
 }
 
 void ComThread::Join(){
+	job_go_on = false;
 	thr.join();
+}
+
+void ComThread::Loop_job(){
+	while(job_go_on){
+		Job();
+		usleep(dt_microseconds);
+	}
 }
 
 void ComThread::Link_input(string key, float *p_float){
@@ -40,6 +50,6 @@ void ComThread::Critical_receive(){
 	}
 }
 
-void ComThread::Critical_send(){
-	s->Send(critical_output);
-}
+void ComThread::Critical_send(){s->Send(critical_output);}
+
+void ComThread::Set_freq(int dt_microseconds){this->dt_microseconds = dt_microseconds;}

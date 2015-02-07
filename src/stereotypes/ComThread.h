@@ -25,12 +25,19 @@ public:
 		Share *s);						// Pointer to share object
 	void Launch();					// Begin the job
 	void Join();					// Wait the end of the thread
+	void Set_freq(					// Setup freqency thread
+		int dt_microseconds);			// Period between two jobs in μs
 
 private:
 
 	std::thread thr;
+	int dt_microseconds;
+	bool job_go_on;
+	
 	Share *s;
 	PFloatMap critical_input, critical_output;
+	
+	void Loop_job();
 
 protected:
 
