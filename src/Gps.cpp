@@ -16,8 +16,8 @@ void Gps::Job(){
 	float cos1i = (float) cos(i);
 	float sin1i = (float) sin(i);
 	float sin2i = (float) sin(2 * i);
-	gps_x = 10. * cos1i / (sin1i * sin1i + 1.);
-	gps_y = 10. * sin2i / (sin1i * sin1i + 1.);
-	i += 0.01;
+	gps_x = (10. + (float) i) * cos1i / (sin1i * sin1i + 1.);
+	gps_y = (10. + (float) i) * sin2i / (sin1i * sin1i + 1.);
+	i += 0.02;
 	Critical_send();
 }

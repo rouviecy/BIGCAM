@@ -32,7 +32,7 @@ private:
 	float	y_min,	y_max;
 
 	cv::Mat img_monitor;
-	std::vector <cv::Point> path;
+	std::vector <std::vector <float> > path;
 	cv::Scalar red, blue, green;
 
 	void Job();
