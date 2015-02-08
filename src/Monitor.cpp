@@ -3,11 +3,11 @@
 using namespace std;
 
 Monitor::Monitor() : ComThread(){
-	cv::namedWindow(MONITOR_NAME, CV_WINDOW_AUTOSIZE);
 	red =	cv::Scalar(0, 0, 255);
 	blue =	cv::Scalar(255, 0, 0);
 	green =	cv::Scalar(0, 255, 0);
 	x_min = -1.; x_max = +1.; y_min = -1.; y_max = +1.;
+	img_monitor = cv::Mat::zeros(MONITOR_SIZE, MONITOR_SIZE, CV_8UC3);
 }
 
 void Monitor::IO(){
@@ -39,5 +39,6 @@ void Monitor::Draw_monitor(){
 		}
 		pt_draw_prev = pt_draw;
 	}
-	cv::imshow(MONITOR_NAME, img_monitor);
 }
+
+cv::Mat Monitor::Get_img_monitor(){return img_monitor;}

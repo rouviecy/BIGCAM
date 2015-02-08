@@ -10,6 +10,7 @@ Remote::Remote() : ComThread(){
 	red =	cv::Scalar(0, 0, 255);
 	blue =	cv::Scalar(255, 0, 0);
 	green =	cv::Scalar(0, 255, 0);
+	img_remote = cv::Mat::zeros(REMOTE_SIZE, REMOTE_SIZE, CV_8UC3);
 }
 
 void Remote::IO(){
@@ -21,7 +22,6 @@ void Remote::IO(){
 void Remote::Job(){} // Do not use thread job (remember : Set_freq(-1))
 
 void Remote::Wait_quit_from_user(){
-	cv::namedWindow(REMOTE_NAME, CV_WINDOW_AUTOSIZE);
 	char key = 'a';
 	while(key != 'q'){
 		key = cv::waitKey(10); // ms
@@ -59,5 +59,6 @@ void Remote::Draw_remote(){
 	cv::Scalar color = is_remote > 0 ? green : red;
 	cv::line(img_remote, pod_center, pt, color);
 	cv::circle(img_remote, pt, 3, color, -1);
-	cv::imshow(REMOTE_NAME, img_remote);
 }
+
+cv::Mat Remote::Get_img_remote(){return img_remote;}

@@ -19,11 +19,11 @@ class Monitor : public ComThread{
 public:
 
 	Monitor();
+	cv::Mat Get_img_monitor();
 
 private:
 
-	#define MONITOR_NAME	"Monitor"
-	#define MONITOR_SIZE	500
+	#define MONITOR_SIZE 500
 
 	float	x,		y,		z;
 	float	thx,	thy,	thz;

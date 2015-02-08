@@ -20,16 +20,16 @@ public:
 
 	Remote();
 	void Wait_quit_from_user();
+	cv::Mat Get_img_remote();
 
 private:
 
-	#define REMOTE_NAME	"Remote"
-	#define REMOTE_SIZE	100
+	#define REMOTE_SIZE 100
 
 	float is_remote;
 	float remote_power;
 	float remote_turn;
-	
+
 	cv::Mat img_remote;
 	cv::Point pod_center;
 	cv::Scalar red, blue, green;

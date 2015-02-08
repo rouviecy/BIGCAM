@@ -17,6 +17,7 @@
 #include "Clock.h"
 #include "Compas.h"
 #include "Gps.h"
+#include "Gui.h"
 #include "Imu.h"
 #include "Monitor.h"
 #include "Motor.h"
@@ -46,6 +47,7 @@ private:
 	Clock		clock;
 	Compas		compas;
 	Gps			gps;
+	Gui			gui;
 	Imu			imu;
 	Monitor		monitor;
 	Motor		motor;
