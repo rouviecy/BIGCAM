@@ -11,6 +11,8 @@ Remote::Remote() : ComThread(){
 	blue =	cv::Scalar(255, 0, 0);
 	green =	cv::Scalar(0, 255, 0);
 	img_remote = cv::Mat::zeros(REMOTE_SIZE, REMOTE_SIZE, CV_8UC3);
+	cv::namedWindow(MONITOR_NAME, CV_WINDOW_AUTOSIZE);
+	cv::namedWindow(REMOTE_NAME, CV_WINDOW_AUTOSIZE);
 }
 
 void Remote::IO(){
@@ -19,18 +21,22 @@ void Remote::IO(){
 	Link_output("remote_turn", &remote_turn);
 }
 
+void Remote::Link_images(cv::Mat img_monitor){
+	this->img_monitor =	img_monitor;
+}
+
 void Remote::Job(){} // Do not use thread job (remember : Set_freq(-1))
 
 void Remote::Wait_quit_from_user(){
 	char key = 'a';
 	while(key != 'q'){
-		key = cv::waitKey(10); // ms
+		key = cv::waitKey(50); // ms
 		if		(key == '+')	{is_remote = +1.;}
 		else if (key == '-')	{is_remote = -1.;}
-		else if (key == '8')	{remote_power += 0.1;}
-		else if (key == '2')	{remote_power -= 0.1;}
-		else if (key == '4')	{remote_turn -= 0.1;}
-		else if (key == '6')	{remote_turn += 0.1;}
+		else if (key == 'R')	{remote_power += 0.1;}
+		else if (key == 'T')	{remote_power -= 0.1;}
+		else if (key == 'Q')	{remote_turn -= 0.1;}
+		else if (key == 'S')	{remote_turn += 0.1;}
 		Smooth_order();
 		Critical_send();
 		Draw_remote();
@@ -59,6 +65,6 @@ void Remote::Draw_remote(){
 	cv::Scalar color = is_remote > 0 ? green : red;
 	cv::line(img_remote, pod_center, pt, color);
 	cv::circle(img_remote, pt, 3, color, -1);
+	cv::imshow(MONITOR_NAME, img_monitor);
+	cv::imshow(REMOTE_NAME, img_remote);
 }
-
-cv::Mat Remote::Get_img_remote(){return img_remote;}

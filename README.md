@@ -9,12 +9,12 @@ Student project : designing, build and program an autonomous plane in order to m
 +    **[TODO]** Control actuators
 +    **[DONE]** Tag camera images
 +    **[TODO]** Assemble camera images to build a map
-+    **[TODO]** Easy UI to manage and monitor robot(s)
++    **[DONE]** Easy UI to manage and monitor robot(s)
 
 ## Dependencies
 +    **CMake**
 +    **GCC** for c++11
-+    **OpenCV** with **Qt** (no GTK)
++    **OpenCV** with **GTK** (Qt do not support GUI over multithreading)
 +    **V4L** driver for camera
 +    **GNU/Linux** (not tested on Windows and MAC OS)
 
@@ -30,5 +30,5 @@ Student project : designing, build and program an autonomous plane in order to m
 ## GUI
 +    Press `q` to quit
 +    Press `+`/`-` to activate or desactivate remote control
-+    Press `8`/`2` to step on the gas or slow down
-+    Press `4`/`6` to turn to left or right
++    Press `UP`/`DOWN` to step on the gas or slow down
++    Press `LEFT`/`RIGHT` to turn to left or right

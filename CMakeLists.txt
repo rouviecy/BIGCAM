@@ -18,7 +18,6 @@ add_library(MYLIBS
 	src/Clock.h							src/Clock.cpp
 	src/Compas.h						src/Compas.cpp
 	src/Gps.h							src/Gps.cpp
-	src/Gui.h							src/Gui.cpp
 	src/Imu.h							src/Imu.cpp
 	src/Monitor.h						src/Monitor.cpp
 	src/Motor.h							src/Motor.cpp

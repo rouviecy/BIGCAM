@@ -12,14 +12,13 @@ Robot::Robot(){
 	threads.push_back(&clock);
 	threads.push_back(&compas);
 	threads.push_back(&gps);
-	threads.push_back(&gui);
 	threads.push_back(&imu);
 	threads.push_back(&monitor);
 	threads.push_back(&motor);
 	threads.push_back(&remote);
 	threads.push_back(&servo);
 
-	gui.Link_images(remote.Get_img_remote(), monitor.Get_img_monitor());
+	remote.Link_images(monitor.Get_img_monitor());
 
 	clock.Set_freq(1000);		// 1 ms
 	imu.Set_freq(10000);		// 10 ms
@@ -29,7 +28,6 @@ Robot::Robot(){
 	state.Set_freq(50000);		// 50 ms
 	remote.Set_freq(-1);		// manual loop
 	monitor.Set_freq(50000);	// 50 ms
-	gui.Set_freq(100000);		// 100 ms
 	motor.Set_freq(100000);		// 100 ms
 	servo.Set_freq(100000);		// 100 ms
 	camera.Set_freq(1000000);	// 1 s
