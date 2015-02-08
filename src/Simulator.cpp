@@ -25,7 +25,7 @@ void Simulator::IO(){
 
 void Simulator::Job(){
 	Critical_receive();
-	simu_compas = thz + 10 * (-wing_left + wing_right + steer);
+	simu_compas = thz + v_motor * (-wing_left + wing_right + steer);
 	simu_gps_x = x + cos((float) thz) * v_motor;
 	simu_gps_y = y + sin((float) thz) * v_motor;
 	Critical_send();

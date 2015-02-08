@@ -11,6 +11,7 @@
 #ifndef MONITOR
 #define MONITOR
 
+#include <cmath>
 #include <opencv2/opencv.hpp>
 #include "stereotypes/ComThread.h"
 
@@ -23,7 +24,8 @@ public:
 
 private:
 
-	#define MONITOR_SIZE 500
+	#define MONITOR_SIZE	700
+	#define MONITOR_BORDER	100
 
 	float	x,		y,		z;
 	float	thx,	thy,	thz;
