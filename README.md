@@ -10,18 +10,18 @@ Student project : designing, build and program an autonomous plane in order to m
 +    **[DONE]** Tag camera images
 +    **[TODO]** Assemble camera images to build a map
 +    **[DONE]** Easy UI to manage and monitor robot(s)
++    **[TODO]** Test on Raspberry Pi
 
 ## Dependencies
 +    **CMake**
 +    **GCC** for c++11
-+    **OpenCV** with **GTK** (Qt do not support GUI over multithreading)
++    **OpenCV** with **GTK** (Qt does not support GUI over multithreading)
 +    **V4L** driver for camera
 +    **GNU/Linux** (not tested on Windows and MAC OS)
 
 ## To compile and execute
-    cd BIGCAM
-    mkdir build;
-    cd build
+    git clone https://github.com/rouviecy/BIGCAM; cd BIGCAM
+    mkdir build; cd build
     mkdir test
     cmake ..
     make
