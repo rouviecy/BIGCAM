@@ -30,8 +30,7 @@ private:
 	float	x,		y,		z;
 	float	thx,	thy,	thz;
 
-	float	x_min,	x_max;
-	float	y_min,	y_max;
+	float	min_coord, max_coord;
 
 	cv::Mat img_monitor;
 	std::vector <std::vector <float> > path;
