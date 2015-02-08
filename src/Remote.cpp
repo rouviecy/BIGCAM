@@ -6,7 +6,7 @@ Remote::Remote() : ComThread(){
 	is_remote = +1.;
 	remote_power = 0.;
 	remote_turn = 0.;
-	pod_center = cv::Point(POD_SIZE / 2, POD_SIZE / 2);
+	pod_center = cv::Point(REMOTE_SIZE / 2, REMOTE_SIZE / 2);
 	red =	cv::Scalar(0, 0, 255);
 	blue =	cv::Scalar(255, 0, 0);
 	green =	cv::Scalar(0, 255, 0);
@@ -21,7 +21,7 @@ void Remote::IO(){
 void Remote::Job(){} // Do not use thread job (remember : Set_freq(-1))
 
 void Remote::Wait_quit_from_user(){
-	cv::namedWindow(WINDOW_NAME, CV_WINDOW_AUTOSIZE);
+	cv::namedWindow(REMOTE_NAME, CV_WINDOW_AUTOSIZE);
 	char key = 'a';
 	while(key != 'q'){
 		key = cv::waitKey(10); // ms
@@ -50,14 +50,14 @@ void Remote::Smooth_order(){
 }
 
 void Remote::Draw_remote(){
-	img_remote = cv::Mat::zeros(POD_SIZE, POD_SIZE, CV_8UC3);
-	cv::line(img_remote, cv::Point(POD_SIZE / 2, - POD_SIZE), cv::Point(POD_SIZE / 2, + POD_SIZE), blue);
-	cv::line(img_remote, cv::Point(- POD_SIZE, POD_SIZE / 2), cv::Point(+ POD_SIZE, POD_SIZE / 2), blue);
-	int dx = + (int) (((float) POD_SIZE / 2) * remote_turn);
-	int dy = - (int) (((float) POD_SIZE / 2) * remote_power);
+	img_remote = cv::Mat::zeros(REMOTE_SIZE, REMOTE_SIZE, CV_8UC3);
+	cv::line(img_remote, cv::Point(REMOTE_SIZE / 2, - REMOTE_SIZE), cv::Point(REMOTE_SIZE / 2, + REMOTE_SIZE), blue);
+	cv::line(img_remote, cv::Point(- REMOTE_SIZE, REMOTE_SIZE / 2), cv::Point(+ REMOTE_SIZE, REMOTE_SIZE / 2), blue);
+	int dx = + (int) (((float) REMOTE_SIZE / 2) * remote_turn);
+	int dy = - (int) (((float) REMOTE_SIZE / 2) * remote_power);
 	cv::Point pt = pod_center + cv::Point(dx, dy);
 	cv::Scalar color = is_remote > 0 ? green : red;
 	cv::line(img_remote, pod_center, pt, color);
 	cv::circle(img_remote, pt, 3, color, -1);
-	cv::imshow(WINDOW_NAME, img_remote);
+	cv::imshow(REMOTE_NAME, img_remote);
 }

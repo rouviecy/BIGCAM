@@ -12,6 +12,7 @@
 #define GPS
 
 #include "stereotypes/Proprioceptive.h"
+#include <cmath>
 
 class Gps : public Proprioceptive{
 
@@ -25,6 +26,8 @@ private:
 	void IO();
 	
 	float gps_x, gps_y;
+	
+	double i;
 
 };
 

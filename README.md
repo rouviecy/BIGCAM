@@ -12,10 +12,11 @@ Student project : designing, build and program an autonomous plane in order to m
 +    **[TODO]** Easy UI to manage and monitor robot(s)
 
 ## Dependencies
-+    CMake
-+    GCC for C++11
-+    OpenCV and V4L driver for camera
-+    GNU/Linux (not tested on Windows and MAC OS)
++    **CMake**
++    **GCC** for c++11
++    **OpenCV** with **Qt** (no GTK)
++    **V4L** driver for camera
++    **GNU/Linux** (not tested on Windows and MAC OS)
 
 ## To compile and execute
     cd BIGCAM

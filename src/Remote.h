@@ -23,8 +23,8 @@ public:
 
 private:
 
-	#define WINDOW_NAME	"Remote"
-	#define POD_SIZE	100
+	#define REMOTE_NAME	"Remote"
+	#define REMOTE_SIZE	100
 
 	float is_remote;
 	float remote_power;
