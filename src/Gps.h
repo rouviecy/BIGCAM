@@ -26,6 +26,7 @@ private:
 	void IO();
 	
 	float gps_x, gps_y;
+	float simu_gps_x, simu_gps_y;
 	
 	double i;
 

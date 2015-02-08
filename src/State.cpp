@@ -28,7 +28,7 @@ void State::IO(){
 
 void State::Job(){
 	Critical_receive();
-	thx = compas;
+	thz = compas;
 	x = gps_x;
 	y = gps_y;
 	Critical_send();

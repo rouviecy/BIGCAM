@@ -25,6 +25,7 @@ private:
 	void IO();
 
 	float compas;
+	float simu_compas;
 
 };
 

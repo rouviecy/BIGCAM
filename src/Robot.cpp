@@ -6,7 +6,7 @@ using namespace std;
 Robot::Robot(){
 
 	// Warning : pass-by-reference to avoid slicing !
-	threads.push_back(&state);
+
 	threads.push_back(&autonomy);
 	threads.push_back(&camera);
 	threads.push_back(&clock);
@@ -17,6 +17,8 @@ Robot::Robot(){
 	threads.push_back(&motor);
 	threads.push_back(&remote);
 	threads.push_back(&servo);
+	threads.push_back(&simulator);
+	threads.push_back(&state);
 
 	remote.Link_images(monitor.Get_img_monitor());
 
@@ -26,6 +28,7 @@ Robot::Robot(){
 	gps.Set_freq(10000);		// 10 ms
 	autonomy.Set_freq(50000);	// 50 ms
 	state.Set_freq(50000);		// 50 ms
+	simulator.Set_freq(10000);	// 10 ms
 	remote.Set_freq(-1);		// manual loop
 	monitor.Set_freq(50000);	// 50 ms
 	motor.Set_freq(100000);		// 100 ms

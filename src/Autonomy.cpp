@@ -25,6 +25,11 @@ void Autonomy::IO(){
 
 void Autonomy::Job(){
 	Critical_receive();
-
+	if(is_remote > 0){
+		v_motor = remote_power;
+		steer = 0.1 * remote_turn;
+		wing_left = -0.1 * remote_turn;
+		wing_right = 0.1 * remote_turn;
+	}
 	Critical_send();
 }

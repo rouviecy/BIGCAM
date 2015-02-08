@@ -23,6 +23,7 @@
 #include "Remote.h"
 #include "Servo.h"
 #include "Share.h"
+#include "Simulator.h"
 #include "State.h"
 
 class Robot{
@@ -51,6 +52,7 @@ private:
 	Motor		motor;
 	Remote		remote;
 	Servo		servo;
+	Simulator	simulator;
 	State		state;
 
 };

@@ -24,6 +24,7 @@ add_library(MYLIBS
 	src/Remote.h						src/Remote.cpp
 	src/Robot.h							src/Robot.cpp
 	src/Servo.h							src/Servo.cpp
+	src/Simulator.h						src/Simulator.cpp
 	src/Share.h							src/Share.cpp
 	src/State.h							src/State.cpp
 )
