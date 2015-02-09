@@ -13,7 +13,7 @@ Camera::Camera() : Exteroceptive(){
 void Camera::IO(){
 	Link_input("x", &x);
 	Link_input("y", &y);
-	Link_input("z", &z);	
+	Link_input("z", &z);
 }
 
 void Camera::Job(){
