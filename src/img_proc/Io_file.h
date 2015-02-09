@@ -29,6 +29,7 @@ public:
 	Io_file();
 	~Io_file();
 	void Write(struct_img message);
+	std::vector <struct_img> Read();
 	void Clear_log();
 
 private:
@@ -36,6 +37,7 @@ private:
 	#define LOG_PATH "test/log.txt"
 	const char* log_path;
 	std::ofstream log_out;
+	std::ifstream log_in;
 
 };
 

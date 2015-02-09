@@ -3,7 +3,7 @@
 using namespace std;
 
 Io_file::Io_file(){
-	log_out.open(LOG_PATH);
+	log_out.open(LOG_PATH, ios::app);
 }
 
 Io_file::~Io_file(){
@@ -20,4 +20,21 @@ void Io_file::Write(struct_img message){
 		message.z << endl;
 }
 
-void Io_file::Clear_log(){remove(LOG_PATH);}
+vector <struct_img> Io_file::Read(){
+	vector <struct_img> result;
+	log_in.open(LOG_PATH);
+	if(log_in.is_open()){
+		string line;
+		while(getline(log_in, line)){
+			cout << line << endl;
+		}
+		log_in.close();
+	}
+	return result;
+}
+
+void Io_file::Clear_log(){
+	log_out.close();
+	remove(LOG_PATH);
+	log_out.open(LOG_PATH, ios::app);
+}
