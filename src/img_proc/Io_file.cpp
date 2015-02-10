@@ -26,7 +26,19 @@ vector <struct_img> Io_file::Read(){
 	if(log_in.is_open()){
 		string line;
 		while(getline(log_in, line)){
-			cout << line << endl;
+			size_t next;
+			vector <string> tokens;
+			for(size_t current = 0; tokens.size() < 5; current = next + 1){
+				next = line.find_first_of("\t", current);
+				tokens.push_back(line.substr(current, next - current));
+			}
+			struct_img nv_img;
+			nv_img.path = tokens[0] + tokens[1] + ".png";
+			nv_img.img = cv::imread(nv_img.path);
+			nv_img.x = stof(tokens[2]);
+			nv_img.y = stof(tokens[3]);
+			nv_img.z = stof(tokens[4]);
+			result.push_back(nv_img);
 		}
 		log_in.close();
 	}
