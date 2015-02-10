@@ -13,11 +13,11 @@ Io_file::~Io_file(){
 void Io_file::Write(struct_img message){
 	cv::imwrite(message.path + to_string(message.number) + ".png", message.img);
 	log_out <<
-		message.path << "\t" <<
-		to_string(message.number) << "\t" <<
-		message.x << "\t" <<
-		message.y << "\t" <<
-		message.z << endl;
+		message.path				<< "\t" <<
+		to_string(message.number)	<< "\t" <<
+		message.x					<< "\t" <<
+		message.y					<< "\t" <<
+		message.z					<< endl;
 }
 
 vector <struct_img> Io_file::Read(){
@@ -34,6 +34,7 @@ vector <struct_img> Io_file::Read(){
 			}
 			struct_img nv_img;
 			nv_img.path = tokens[0] + tokens[1] + ".png";
+			nv_img.number = stof(tokens[1]);
 			nv_img.img = cv::imread(nv_img.path);
 			nv_img.x = stof(tokens[2]);
 			nv_img.y = stof(tokens[3]);

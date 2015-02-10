@@ -20,6 +20,7 @@ typedef struct{
 	std::string path;
 	int number;
 	float x, y, z;
+	int x_map, y_map;
 } struct_img;
 
 class Io_file{
