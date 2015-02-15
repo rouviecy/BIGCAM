@@ -58,3 +58,21 @@ void ComThread::Critical_receive(){
 void ComThread::Critical_send(){s->Send(critical_output);}
 
 void ComThread::Set_freq(int dt_microseconds){this->dt_microseconds = dt_microseconds;}
+void ComThread::Set_name(string name){this->name = name;}
+string ComThread::Get_name(){return name;}
+
+vector <string> ComThread::Get_inputs(){
+	vector <string> result;
+	for(PFloatMap::iterator it = critical_input.begin(); it != critical_input.end(); ++it){
+		result.push_back(it->first);
+	}
+	return result;
+}
+
+vector <string> ComThread::Get_outputs(){
+	vector <string> result;
+	for(PFloatMap::iterator it = critical_output.begin(); it != critical_output.end(); ++it){
+		result.push_back(it->first);
+	}
+	return result;
+}

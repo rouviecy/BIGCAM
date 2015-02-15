@@ -15,6 +15,7 @@ add_library(MYLIBS
 	src/stereotypes/Exteroceptive.h		src/stereotypes/Exteroceptive.cpp
 	src/stereotypes/Proprioceptive.h	src/stereotypes/Proprioceptive.cpp
 	src/stereotypes/Sensor.h			src/stereotypes/Sensor.cpp
+	src/utils/ComDraw.h					src/utils/ComDraw.cpp
 	src/Autonomy.h						src/Autonomy.cpp
 	src/Camera.h						src/Camera.cpp
 	src/Clock.h							src/Clock.cpp

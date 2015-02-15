@@ -12,6 +12,7 @@
 #define ROBOT
 
 #include <vector>
+#include "utils/ComDraw.h"
 #include "Autonomy.h"
 #include "Camera.h"
 #include "Clock.h"
@@ -40,6 +41,7 @@ private:
 	void Launch_all();
 	void Join_all();
 
+	ComDraw drawer;
 	Share share;
 
 	Autonomy	autonomy;

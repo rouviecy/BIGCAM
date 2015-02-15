@@ -17,6 +17,7 @@ Student project : designing, build and program an autonomous plane in order to m
 +    **GCC** for c++11
 +    **OpenCV** with **GTK** (Qt does not support GUI over multithreading)
 +    **V4L** driver for camera
++    **DOT** library to generate connexion graph
 +    **GNU/Linux** (not tested on Windows and MAC OS)
 
 ## To compile and execute
