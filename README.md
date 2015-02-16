@@ -21,6 +21,8 @@ Student project : designing, build and program an autonomous plane in order to m
 +    **GNU/Linux** (not tested on Windows and MAC OS)
 
 ## To compile and execute
+Remember to adjust CMAKE_CXX_COMPILER in "CMakeLists.txt" to your g++ version
+
     git clone https://github.com/rouviecy/BIGCAM; cd BIGCAM
     mkdir build; cd build
     mkdir test
