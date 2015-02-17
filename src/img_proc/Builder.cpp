@@ -12,8 +12,11 @@ void Builder::Retrieve_pictures(){
 
 void Builder::Build(){
 	for(size_t i = 0; i < list_img.size(); i++){
-		list_img[i].x_map = (int) ((float) list_img[i].img.rows * list_img[i].x / 2.);
-		list_img[i].y_map = (int) ((float) list_img[i].img.cols * list_img[i].y / 2.);
+		cv::Point img_center(list_img[i].img.rows / 2, list_img[i].img.cols / 2);
+		cv::Mat mat_rot = cv::getRotationMatrix2D(img_center, - list_img[i].thz * 57.296, 0.4);
+		cv::warpAffine(list_img[i].img, list_img[i].img, mat_rot, list_img[i].img.size());
+		list_img[i].x_map = (int) ((float) list_img[i].img.rows * list_img[i].x / 3.);
+		list_img[i].y_map = (int) ((float) list_img[i].img.cols * list_img[i].y / 3.);
 	}
 	int x_offset = list_img[0].x_map; int x_max = x_offset;
 	int y_offset = list_img[0].y_map; int y_max = y_offset;

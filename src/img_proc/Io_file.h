@@ -19,7 +19,7 @@ typedef struct{
 	cv::Mat img;
 	std::string path;
 	int number;
-	float x, y, z;
+	float x, y, z, thz;
 	int x_map, y_map;
 } struct_img;
 

@@ -14,6 +14,7 @@ void Camera::IO(){
 	Link_input("x", &x);
 	Link_input("y", &y);
 	Link_input("z", &z);
+	Link_input("thz", &thz);
 }
 
 void Camera::Job(){
@@ -24,6 +25,7 @@ void Camera::Job(){
 	message.x = x;
 	message.y = y;
 	message.z = z;
+	message.thz = thz;
 	capture >> message.img;
 	io_file.Write(message);
 	num_image++;

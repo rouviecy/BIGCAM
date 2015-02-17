@@ -23,7 +23,7 @@ public:
 
 private:
 
-	float x, y, z;
+	float x, y, z, thz;
 	
 	int num_image;
 
