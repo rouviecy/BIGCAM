@@ -9,6 +9,7 @@ ComDraw::ComDraw(){
 
 void ComDraw::Draw_threads(vector <ComThread*> threads){
 	string dot_text = "digraph links {\n";
+	dot_text += "\tconcentrate=true;\n";
 	map <string, vector <int> > map_in;
 	map <string, vector <int> > map_out;
 	int num_elem = 0;
@@ -36,7 +37,7 @@ void ComDraw::Draw_threads(vector <ComThread*> threads){
 	for(map <string, vector <int> >::iterator it = map_in.begin(); it != map_in.end(); ++it){
 		for(size_t i = 0; i < it->second.size(); i++){
 			for(size_t j = 0; j < map_out[it->first].size(); j++){
-				dot_text += "\t" + to_string(map_out[it->first][j]) + "->" + to_string(it->second[i]) + ";\n";
+				dot_text += "\t" + to_string(map_out[it->first][j]) + "->" + to_string(it->second[i]) + " [minlen=5];\n";
 			}
 		}
 	}
