@@ -14,6 +14,7 @@
 #include <opencv2/opencv.hpp>
 #include <stdio.h>
 #include <fstream>
+#include <vector>
 
 typedef struct{
 	cv::Mat img;
@@ -21,6 +22,7 @@ typedef struct{
 	int number;
 	float x, y, z, thz;
 	int x_map, y_map;
+	cv::RotatedRect rotation_rect;
 } struct_img;
 
 class Io_file{
