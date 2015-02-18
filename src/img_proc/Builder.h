@@ -44,6 +44,10 @@ private:
 		cv::Point position,			// Position of rotated rectangle center
 		float angle);				// Rotation angle of rectangle
 
+	cv::Mat Rotation(			// Rotate an image around its center
+		cv::Mat image,				// Input image
+		float angle);				// Rotation angle
+
 };
 
 #endif
