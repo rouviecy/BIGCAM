@@ -27,10 +27,10 @@ void Camera::Job(){
 	message.path = "test/img";
 	message.number = num_image;
 	Critical_receive();
-	message.x = x;
-	message.y = y;
+	message.x = ADD_NOISE ? x + 0.5 * Random() : x;
+	message.y = ADD_NOISE ? y + 0.5 * Random() : y;
 	message.z = z;
-	message.thz = thz;
+	message.thz = ADD_NOISE ? thz + 0.1 * Random() : thz;
 	if	(MODE_SIMU_CAM)	{message.img = Simu();}
 	else				{capture >> message.img;}
 	io_file.Write(message);
@@ -44,3 +44,5 @@ cv::Mat Camera::Simu(){
 	float angle = thz * 57.296;
 	return Mask::Grab_zone(img_file_simu_cam, cv::Size(200, 150), position, angle);
 }
+
+float Camera::Random(){return (float) (rand() - RAND_MAX / 2) / ((float) RAND_MAX);}

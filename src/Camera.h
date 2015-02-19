@@ -1,6 +1,6 @@
 /*
  * @(#)		Camera.h
- * @version	1.4
+ * @version	1.5
  * @autor	C. Rouvière
  */
 
@@ -11,6 +11,8 @@
 #ifndef CAMERA
 #define CAMERA
 
+#include <ctime>
+#include <cstdlib>
 #include <opencv2/opencv.hpp>
 #include "stereotypes/Exteroceptive.h"
 #include "img_proc/Io_file.h"
@@ -24,6 +26,7 @@ public:
 
 private:
 
+	#define ADD_NOISE			true
 	#define MODE_SIMU_CAM		true
 	#define IMG_CAM_SIMU_PATH	"test/simucam.jpg"
 
@@ -34,6 +37,7 @@ private:
 	void Job();
 	void IO();
 	cv::Mat Simu();
+	float Random();
 
 	Io_file io_file;
 	cv::VideoCapture capture;

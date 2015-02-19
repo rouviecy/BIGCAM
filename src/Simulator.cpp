@@ -3,6 +3,7 @@
 using namespace std;
 
 Simulator::Simulator() : ComThread(){
+	srand(time(0));
 	simu_gps_x = 0.;
 	simu_gps_y = 0.;
 	simu_compas = 0.;
@@ -30,3 +31,4 @@ void Simulator::Job(){
 	simu_gps_y = y + sin((float) thz) * v_motor;
 	Critical_send();
 }
+
