@@ -1,6 +1,6 @@
 /*
  * @(#)		Simulator.h
- * @version	1.4
+ * @version	1.5
  * @autor	C. Rouvière
  */
 
@@ -22,13 +22,16 @@ public:
 
 private:
 
-	float	x, y, thz;
+	float x, y, thz;
 
-	float	simu_gps_x,	simu_gps_y, simu_compas;
+	float simu_gps_x;
+	float simu_gps_y;
+	float simu_compas;
 
-	float	v_motor;
-	float	steer;
-	float	wing_left,	wing_right;
+	float v_motor;
+	float steer;
+	float wing_left;
+	float wing_right;
 
 	void Job();
 	void IO();

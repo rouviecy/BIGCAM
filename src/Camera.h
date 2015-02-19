@@ -23,16 +23,21 @@ public:
 
 private:
 
+	#define MODE_SIMU_CAM		true
+	#define IMG_CAM_SIMU_PATH	"test/simucam.jpg"
+
 	float x, y, z, thz;
 	
 	int num_image;
 
 	void Job();
 	void IO();
+	cv::Mat Simu();
 
 	Io_file io_file;
 	cv::VideoCapture capture;
 	cv::Mat img_cam;
+	cv::Mat img_file_simu_cam;
 
 };
 
