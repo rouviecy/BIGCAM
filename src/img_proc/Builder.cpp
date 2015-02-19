@@ -12,8 +12,8 @@ void Builder::Retrieve_pictures(){
 
 void Builder::Build(){
 	for(size_t i = 0; i < list_img.size(); i++){
-		list_img[i].x_map = (int) ((float) list_img[i].img.rows * list_img[i].x / 10.);
-		list_img[i].y_map = (int) ((float) list_img[i].img.cols * list_img[i].y / 10.);
+		list_img[i].x_map = (int) ((float) list_img[i].x * 10.);
+		list_img[i].y_map = (int) ((float) list_img[i].y * 10.);
 	}
 	int x_offset = list_img[0].x_map; int x_max = x_offset;
 	int y_offset = list_img[0].y_map; int y_max = y_offset;

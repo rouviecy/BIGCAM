@@ -22,7 +22,13 @@ public:
 		cv::Mat img_src,					// Little image to add
 		cv::Mat img_dst,					// Big image which receives the little image
 		cv::Point position,					// Position in the big image of the little image center
-		float angle);						// Roation angle of the little image
+		float angle);						// Rotation angle of the little image
+
+	static cv::Mat Grab_zone(			// Return a part of an image following a rotated rectangle ROI
+		cv::Mat img_big,					// Big image from which is extrated the returned image
+		cv::Size roi_size,					// Size of the ROI
+		cv::Point position,					// Position in the big image of ROI's center
+		float angle);						// Rotation angle of ROI
 
 private:
 

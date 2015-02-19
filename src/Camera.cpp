@@ -38,5 +38,9 @@ void Camera::Job(){
 }
 
 cv::Mat Camera::Simu(){
-	
+	int pos_x = (int) (x * 10 + img_file_simu_cam.cols / 2);
+	int pos_y = (int) (y * 10 + img_file_simu_cam.rows / 2);
+	cv::Point position(pos_x, pos_y);
+	float angle = thz * 57.296;
+	return Mask::Grab_zone(img_file_simu_cam, cv::Size(200, 150), position, angle);
 }

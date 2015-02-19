@@ -11,6 +11,14 @@ void Mask::Pick_and_place(cv::Mat img_src, cv::Mat img_dst, cv::Point position, 
 	new_layer.copyTo(img_dst, mask);
 }
 
+cv::Mat Mask::Grab_zone(cv::Mat img_big, cv::Size roi_size, cv::Point position, float angle){
+	cv::Mat result;
+	cv::Mat warp_map = getRotationMatrix2D(position, angle, 1.0);
+	cv::warpAffine(img_big, result, warp_map, img_big.size());
+	cv::getRectSubPix(result, roi_size, position, result);
+	return result;
+}
+
 cv::Mat Mask::Mask_rotated_rect(cv::Size big_size, cv::Size little_size, cv::Point position, float angle){
 	cv::Mat mask = cv::Mat::zeros(big_size, CV_8UC3);
 	cv::RotatedRect rotation_rect;

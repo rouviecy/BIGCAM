@@ -14,6 +14,7 @@
 #include <opencv2/opencv.hpp>
 #include "stereotypes/Exteroceptive.h"
 #include "img_proc/Io_file.h"
+#include "img_proc/Mask.h"
 
 class Camera : public Exteroceptive{
 
@@ -23,7 +24,7 @@ public:
 
 private:
 
-	#define MODE_SIMU_CAM		false
+	#define MODE_SIMU_CAM		true
 	#define IMG_CAM_SIMU_PATH	"test/simucam.jpg"
 
 	float x, y, z, thz;
