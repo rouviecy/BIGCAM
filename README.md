@@ -21,13 +21,16 @@ Student project : designing, build and program an autonomous plane in order to m
 +    **GNU/Linux** (not tested on Windows and MAC OS)
 
 ## To compile and execute
-Remember to adjust CMAKE_CXX_COMPILER in "CMakeLists.txt" to your g++ version
+-    Remember to adjust CMAKE_CXX_COMPILER in "CMakeLists.txt" to your g++ version
+-    Switch MODE_SIMU_CAM in "src/Camera.h" to enable or disable camera simulator
+
 
     git clone https://github.com/rouviecy/BIGCAM
     cd BIGCAM/build
     cmake ..
     make
     ./drone
+    ./map_builder
 
 ## GUI
 +    Press `q` to quit
