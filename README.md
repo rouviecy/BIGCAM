@@ -23,9 +23,8 @@ Student project : designing, build and program an autonomous plane in order to m
 ## To compile and execute
 Remember to adjust CMAKE_CXX_COMPILER in "CMakeLists.txt" to your g++ version
 
-    git clone https://github.com/rouviecy/BIGCAM; cd BIGCAM
-    mkdir build; cd build
-    mkdir test
+    git clone https://github.com/rouviecy/BIGCAM
+    cd BIGCAM/build
     cmake ..
     make
     ./drone
