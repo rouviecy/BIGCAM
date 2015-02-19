@@ -21,9 +21,8 @@ Student project : designing, build and program an autonomous plane in order to m
 +    **GNU/Linux** (not tested on Windows and MAC OS)
 
 ## To compile and execute
--    Remember to adjust CMAKE_CXX_COMPILER in "CMakeLists.txt" to your g++ version
--    Switch MODE_SIMU_CAM in "src/Camera.h" to enable or disable camera simulator
-
+Remember to adjust `CMAKE_CXX_COMPILER` in `CMakeLists.txt` to your g++ version  
+Switch `MODE_SIMU_CAM` in `src/Camera.h` to enable or disable camera simulation  
 
     git clone https://github.com/rouviecy/BIGCAM
     cd BIGCAM/build
@@ -43,14 +42,14 @@ Install packages to compile
 
     sudo apt-get install build-essential cmake g++-4.8 git libopencv-dev
 
-Enable camera (load module and v4l2-ctl after each boot)
+Enable camera (load `bcm2835-v4l2` and `v4l2-ctl` after each boot)
 
     sudo raspi-config
     sudo apt-get install v4l-utils
     sudo modprobe bcm2835-v4l2
     sudo v4l2-ctl --set-fmt-video=width=400,height=300,pixelformat="H264" -d /dev/video0
 
-Enable I2C (local module and chmod after each boot)
+Enable I2C (load `i2c-dev` and `chmod` after each boot)
 
     sudo raspi-config
     sudo modprobe i2c-dev
