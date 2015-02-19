@@ -56,3 +56,6 @@ Enable I2C (load `i2c-dev` and `chmod` after each boot)
     sudo chmod o+rw /dev/i2c
 
 Compile and execute ...
+
+## About the code ...
+This code is designed for 4-spaces tab-indent. Unfornatunately, GitHub shows tabs with 8 spaces ! Just add `?ts=4` at the end of the URL to change this parameter.
