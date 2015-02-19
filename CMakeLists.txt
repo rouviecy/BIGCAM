@@ -10,6 +10,7 @@ find_package(OpenCV REQUIRED)
 add_library(MYLIBS
 	src/img_proc/Io_file.h				src/img_proc/Io_file.cpp
 	src/img_proc/Builder.h				src/img_proc/Builder.cpp
+	src/img_proc/Mask.h					src/img_proc/Mask.cpp
 	src/stereotypes/Actuator.h			src/stereotypes/Actuator.cpp
 	src/stereotypes/ComThread.h			src/stereotypes/ComThread.cpp
 	src/stereotypes/Exteroceptive.h		src/stereotypes/Exteroceptive.cpp

@@ -4,12 +4,12 @@ using namespace std;
 
 Camera::Camera() : Exteroceptive(){
 	if(MODE_SIMU_CAM){
+		img_file_simu_cam = cv::imread(IMG_CAM_SIMU_PATH);
+	}
+	else{
 		capture = cv::VideoCapture(-1);
 		capture.set(CV_CAP_PROP_FRAME_WIDTH, 400);
 		capture.set(CV_CAP_PROP_FRAME_HEIGHT, 300);
-	}
-	else{
-		img_file_simu_cam = cv::imread(IMG_CAM_SIMU_PATH);
 	}
 	num_image = 0;
 	io_file.Clear_log();
@@ -31,8 +31,8 @@ void Camera::Job(){
 	message.y = y;
 	message.z = z;
 	message.thz = thz;
-	if	(MODE_SIMU_CAM)	{capture >> message.img;}
-	else				{message.img = Simu();}
+	if	(MODE_SIMU_CAM)	{message.img = Simu();}
+	else				{capture >> message.img;}
 	io_file.Write(message);
 	num_image++;
 }

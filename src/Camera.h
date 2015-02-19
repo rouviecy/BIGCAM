@@ -23,7 +23,7 @@ public:
 
 private:
 
-	#define MODE_SIMU_CAM		true
+	#define MODE_SIMU_CAM		false
 	#define IMG_CAM_SIMU_PATH	"test/simucam.jpg"
 
 	float x, y, z, thz;
