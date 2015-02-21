@@ -11,6 +11,8 @@ add_library(MYLIBS
 	src/img_proc/Io_file.h				src/img_proc/Io_file.cpp
 	src/img_proc/Builder.h				src/img_proc/Builder.cpp
 	src/img_proc/Mask.h					src/img_proc/Mask.cpp
+	src/img_proc/Tracking.h				src/img_proc/Tracking.cpp
+	src/img_proc/Utils.h				src/img_proc/Utils.cpp
 	src/stereotypes/Actuator.h			src/stereotypes/Actuator.cpp
 	src/stereotypes/ComThread.h			src/stereotypes/ComThread.cpp
 	src/stereotypes/Exteroceptive.h		src/stereotypes/Exteroceptive.cpp

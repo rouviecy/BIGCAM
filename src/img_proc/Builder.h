@@ -13,6 +13,7 @@
 
 #include "Io_file.h"
 #include "Mask.h"
+#include "Tracking.h"
 #include <opencv2/opencv.hpp>
 #include <vector>
 
@@ -30,6 +31,7 @@ private:
 	#define MARGIN_Y 1000
 
 	Io_file io_file;
+	Tracking tracking;
 	std::vector <struct_img> list_img;
 
 };
