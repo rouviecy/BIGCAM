@@ -13,6 +13,8 @@
 
 #include <map>
 #include <vector>
+#include <iomanip>
+#include <sstream>
 #include <fstream>
 #include <stdlib.h>
 #include "../stereotypes/ComThread.h"

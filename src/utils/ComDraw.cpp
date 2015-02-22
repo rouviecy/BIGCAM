@@ -16,7 +16,9 @@ void ComDraw::Draw_threads(vector <ComThread*> threads){
 	for(size_t i = 0; i < threads.size(); i++){
 		num_elem++;
 		dot_text += "\tsubgraph cluster_" + to_string(num_elem) + " {\n";
-		dot_text += "\t\tlabel = \"" + threads[i]->Get_name() + "\";\n";
+		ostringstream freq;
+		freq << setprecision(8) << threads[i]->Get_freq();
+		dot_text += "\t\tlabel = \"" + threads[i]->Get_name() + " - " + freq.str() + "Hz\";\n";
 		dot_text += "\t\tstyle=filled;\n";
 		dot_text += "\t\tcolor=lightgrey;\n";
 		dot_text += "\t\tnode [style=filled,color=white];\n";

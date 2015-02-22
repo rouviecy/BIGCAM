@@ -60,6 +60,7 @@ void ComThread::Critical_send(){s->Send(critical_output);}
 void ComThread::Set_freq(int dt_microseconds){this->dt_microseconds = dt_microseconds;}
 void ComThread::Set_name(string name){this->name = name;}
 string ComThread::Get_name(){return name;}
+float ComThread::Get_freq(){return dt_microseconds > 0 ? 1000000. / (float) dt_microseconds : 0.;}
 
 vector <string> ComThread::Get_inputs(){
 	vector <string> result;

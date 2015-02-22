@@ -31,6 +31,7 @@ public:
 	void Set_name(							// Give a string name to the object
 		std::string name);						// New name
 	std::string Get_name();					// Return the name of the object
+	float Get_freq();							// Return the frequency of the thread
 	std::vector <std::string> Get_inputs();	// Return the list of inputs
 	std::vector <std::string> Get_outputs();// Return the list of outputs
 
