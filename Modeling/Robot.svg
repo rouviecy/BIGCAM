@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg width="159cm" height="101cm" viewBox="-101 -761 3171 2010" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="160cm" height="101cm" viewBox="-101 -761 3198 2010" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g>
     <rect style="fill: #9ac5ef" x="0" y="320" width="233.3" height="28"/>
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="0" y="320" width="233.3" height="28"/>
@@ -67,7 +67,7 @@
     <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="1066.25,174.236 1058.25,158.236 1050.25,174.236 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #2369ad" points="1058.25,174.236 1058.25,200 1178.78,200 1178.78,220 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #2369ad" points="1058.25,174.236 1058.25,200 1178.77,200 1178.77,220 "/>
     <polygon style="fill: #ffffff" points="1066.25,174.236 1058.25,158.236 1050.25,174.236 "/>
     <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="1066.25,174.236 1058.25,158.236 1050.25,174.236 "/>
   </g>
@@ -179,7 +179,7 @@
     <text font-size="16" style="fill: #0b2845;text-anchor:middle;font-family:Comic Sans MS;font-style:normal;font-weight:normal" x="868.95" y="902">Camera</text>
     <rect style="fill: #9ac5ef" x="760" y="908" width="217.9" height="68"/>
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="760" y="908" width="217.9" height="68"/>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="763" y="921.2">-x, y, z: float</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="763" y="921.2">-x, y, z, thz: float</text>
     <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="763" y="937.2">-capture: cv::VideoCapture</text>
     <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="763" y="953.2">-img_cam: cv::Mat</text>
     <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="763" y="969.2">-img_file_cam_simu: cv::Mat</text>
@@ -363,17 +363,16 @@
     <rect style="fill: #9ac5ef" x="1520" y="1020" width="256.4" height="28"/>
     <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="1520" y="1020" width="256.4" height="28"/>
     <text font-size="16" style="fill: #0b2845;text-anchor:middle;font-family:Comic Sans MS;font-style:normal;font-weight:normal" x="1648.2" y="1042">Io_file</text>
-    <rect style="fill: #9ac5ef" x="1520" y="1048" width="256.4" height="68"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="1520" y="1048" width="256.4" height="68"/>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="1061.2">-x, y, z: float</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="1077.2">-log_path: const char*</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="1093.2">-log_in: ifstream</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="1109.2">-log_out: ofstream</text>
-    <rect style="fill: #9ac5ef" x="1520" y="1116" width="256.4" height="52"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="1520" y="1116" width="256.4" height="52"/>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="1129.2">+Read(): vector &lt;struct_img&gt;</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="1145.2">+Write(message:struct_img): void</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="1161.2">+Clear_log(): void</text>
+    <rect style="fill: #9ac5ef" x="1520" y="1048" width="256.4" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="1520" y="1048" width="256.4" height="52"/>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="1061.2">-log_path: const char*</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="1077.2">-log_in: ifstream</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="1093.2">-log_out: ofstream</text>
+    <rect style="fill: #9ac5ef" x="1520" y="1100" width="256.4" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="1520" y="1100" width="256.4" height="52"/>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="1113.2">+Read(): vector &lt;struct_img&gt;</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="1129.2">+Write(message:struct_img): void</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="1145.2">+Clear_log(): void</text>
   </g>
   <g>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="868.95,1021.17 868.95,1034 1520,1034 "/>
@@ -509,87 +508,116 @@
     <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="93.8" y="496">1</text>
   </g>
   <g>
-    <rect style="fill: #9ac5ef" x="1520" y="800" width="464.3" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="1520" y="800" width="464.3" height="28"/>
-    <text font-size="16" style="fill: #0b2845;text-anchor:middle;font-family:Comic Sans MS;font-style:normal;font-weight:normal" x="1752.15" y="822">Mask</text>
-    <rect style="fill: #9ac5ef" x="1520" y="828" width="464.3" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="1520" y="828" width="464.3" height="8"/>
-    <rect style="fill: #9ac5ef" x="1520" y="836" width="464.3" height="116"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="1520" y="836" width="464.3" height="116"/>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="849.2">-Pick_and_place(img_src:cv::Mat,img_dst:cv::Mat,</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="865.2">                position:cv::Point,angle:float): void</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="881.2">+Grab_zone(img_big:cv::Mat,roi_size:cv::Size,</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="897.2">           position:cv::Point,angle:float): cv::Mat</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="913.2">-Mask_rotated_rect(big_size:cv::Size,little_size:cv::Size,</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="929.2">                   position:cv::Point,angle:float): cv::Mat</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1523" y="945.2">-Rotation(image:cv::Mat,angle:float): cv::Mat</text>
+    <rect style="fill: #9ac5ef" x="1500" y="620" width="464.3" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="1500" y="620" width="464.3" height="28"/>
+    <text font-size="16" style="fill: #0b2845;text-anchor:middle;font-family:Comic Sans MS;font-style:normal;font-weight:normal" x="1732.15" y="642">Mask</text>
+    <rect style="fill: #9ac5ef" x="1500" y="648" width="464.3" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="1500" y="648" width="464.3" height="8"/>
+    <rect style="fill: #9ac5ef" x="1500" y="656" width="464.3" height="116"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="1500" y="656" width="464.3" height="116"/>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1503" y="669.2">-Pick_and_place(img_src:cv::Mat,img_dst:cv::Mat,</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1503" y="685.2">                position:cv::Point,angle:float): void</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1503" y="701.2">+Grab_zone(img_big:cv::Mat,roi_size:cv::Size,</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1503" y="717.2">           position:cv::Point,angle:float): cv::Mat</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1503" y="733.2">-Mask_rotated_rect(big_size:cv::Size,little_size:cv::Size,</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1503" y="749.2">                   position:cv::Point,angle:float): cv::Mat</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1503" y="765.2">-Rotation(image:cv::Mat,angle:float): cv::Mat</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="977.9,918 1248.95,918 1248.95,814 1520,814 "/>
-    <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1250.95" y="863"/>
-    <polygon style="fill: #2369ad" points="1252.95,863 1252.95,855 1260.95,859 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="977.9,918 1238.95,918 1238.95,634 1500,634 "/>
+    <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1240.95" y="773"/>
+    <polygon style="fill: #2369ad" points="1242.95,773 1242.95,765 1250.95,769 "/>
     <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="981.9" y="915">1</text>
-    <text font-size="12.7998" style="fill: #0b2845;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="1516" y="811">1</text>
+    <text font-size="12.7998" style="fill: #0b2845;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="1496" y="631">1</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="2160,914 2072.15,914 2072.15,814 1984.3,814 "/>
-    <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2074.15" y="861"/>
-    <polygon style="fill: #2369ad" points="2076.15,861 2076.15,853 2084.15,857 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="2160,914 2062.15,914 2062.15,634 1964.3,634 "/>
+    <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2064.15" y="771"/>
+    <polygon style="fill: #2369ad" points="2066.15,771 2066.15,763 2074.15,767 "/>
     <text font-size="12.7998" style="fill: #0b2845;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="2156" y="911">1</text>
-    <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1988.3" y="811">1</text>
+    <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1968.3" y="631">1</text>
   </g>
   <g>
-    <rect style="fill: #9ac5ef" x="2040" y="360" width="356.5" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="2040" y="360" width="356.5" height="28"/>
-    <text font-size="16" style="fill: #0b2845;text-anchor:middle;font-family:Comic Sans MS;font-style:normal;font-weight:normal" x="2218.25" y="382">Tracking</text>
-    <rect style="fill: #9ac5ef" x="2040" y="388" width="356.5" height="132"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="2040" y="388" width="356.5" height="132"/>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="401.2">-vitesse_max: int</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="417.2">-criteria: cv::TermCriteria</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="433.2">-img_prev, img_next: cv::Mat</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="449.2">-img_prev_nvg, img_next_nvg: cv::Mat</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="465.2">-amers, nv: vector &lt;cv::Point2i&gt;</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="481.2">-status: vector &lt;uchar&gt;</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="497.2">-err: vector &lt;float&gt;</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="513.2">-orientation: int</text>
-    <rect style="fill: #9ac5ef" x="2040" y="520" width="356.5" height="164"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="2040" y="520" width="356.5" height="164"/>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="533.2">+Tracking(vitesse_max:const int): Tracking</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="549.2">+Set_img_prev(img_prev:cv::Mat): void</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="565.2">+Set_img_next(img_next:cv::Mat): void</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="581.2">+Set_amers(amers:vector &lt;cv::Point2i&gt; ): void</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="597.2">+Get_amers(): vector &lt;cv::Point2i&gt;</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="613.2">+Get_nv(): vector &lt;cv::Point2i&gt;</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="629.2">+Get_orientation(): int</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="645.2">+GoodFeatures(nb_max_amers:const int): void</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="661.2">+Tracker(): bool</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2043" y="677.2">+Try_match(nb_test:int,minimum:int): bool</text>
+    <rect style="fill: #9ac5ef" x="2240" y="340" width="356.5" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="2240" y="340" width="356.5" height="28"/>
+    <text font-size="16" style="fill: #0b2845;text-anchor:middle;font-family:Comic Sans MS;font-style:normal;font-weight:normal" x="2418.25" y="362">Tracking</text>
+    <rect style="fill: #9ac5ef" x="2240" y="368" width="356.5" height="132"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="2240" y="368" width="356.5" height="132"/>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="381.2">-vitesse_max: int</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="397.2">-criteria: cv::TermCriteria</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="413.2">-img_prev, img_next: cv::Mat</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="429.2">-img_prev_nvg, img_next_nvg: cv::Mat</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="445.2">-amers, nv: vector &lt;cv::Point2i&gt;</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="461.2">-status: vector &lt;uchar&gt;</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="477.2">-err: vector &lt;float&gt;</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="493.2">-orientation: int</text>
+    <rect style="fill: #9ac5ef" x="2240" y="500" width="356.5" height="164"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="2240" y="500" width="356.5" height="164"/>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="513.2">+Tracking(vitesse_max:const int): Tracking</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="529.2">+Set_img_prev(img_prev:cv::Mat): void</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="545.2">+Set_img_next(img_next:cv::Mat): void</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="561.2">+Set_amers(amers:vector &lt;cv::Point2i&gt; ): void</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="577.2">+Get_amers(): vector &lt;cv::Point2i&gt;</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="593.2">+Get_nv(): vector &lt;cv::Point2i&gt;</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="609.2">+Get_orientation(): int</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="625.2">+GoodFeatures(nb_max_amers:const int): void</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="641.2">+Tracker(): bool</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2243" y="657.2">+Try_match(nb_test:int,minimum:int): bool</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="2280.5,873.823 2280.5,784.497 2218.25,784.497 2218.25,684 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="2280.5,873.823 2280.5,774.497 2418.25,774.497 2418.25,664 "/>
     <polygon style="fill: #ffffff" points="2280.5,898.995 2275.7,884.995 2280.5,870.995 2285.3,884.995 "/>
     <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="2280.5,898.995 2275.7,884.995 2280.5,870.995 2285.3,884.995 "/>
-    <text font-size="12.7998" style="fill: #0b2845;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="2249.38" y="781.497"/>
+    <text font-size="12.7998" style="fill: #0b2845;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="2349.38" y="771.497"/>
     <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2291.5" y="894.995">1</text>
-    <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2222.25" y="696">1</text>
+    <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2422.25" y="676">1</text>
   </g>
   <g>
-    <rect style="fill: #9ac5ef" x="2620" y="300" width="448.9" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="2620" y="300" width="448.9" height="28"/>
-    <text font-size="16" style="fill: #0b2845;text-anchor:middle;font-family:Comic Sans MS;font-style:normal;font-weight:normal" x="2844.45" y="322">Utils</text>
-    <rect style="fill: #9ac5ef" x="2620" y="328" width="448.9" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="2620" y="328" width="448.9" height="8"/>
-    <rect style="fill: #9ac5ef" x="2620" y="336" width="448.9" height="52"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="2620" y="336" width="448.9" height="52"/>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2623" y="349.2">+distance_carree(x1:int,x2:int,y1:int,y2:int): static int</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2623" y="365.2">+In_img(pt:cv::Point,max_x:int,max_y:int): static bool</text>
-    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2623" y="381.2">+Rot2D(x:int,y:int,theta:int): static vector &lt;int&gt;</text>
+    <rect style="fill: #9ac5ef" x="2700" y="300" width="395" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="2700" y="300" width="395" height="28"/>
+    <text font-size="16" style="fill: #0b2845;text-anchor:middle;font-family:Comic Sans MS;font-style:normal;font-weight:normal" x="2897.5" y="322">Utils</text>
+    <rect style="fill: #9ac5ef" x="2700" y="328" width="395" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="2700" y="328" width="395" height="8"/>
+    <rect style="fill: #9ac5ef" x="2700" y="336" width="395" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="2700" y="336" width="395" height="52"/>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2703" y="349.2">+distance_carree(x1:int,x2:int,y1:int,y2:int): int</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #2369ad" x1="2703" y1="350.8" x2="3088" y2="350.8"/>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2703" y="365.2">+In_img(pt:cv::Point,max_x:int,max_y:int): bool</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #2369ad" x1="2703" y1="366.8" x2="3064.9" y2="366.8"/>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="2703" y="381.2">+Rot2D(x:int,y:int,theta:int): vector &lt;int&gt;</text>
+    <line style="fill: none; fill-opacity:0; stroke-width: 1; stroke: #2369ad" x1="2703" y1="382.8" x2="3034.1" y2="382.8"/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="2396.5,374 2540,374 2540,314 2620,314 "/>
-    <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2542" y="341"/>
-    <polygon style="fill: #2369ad" points="2544,341 2544,333 2552,337 "/>
-    <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2400.5" y="371">1</text>
-    <text font-size="12.7998" style="fill: #0b2845;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="2616" y="311">1</text>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="2596.5,354 2640,354 2640,314 2700,314 "/>
+    <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2642" y="331"/>
+    <polygon style="fill: #2369ad" points="2644,331 2644,323 2652,327 "/>
+    <text font-size="12.7998" style="fill: #0b2845;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="2600.5" y="351">1</text>
+    <text font-size="12.7998" style="fill: #0b2845;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="2696" y="311">1</text>
+  </g>
+  <g>
+    <rect style="fill: #9ac5ef" x="1620" y="820" width="208.8" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="1620" y="820" width="208.8" height="28"/>
+    <text font-size="16" style="fill: #0b2845;text-anchor:middle;font-family:Comic Sans MS;font-style:normal;font-weight:normal" x="1724.4" y="842">struct typedef struct_img</text>
+    <rect style="fill: #9ac5ef" x="1620" y="848" width="208.8" height="84"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="1620" y="848" width="208.8" height="84"/>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1623" y="861.2">+img: cv::Mat</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1623" y="877.2">+path: string</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1623" y="893.2">+number: int</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1623" y="909.2">+x, y, z, thz: float</text>
+    <text font-size="12.8" style="fill: #0b2845;text-anchor:start;font-family:Courier New;font-style:normal;font-weight:normal" x="1623" y="925.2">+x_map, y_map: int</text>
+    <rect style="fill: #9ac5ef" x="1620" y="932" width="208.8" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" x="1620" y="932" width="208.8" height="8"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #2369ad" points="977.9,950 1294.95,950 1294.95,834 1613.29,834 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="1600.65,839 1616.65,834 1600.65,829 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #2369ad" points="1648.2,1020 1648.2,984 1724.4,984 1724.4,946.705 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="1729.4,959.353 1724.4,943.353 1719.4,959.353 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #2369ad" points="2160,938 1998.4,938 1998.4,834 1835.51,834 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #2369ad" points="1848.15,829 1832.15,834 1848.15,839 "/>
   </g>
 </svg>
