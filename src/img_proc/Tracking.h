@@ -30,7 +30,8 @@ public:
 
 	void GoodFeatures(const int nb_max_amers);			// générer des amers intéressants
 	bool Tracker();										// trouver les points à tracker dans l'image suivante
-	bool Try_match(int nb_test, int minimum);			// Vérifier si les deux images dans le buffer sont similaires, avec les 4 rotations possibles
+	bool Try_match(int nb_test, int minimum);			// vérifier si les deux images dans le buffer sont similaires, avec les 4 rotations possibles
+	bool Flot_optique();								// rechercher la transformation rigide (après Tracker())
 
 private:
 
@@ -43,10 +44,11 @@ private:
 	cv::Mat img_next_nvg;				// image N		niveaux de gris
 	std::vector <cv::Point2f> amers;	// points à trackers
 	std::vector <cv::Point2f> nv;		// points à repérer
-	std::vector <uchar> status;			// si les points ont été repérés
-	std::vector <float> err;			// erreur
 
-	int orientation;	// rotation nécessaire pour le Try_match() ( -1 : no_match | 0 : 0° | 1 : 90° | 2 : 180° | 3 : 270° )
+	int orientation;		// rotation nécessaire pour le Try_match() ( -1 : no_match | 0 : 0° | 1 : 90° | 2 : 180° | 3 : 270° )
+
+	float dx, dy, dz;		// déplacements calculés de flot optique
+	float dthx, dthy, dthz;	// rotations calculées de flot optique
 
 };
 

@@ -10,6 +10,8 @@ Tracking::Tracking(const int vitesse_max){
 
 // Trouver les points à tracker dans l'image suivante
 bool Tracking::Tracker(){
+	vector <uchar> status;
+	vector <float> err;	
 	nv.clear();
 	if(amers.size() <= 0){return false;}
 	calcOpticalFlowPyrLK(img_prev_nvg, img_next_nvg, amers, nv, status, err);
@@ -47,6 +49,22 @@ bool Tracking::Try_match(int nb_test, int minimum){
 		amers = vector <cv::Point2f> (old_amers);
 	}
 	return false;
+}
+
+bool Tracking::Flot_optique(){
+	dx = 0., dy = 0., dz = 0., dthx = 0., dthy = 0., dthz = 0.;
+	if(amers.size() < 1){return false;}
+	cv::Mat mat = estimateRigidTransform(amers, nv, true);
+	if(mat.empty()){return false;}
+	dx = mat.at<float>(0, 0);	dy = mat.at<float>(0, 1);	dz = mat.at<float>(0, 2);
+	dthx = mat.at<float>(1, 0);	dthy = mat.at<float>(1, 1);	dthz = mat.at<float>(1, 2);
+	if(abs(dx) < 0.1)	{dx = 0.;}
+	if(abs(dy) < 0.1)	{dy = 0.;}
+	if(abs(dz) < 0.1)	{dz = 0.;}
+	if(abs(dthx) < 0.1)	{dthx = 0.;}
+	if(abs(dthy) < 0.1)	{dthy = 0.;}
+	if(abs(dthz) < 0.1)	{dthz = 0.;}
+	return true;
 }
 
 // Getters et Setters
