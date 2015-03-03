@@ -7,19 +7,22 @@ Student project : designing, build and program an autonomous plane in order to m
 +    **[TODO]** Take decisions
 +    **[TODO]** Gathering data from sensors
 +    **[TODO]** Control actuators
++    **[TODO]** Remote control by TCP and joystick/keyboard
 +    **[DONE]** Tag camera images
 +    **[TODO]** Assemble camera images to build a map
 +    **[DONE]** Easy UI to manage and monitor robot(s)
 +    **[DONE]** Test on Raspberry Pi
 
-## Dependencies
+## Dependencies for robot
 +    **CMake**
-+    **Python2.7**
 +    **GCC** for c++11
 +    **OpenCV** with **GTK** (Qt does not support GUI over multithreading)
 +    **V4L** driver for camera
 +    **DOT** library to generate connexion graph
 +    **GNU/Linux** (not tested on Windows and MAC OS)
+
+## Dependencies for remote controller
++    **Python2.7** with **PyGame**
 
 ## To compile and execute on robot (server)
 Remember to adjust `CMAKE_CXX_COMPILER` in `CMakeLists.txt` to your g++ version  
@@ -38,11 +41,11 @@ Switch `MODE_SIMU_CAM` in `src/Camera.h` to enable or disable camera simulation
     cd BIGCAM/Remote_python/
     python main.py {ip address of robot}
 
-## GUI
+## GUI on remote controller
 +    Press `q` to quit
-+    Press `+`/`-` to activate or desactivate remote control
-+    Press `UP`/`DOWN` to step on the gas or slow down
-+    Press `LEFT`/`RIGHT` to turn to left or right
++    Press `a`/`z` (or `A`/`B` on joystick) to activate or desactivate remote control
++    Press `LEFT`/`RIGHT` (or `axis_rot_left`/`axis_rot_right` on joystick) to turn to left or right
++    Press `+`/`-` (or `hat_up`/`hat_down` on joystick) to step on the gas or slow down
 
 ## For Raspberry Pi
 Install packages to compile
