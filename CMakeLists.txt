@@ -19,6 +19,7 @@ add_library(MYLIBS
 	src/stereotypes/Proprioceptive.h	src/stereotypes/Proprioceptive.cpp
 	src/stereotypes/Sensor.h			src/stereotypes/Sensor.cpp
 	src/utils/ComDraw.h					src/utils/ComDraw.cpp
+	src/utils/Tcp_server.h				src/utils/Tcp_server.cpp
 	src/Autonomy.h						src/Autonomy.cpp
 	src/Camera.h						src/Camera.cpp
 	src/Clock.h							src/Clock.cpp
@@ -28,6 +29,7 @@ add_library(MYLIBS
 	src/Monitor.h						src/Monitor.cpp
 	src/Motor.h							src/Motor.cpp
 	src/Remote.h						src/Remote.cpp
+	src/Remote_tcp.h					src/Remote_tcp.cpp
 	src/Robot.h							src/Robot.cpp
 	src/Servo.h							src/Servo.cpp
 	src/Simulator.h						src/Simulator.cpp

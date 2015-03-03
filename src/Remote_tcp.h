@@ -8,39 +8,31 @@
  * Control remotely the robot in a GUI
  */
 
-#ifndef REMOTE
-#define REMOTE
+#ifndef REMOTE_TCP
+#define REMOTE_TCP
 
 #include <opencv2/opencv.hpp>
 #include "stereotypes/ComThread.h"
+#include "utils/Tcp_server.h"
 
-class Remote : public ComThread{
+class Remote_tcp : public ComThread{
 
 public:
 
-	Remote();
-	void Wait_quit_from_user();
-	void Link_images(cv::Mat img_monitor);
+	Remote_tcp();
 
 private:
 
-	#define MONITOR_NAME	"Monitor"
-	#define REMOTE_NAME		"Remote"
-	#define REMOTE_SIZE 100
+	Tcp_server tcp_server;
 
 	float is_remote;
 	float is_tcp_remote;
 	float remote_power;
 	float remote_turn;
 
-	cv::Mat img_remote, img_monitor;
-	cv::Point pod_center;
-	cv::Scalar red, blue, green;
-
 	void Job();
 	void IO();
 	void Smooth_order();
-	void Draw_remote();
 
 };
 

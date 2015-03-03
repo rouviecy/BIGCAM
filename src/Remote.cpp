@@ -4,6 +4,7 @@ using namespace std;
 
 Remote::Remote() : ComThread(){
 	is_remote = +1.;
+	is_tcp_remote = +1.;
 	remote_power = 0.;
 	remote_turn = 0.;
 	pod_center = cv::Point(REMOTE_SIZE / 2, REMOTE_SIZE / 2);
@@ -16,9 +17,10 @@ Remote::Remote() : ComThread(){
 }
 
 void Remote::IO(){
-	Link_output("is_remote", &is_remote);
-	Link_output("remote_power", &remote_power);
-	Link_output("remote_turn", &remote_turn);
+	Link_input("is_tcp_remote", &is_tcp_remote);
+//	Link_output("is_remote", &is_remote);
+//	Link_output("remote_power", &remote_power);
+//	Link_output("remote_turn", &remote_turn);
 }
 
 void Remote::Link_images(cv::Mat img_monitor){
@@ -28,20 +30,23 @@ void Remote::Link_images(cv::Mat img_monitor){
 void Remote::Job(){} // Do not use thread job (remember : Set_freq(-1))
 
 void Remote::Wait_quit_from_user(){
+	Critical_receive();
 	char key = 'a';
-	while(key != 'q'){
-		key = cv::waitKey(50); // ms
+	while(is_tcp_remote > -0.5 and key != 'q'){
+		Critical_receive();
+		char key = cv::waitKey(50); // ms
 		if		(key == '+')	{is_remote = +1.;}
 		else if (key == '-')	{is_remote = -1.;}
 		else if (key == 'R')	{remote_power += 0.1;}
 		else if (key == 'T')	{remote_power -= 0.1;}
 		else if (key == 'Q')	{remote_turn -= 0.1;}
 		else if (key == 'S')	{remote_turn += 0.1;}
-		Smooth_order();
-		Critical_send();
+//		Smooth_order();
+//		Critical_send();
 		Draw_remote();
 	}
 	cout << "Goodbye !" << endl;
+	return;
 }
 
 void Remote::Smooth_order(){

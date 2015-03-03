@@ -64,6 +64,7 @@ bool Tracking::Flot_optique(){
 	if(abs(dthx) < 0.1)	{dthx = 0.;}
 	if(abs(dthy) < 0.1)	{dthy = 0.;}
 	if(abs(dthz) < 0.1)	{dthz = 0.;}
+cout << dx << " | " << dy << " | " << dz << " | " << dthx << " | " << dthy << " | " << dthz << endl;
 	return true;
 }
 

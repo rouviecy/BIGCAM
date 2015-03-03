@@ -22,6 +22,7 @@
 #include "Monitor.h"
 #include "Motor.h"
 #include "Remote.h"
+#include "Remote_tcp.h"
 #include "Servo.h"
 #include "Share.h"
 #include "Simulator.h"
@@ -53,6 +54,7 @@ private:
 	Monitor		monitor;
 	Motor		motor;
 	Remote		remote;
+	Remote_tcp	remote_tcp;
 	Servo		servo;
 	Simulator	simulator;
 	State		state;
