@@ -1,27 +1,29 @@
+# -*- coding: utf-8 -*-
+# @(#)		Configuration.py
+# @version	1.1
+# @autor	C. Rouvière
+
+'''
+Configuration to listen keyboard and joystick
+Adapted from NAO_TOOLS project :
+https://github.com/rouviecy/NAO_TOOLS
+'''
+
 class Configuration(object):
 
-	K_NORTH =			273 # haut
-	K_SOUTH =			274 # bas
-	K_LEFT =			276 # gauche
-	K_RIGHT =			275 # droite
-	K_STIFFON =			270 # +
-	K_STIFFOFF =		269 # -
-	K_SAVE_JOINTS =		115 # s
-	K_PLAY_JOINTS =		112 # p
-	K_RECORD =			114 # r
-	K_CROUCH =			97  # a
-	K_SITDOWN =			108 # l
-	K_STANDUP =			109 # m
+	K_UP =				273 # arrow up
+	K_DOWN =			274 # arrow down
+	K_LEFT =			276 # arrow left
+	K_RIGHT =			275 # arrow right
+	K_VITMORE =			270 # +
+	K_VITLESS =			269 # -
+	K_REMOTEON =		97	# a
+	K_REMOTEOFF =		122 # z
 	K_QUIT =			113 # q
 
 	J_INDEX =			0
-	J_BUTTON_A =		0	# s'assoir
-	J_BUTTON_B =		1	# se lever
-	J_BUTTON_SAVE =		5	# enregistrer une position
-	J_BUTTON_RECORD =	6	# enregistrer dans le temps
-	J_BUTTON_PLAY =		4	# jouer enregistrement
-	J_BUTTON_STIFF =	2	# permuter stiffness
-	J_BUTTON_LASTPOSE =	3	# se mettre dans la derniere pose enregistree
+	J_BUTTON_A =		0	# activate remote control
+	J_BUTTON_B =		1	# desactivate remote control
 	J_AXIS_WE =			0
 	J_AXIS_NS =			1
 	J_AXIS_ROT =		2

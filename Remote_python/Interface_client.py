@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+# @(#)		Interface_client.py
+# @version	1.1
+# @autor	C. Rouvière
+
+'''
+Python TCP Client
+Adapted from NAO_TOOLS project :
+https://github.com/rouviecy/NAO_TOOLS
+'''
+
 import socket
 import time
 
@@ -9,21 +20,15 @@ class Interface_client(object):
 		self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.s.connect((host, port))
 
-	def go_left(self, activer):		self.envoyer("Q")
-	def go_right(self, activer):	self.envoyer("S")
-	def go_north(self, activer):	self.envoyer("R")
-	def go_south(self, activer):	self.envoyer("T")
-	def go_west(self, activer):		pass
-	def go_est(self, activer):		pass
-	def stiffness(self, activer):	pass
-	def save_joints(self, save):	pass
-	def last_pose(self):			pass
-	def record(self):				pass
-	def assis(self):				pass
-	def debout(self):				pass
-	def vitesse_tete(self, vx, vy):	pass
+	def go_left(self, activer):			self.envoyer("L")
+	def go_right(self, activer):		self.envoyer("R")
+	def go_up(self, activer):			self.envoyer("U")
+	def go_down(self, activer):			self.envoyer("D")
+	def go_more(self, activer):			self.envoyer("+")
+	def go_less(self, activer):			self.envoyer("-")
+	def remote_enable(self, activer):	self.envoyer("A" if activer else "Z")
 	def quitter(self):
-		self.envoyer("f")
+		self.envoyer("Q")
 		time.sleep(1)
 		self.s.close()
 

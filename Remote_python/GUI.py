@@ -1,4 +1,13 @@
 # -*- coding: utf-8 -*-
+# @(#)		GUI.py
+# @version	1.1
+# @autor	C. Rouvière
+
+'''
+Provide GUI to listen keyboard and joystick
+Adapted from NAO_TOOLS project :
+https://github.com/rouviecy/NAO_TOOLS
+'''
 
 import pygame
 from pygame.locals import *
@@ -10,7 +19,6 @@ class GUI(object):
 		self.joystick_WE = 0
 		self.joystick_NS = 0
 		self.joystick_ROT = 0
-		self.stiffness_state = False
 		self.clock = pygame.time.Clock()
 		self.serveur = serveur
 		self.initialisation()
@@ -35,87 +43,48 @@ class GUI(object):
 
 	def action_clavier(self, downing, key):
 		if		key == c.K_QUIT:					return False
+		elif	key == c.K_UP:						self.serveur.go_up(downing)
+		elif	key == c.K_DOWN:					self.serveur.go_down(downing)
 		elif	key == c.K_LEFT:					self.serveur.go_left(downing)
 		elif	key == c.K_RIGHT:					self.serveur.go_right(downing)
-		elif	key == c.K_NORTH:					self.serveur.go_north(downing)
-		elif	key == c.K_SOUTH:					self.serveur.go_south(downing)
-		elif	key == c.K_STIFFON:
-			if downing:								self.serveur.stiffness(True)
-		elif	key == c.K_STIFFOFF:
-			if downing:								self.serveur.stiffness(False)
-		elif	key == c.K_SAVE_JOINTS:
-			if downing:								self.serveur.save_joints(True)
-		elif	key == c.K_PLAY_JOINTS:
-			if downing:								self.serveur.save_joints(False)
-		elif	key == c.K_RECORD:
-			if downing:								self.serveur.record()
-		elif	key == c.K_SITDOWN:
-			if downing:								self.serveur.assis()
-		elif	key == c.K_STANDUP:
-			if downing:								self.serveur.debout()
+		elif	key == c.K_VITMORE:					self.serveur.go_more(downing)
+		elif	key == c.K_VITLESS:					self.serveur.go_less(downing)
+		elif	key == c.K_REMOTEON:
+			if downing:								self.serveur.remote_enable(True)
+		elif	key == c.K_REMOTEOFF:
+			if downing:								self.serveur.remote_enable(False)
 		return True
 
 	def action_joystick_bouton(self, bouton):
-		if		bouton == c.J_BUTTON_A:			self.serveur.assis()
-		elif	bouton == c.J_BUTTON_B:			self.serveur.debout()
-		elif	bouton == c.J_BUTTON_RECORD:	self.serveur.record()
-		elif	bouton == c.J_BUTTON_SAVE:		self.serveur.save_joints(True)
-		elif	bouton == c.J_BUTTON_PLAY:		self.serveur.save_joints(False)
-		elif	bouton == c.J_BUTTON_LASTPOSE:	self.serveur.last_pose()
-		elif	bouton == c.J_BUTTON_STIFF:
-			self.stiffness_state = not self.stiffness_state
-			self.serveur.stiffness(self.stiffness_state)
+		if		bouton == c.J_BUTTON_A:			self.serveur.remote_enable(True)
+		elif	bouton == c.J_BUTTON_B:			self.serveur.remote_enable(False)
 		return True
 
 	def action_joystick_axe(self, axe, valeur):
-		if axe == c.J_AXIS_WE:
-			if		c.J_INTERVAL_W[0] <= valeur <= c.J_INTERVAL_W[1]:
-				if		self.joystick_WE == 0:
-					self.joystick_WE = -1
-					self.serveur.go_west(True)
-				elif	self.joystick_WE == 1:
-					self.joystick_WE = -1
-					self.serveur.go_est(False)
-					self.serveur.go_west(True)
-			elif	c.J_INTERVAL_E[0] <= valeur <= c.J_INTERVAL_E[1]:
-				if		self.joystick_WE == 0:
-					self.joystick_WE = +1
-					self.serveur.go_est(True)
-				elif	self.joystick_WE == -1:
-					self.joystick_WE = +1
-					self.serveur.go_west(False)
-					self.serveur.go_est(True)
-			elif	c.J_INTERVAL_0WE[0] <= valeur <= c.J_INTERVAL_0WE[1]:
-				if		self.joystick_WE == -1:
-					self.joystick_WE = 0
-					self.serveur.go_west(False)
-				elif	self.joystick_WE == +1:
-					self.joystick_WE = 0
-					self.serveur.go_est(False)
 		if		axe == c.J_AXIS_NS:
 			if c.J_INTERVAL_N[0] <= valeur <= c.J_INTERVAL_N[1]:
 				if		self.joystick_NS == 0:
 					self.joystick_NS = -1
-					self.serveur.go_north(True)
+					self.serveur.go_up(True)
 				elif	self.joystick_NS == 1:
 					self.joystick_NS = -1
-					self.serveur.go_south(False)
-					self.serveur.go_north(True)
+					self.serveur.go_down(False)
+					self.serveur.go_up(True)
 			elif	c.J_INTERVAL_S[0] <= valeur <= c.J_INTERVAL_S[1]:
 				if		self.joystick_NS == 0:
 					self.joystick_NS = +1
-					self.serveur.go_south(True)
+					self.serveur.go_down(True)
 				elif	self.joystick_NS == -1:
 					self.joystick_NS = +1
-					self.serveur.go_north(False)
-					self.serveur.go_south(True)
+					self.serveur.go_up(False)
+					self.serveur.go_down(True)
 			elif	c.J_INTERVAL_0NS[0] <= valeur <= c.J_INTERVAL_0NS[1]:
 				if		self.joystick_NS == -1:
 					self.joystick_NS = 0
-					self.serveur.go_north(False)
+					self.serveur.go_up(False)
 				elif	self.joystick_NS == +1:
 					self.joystick_NS = 0
-					self.serveur.go_south(False)
+					self.serveur.go_down(False)
 		if		axe == c.J_AXIS_ROT:
 			if c.J_INTERVAL_L[0] <= valeur <= c.J_INTERVAL_L[1]:
 				if		self.joystick_ROT == 0:
@@ -144,15 +113,12 @@ class GUI(object):
 
 	def action_hat(self, hat, valeur):
 		if hat != c.J_HAT_HEAD: return True
-		if		valeur == c.J_HAT_0:	self.serveur.vitesse_tete(+0, +0)
-		elif	valeur == c.J_HAT_N :	self.serveur.vitesse_tete(+0, +1)
-		elif	valeur == c.J_HAT_S :	self.serveur.vitesse_tete(+0, -1)
-		elif	valeur == c.J_HAT_W :	self.serveur.vitesse_tete(-1, +0)
-		elif	valeur == c.J_HAT_E :	self.serveur.vitesse_tete(+1, +0)
-		elif	valeur == c.J_HAT_NE :	self.serveur.vitesse_tete(+1, +1)
-		elif	valeur == c.J_HAT_SE :	self.serveur.vitesse_tete(+1, -1)
-		elif	valeur == c.J_HAT_SW :	self.serveur.vitesse_tete(-1, -1)
-		elif	valeur == c.J_HAT_NW :	self.serveur.vitesse_tete(-1, +1)
+		elif	valeur == c.J_HAT_N :	self.serveur.go_more(True)
+		elif	valeur == c.J_HAT_S :	self.serveur.go_less(True)
+		elif	valeur == c.J_HAT_NE :	self.serveur.go_more(True)
+		elif	valeur == c.J_HAT_SE :	self.serveur.go_less(True)
+		elif	valeur == c.J_HAT_SW :	self.serveur.go_less(True)
+		elif	valeur == c.J_HAT_NW :	self.serveur.go_more(True)
 		return True
 
 	def bouclage(self):
