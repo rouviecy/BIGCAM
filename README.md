@@ -14,13 +14,14 @@ Student project : designing, build and program an autonomous plane in order to m
 
 ## Dependencies
 +    **CMake**
++    **Python2.7**
 +    **GCC** for c++11
 +    **OpenCV** with **GTK** (Qt does not support GUI over multithreading)
 +    **V4L** driver for camera
 +    **DOT** library to generate connexion graph
 +    **GNU/Linux** (not tested on Windows and MAC OS)
 
-## To compile and execute
+## To compile and execute on robot (server)
 Remember to adjust `CMAKE_CXX_COMPILER` in `CMakeLists.txt` to your g++ version  
 Switch `MODE_SIMU_CAM` in `src/Camera.h` to enable or disable camera simulation  
 
@@ -30,6 +31,12 @@ Switch `MODE_SIMU_CAM` in `src/Camera.h` to enable or disable camera simulation
     make
     ./drone
     ./map_builder
+
+## To execute on remote controller (client)
+
+    git clone https://github.com/rouviecy/BIGCAM
+    cd BIGCAM/Remote_python/
+    python main.py {ip address of robot}
 
 ## GUI
 +    Press `q` to quit
