@@ -16,7 +16,6 @@ State::~State(){
 	tcp_server_out.Close();
 }
 
-
 void State::IO(){
 	Link_output("x", &x);		Link_output("y", &y);		Link_output("z", &z);
 	Link_output("vx", &vx);		Link_output("vy", &vy);		Link_output("vz", &vz);
@@ -40,8 +39,8 @@ void State::Job(){
 	if(thz < -10 or thz > +10){thz -= floor(thz / 6.2832) * 6.2832;}
 	x = gps_x;
 	y = gps_y;
-	Critical_send();
 	ostringstream ss;
 	ss << setprecision(8) << x << "|" << setprecision(8) << y << "|" << setprecision(8) << thz << "|";
 	tcp_server_out.Send(ss.str());
+	Critical_send();
 }
