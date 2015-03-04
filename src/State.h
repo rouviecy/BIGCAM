@@ -11,6 +11,8 @@
 #ifndef STATE
 #define STATE
 
+#include <iomanip>
+#include <sstream>
 #include "stereotypes/ComThread.h"
 #include "utils/Tcp_server.h"
 

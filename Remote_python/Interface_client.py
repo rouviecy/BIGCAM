@@ -12,6 +12,7 @@ https://github.com/rouviecy/NAO_TOOLS
 from threading import Thread
 import socket
 import time
+import locale
 
 class Interface_client_out(object):
 
@@ -45,10 +46,17 @@ class Interface_client_in(Thread):
 
 	def run(self):
 		while True:
-			msg_in = self.s.recv(1024)
-			print msg_in[0], msg_in[1]
-			if msg_in[0] == 'b' and msg_in[1] == 'y' and msg_in[2] == 'e':
-				break
+			msg = self.s.recv(1024).split('\0')[0]
+			if msg == "bye" : break
+			state = []
+			mini_buffer = ""
+			for i in range(len(msg)):
+				if msg[i] == '|':
+					state.append(locale.atof(mini_buffer))
+					mini_buffer = ""
+				else:
+					mini_buffer += msg[i]
+			print state
 		self.stop()
 
 	def stop(self):

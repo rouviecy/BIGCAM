@@ -46,9 +46,11 @@ void State::Job(){
 	y = gps_y;
 	Critical_send();
 	char* msg_state = new char[1024];
-	msg_state[0] = '4';
-	msg_state[1] = '2';
-	msg_state[2] = '\0';
+	ostringstream ss;
+	ss << setprecision(8) << x << "|" << setprecision(8) << y << "|" << setprecision(8) << thz << "|";
+	string str = ss.str();
+	copy(str.begin(), str.end(), msg_state);
+	msg_state[str.size()] = '\0';
 	tcp_server_out.Send(msg_state);
 	delete[] msg_state;
 }
