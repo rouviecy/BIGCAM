@@ -1,20 +1,24 @@
 #include "Tcp_server.h"
 
-Tcp_server::Tcp_server(){
+using namespace std;
+
+Tcp_server::Tcp_server(){}
+
+void Tcp_server::Configure(int port){
 	if((s = socket(AF_INET, SOCK_STREAM, 0)) < 0){
-		perror("Socket");
+		perror(("Socket on port " + to_string(port)).c_str());
 		exit(errno);
 	}
 	bzero(&self, sizeof(self));
 	self.sin_family			= AF_INET;
-	self.sin_port			= htons(PORT);
+	self.sin_port			= htons(port);
 	self.sin_addr.s_addr	= INADDR_ANY;
     if(bind(s, (struct sockaddr*) &self, sizeof(self)) != 0){
-		perror("Bind");
+		perror(("Bind on port " + to_string(port)).c_str());
 		exit(errno);
 	}
 	if(listen(s, 20) != 0){
-		perror("Listen");
+		perror(("Listen on port " + to_string(port)).c_str());
 		exit(errno);
 	}
 	struct sockaddr_in client_addr;
@@ -24,12 +28,15 @@ Tcp_server::Tcp_server(){
 }
 
 char* Tcp_server::Receive(){
-	send(cli, buffer, recv(cli, buffer, BUFF_LEN, 0), 0);
+	recv(cli, buffer, BUFF_LEN, 0);
 	return buffer;
+}
+
+void Tcp_server::Send(char* msg_out){
+	send(cli, msg_out, BUFF_LEN, 0);
 }
 
 void Tcp_server::Close(){
 	close(cli);
 	close(s);
 }
-

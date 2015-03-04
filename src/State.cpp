@@ -7,7 +7,20 @@ State::State() : ComThread(){
 	vx = 0.;	vy = 0.;	vz = 0.;
 	thx = 0.;	thy = 0.;	thz = 0.;
 	vthx = 0.;	vthy = 0.;	vthz = 0.;
+	tcp_server_out.Configure(4243);
 }
+
+State::~State(){
+	string str_bye = "bye";
+	char* msg_bye = new char[1024];
+	copy(str_bye.begin(), str_bye.end(), msg_bye);
+	msg_bye[str_bye.size()] = '\0';
+	tcp_server_out.Send(msg_bye);
+	delete[] msg_bye;
+	usleep(10000);
+	tcp_server_out.Close();
+}
+
 
 void State::IO(){
 	Link_output("x", &x);		Link_output("y", &y);		Link_output("z", &z);
@@ -32,4 +45,10 @@ void State::Job(){
 	x = gps_x;
 	y = gps_y;
 	Critical_send();
+	char* msg_state = new char[1024];
+	msg_state[0] = '4';
+	msg_state[1] = '2';
+	msg_state[2] = '\0';
+	tcp_server_out.Send(msg_state);
+	delete[] msg_state;
 }

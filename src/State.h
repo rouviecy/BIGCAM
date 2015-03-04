@@ -12,14 +12,18 @@
 #define STATE
 
 #include "stereotypes/ComThread.h"
+#include "utils/Tcp_server.h"
 
 class State : public ComThread{
 
 public:
 
 	State();
+	~State();
 
 private:
+
+	Tcp_server tcp_server_out;
 
 	float	t;
 	float	x,		y,		z;

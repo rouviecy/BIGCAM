@@ -10,9 +10,15 @@ https://github.com/rouviecy/NAO_TOOLS
 '''
 
 from GUI				import GUI
-from Interface_client	import Interface_client
+from Interface_client	import Interface_client_in
+from Interface_client	import Interface_client_out
 import sys
 
 if __name__ == '__main__':
-	cli = Interface_client(sys.argv[1])
-	gui = GUI(cli)
+	cli_out = Interface_client_out(sys.argv[1])
+	cli_in = Interface_client_in(sys.argv[1])
+	gui = GUI(cli_out)
+	gui.start()
+	cli_in.start()
+	gui.join()
+	cli_in.join()

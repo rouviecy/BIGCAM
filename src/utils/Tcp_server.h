@@ -15,12 +15,13 @@ class Tcp_server{
 public:
 
 	Tcp_server();
+	void Configure(int port);
 	char* Receive();
+	void Send(char* msg_out);
 	void Close();
 
 private:
 
-	#define PORT		4242
 	#define BUFF_LEN	1024
 
 	int s;

@@ -24,10 +24,9 @@ public:
 
 private:
 
-	Tcp_server tcp_server;
+	Tcp_server tcp_server_in;
 
 	float is_remote;
-	float is_tcp_remote;
 	float remote_power;
 	float remote_turn;
 

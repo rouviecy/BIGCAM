@@ -10,12 +10,14 @@ https://github.com/rouviecy/NAO_TOOLS
 '''
 
 import pygame
-from pygame.locals import *
-from Configuration import Configuration as c
+from pygame.locals	import *
+from Configuration	import Configuration as c
+from threading		import Thread
 
-class GUI(object):
+class GUI(Thread):
 
 	def __init__(self, serveur):
+		Thread.__init__(self)
 		self.joystick_WE = 0
 		self.joystick_NS = 0
 		self.joystick_ROT = 0
@@ -23,8 +25,6 @@ class GUI(object):
 		self.serveur = serveur
 		self.initialisation()
 		self.rafraishissement()
-		self.bouclage()
-		self.serveur.quitter()
 
 	def initialisation(self):
 		pygame.init()
@@ -121,7 +121,7 @@ class GUI(object):
 		elif	valeur == c.J_HAT_NW :	self.serveur.go_more(True)
 		return True
 
-	def bouclage(self):
+	def run(self):
 		continuer = True
 		while continuer:
 			for event in pygame.event.get():
@@ -132,3 +132,7 @@ class GUI(object):
 				elif	event.type == JOYAXISMOTION:	continuer = self.action_joystick_axe(event.axis, event.value)
 				elif	event.type == JOYHATMOTION:		continuer = self.action_hat(event.hat, event.value)
 			self.clock.tick(20)
+		self.stop()
+
+	def stop(self):
+		self.serveur.quitter()
