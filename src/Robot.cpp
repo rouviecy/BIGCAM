@@ -15,13 +15,10 @@ Robot::Robot(){
 	threads.push_back(&imu);
 	threads.push_back(&monitor);
 	threads.push_back(&motor);
-	threads.push_back(&remote);
 	threads.push_back(&remote_tcp);
 	threads.push_back(&servo);
 	threads.push_back(&simulator);
 	threads.push_back(&state);
-
-	remote.Link_images(monitor.Get_img_monitor());
 
 	clock.Set_name("Internal clock");			clock.Set_freq(1000);		// 1 ms
 	imu.Set_name("Inertial Measurement Unit");	imu.Set_freq(10000);		// 10 ms
@@ -30,8 +27,7 @@ Robot::Robot(){
 	autonomy.Set_name("Autonomy");				autonomy.Set_freq(50000);	// 50 ms
 	state.Set_name("State");					state.Set_freq(50000);		// 50 ms
 	simulator.Set_name("Simulator");			simulator.Set_freq(10000);	// 10 ms
-	remote.Set_name("Remote Controller");		remote.Set_freq(-1);		// manual loop
-	remote_tcp.Set_name("Remote TCP");			remote.Set_freq(1000);		// 1 ms
+	remote_tcp.Set_name("Remote TCP");			remote_tcp.Set_freq(-1);	// manual loop
 	monitor.Set_name("Monitor");				monitor.Set_freq(50000);	// 50 ms
 	motor.Set_name("Motor");					motor.Set_freq(100000);		// 100 ms
 	servo.Set_name("Servo");					servo.Set_freq(100000);		// 100 ms
@@ -40,7 +36,7 @@ Robot::Robot(){
 	Link_all();
 	Launch_all();
 
-	remote.Wait_quit_from_user();
+	remote_tcp.Wait_quit_from_user();
 
 	Join_all();
 }

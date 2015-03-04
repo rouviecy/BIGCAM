@@ -1,6 +1,6 @@
 /*
  * @(#)		Remote.h
- * @version	1.4
+ * @version	1.5
  * @autor	C. Rouvière
  */
 
@@ -20,6 +20,7 @@ class Remote_tcp : public ComThread{
 public:
 
 	Remote_tcp();
+	void Wait_quit_from_user();
 
 private:
 

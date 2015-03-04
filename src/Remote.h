@@ -24,6 +24,7 @@ public:
 
 private:
 
+	#define ENABLE_GUI		false
 	#define MONITOR_NAME	"Monitor"
 	#define REMOTE_NAME		"Remote"
 	#define REMOTE_SIZE 100
