@@ -7,9 +7,9 @@ Student project : designing, build and program an autonomous plane in order to m
 +    **[TODO]** Take decisions
 +    **[TODO]** Gathering data from sensors
 +    **[TODO]** Control actuators
-+    **[TODO]** Remote control by TCP and joystick/keyboard
++    **[TODO]** Remote control and monitoring by TCP and joystick/keyboard
 +    **[DONE]** Tag camera images
-+    **[TODO]** Assemble camera images to build a map
++    **[DONE]** Assemble camera images to build a map
 +    **[DONE]** Easy UI to manage and monitor robot(s)
 +    **[DONE]** Test on Raspberry Pi
 
@@ -22,7 +22,7 @@ Student project : designing, build and program an autonomous plane in order to m
 +    **GNU/Linux** (not tested on Windows and MAC OS)
 
 ## Dependencies for remote controller
-+    **Python2.7** with **PyGame**
++    **Python2.7** with **PyGame**, **OpenCV** and **NumPy**
 
 ## To compile and execute on robot (server)
 Remember to adjust `CMAKE_CXX_COMPILER` in `CMakeLists.txt` to your g++ version  
