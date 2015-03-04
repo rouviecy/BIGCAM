@@ -40,7 +40,8 @@ void State::Job(){
 	x = gps_x;
 	y = gps_y;
 	ostringstream ss;
-	ss << setprecision(8) << x << "|" << setprecision(8) << y << "|" << setprecision(8) << thz << "|";
+	ss << setprecision(8) << x << "|" << setprecision(8) << y << "|" << setprecision(8) << z << "|" << setprecision(8) << thz << "|";
+cout << ss.str() << endl;
 	tcp_server_out.Send(ss.str());
 	Critical_send();
 }

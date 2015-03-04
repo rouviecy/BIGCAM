@@ -14,7 +14,6 @@ void ComThread::Link(Share *s){
 void ComThread::Launch(){
 	job_go_on = true;
 	thr = thread(&ComThread::Loop_job, this);
-
 }
 
 void ComThread::Join(){

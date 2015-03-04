@@ -19,7 +19,6 @@
 #include "Compas.h"
 #include "Gps.h"
 #include "Imu.h"
-#include "Monitor.h"
 #include "Motor.h"
 #include "Remote_tcp.h"
 #include "Servo.h"
@@ -50,7 +49,6 @@ private:
 	Compas		compas;
 	Gps			gps;
 	Imu			imu;
-	Monitor		monitor;
 	Motor		motor;
 	Remote_tcp	remote_tcp;
 	Servo		servo;

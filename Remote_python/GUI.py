@@ -28,7 +28,7 @@ class GUI(Thread):
 
 	def initialisation(self):
 		pygame.init()
-		fenetre = pygame.display.set_mode((640, 480))
+		fenetre = pygame.display.set_mode((100, 100))
 		nb = pygame.joystick.get_count()
 		print str(nb) + " joystick(s) détectés"
 		if(nb > 0):

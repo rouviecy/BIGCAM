@@ -3,7 +3,10 @@
 using namespace std;
 
 Autonomy::Autonomy() : ComThread(){
-
+	v_motor = 0.;
+	steer = 0.;
+	wing_left = 0.;
+	wing_right = 0.;
 }
 
 void Autonomy::IO(){
