@@ -11,12 +11,7 @@ State::State() : ComThread(){
 }
 
 State::~State(){
-	string str_bye = "bye";
-	char* msg_bye = new char[1024];
-	copy(str_bye.begin(), str_bye.end(), msg_bye);
-	msg_bye[str_bye.size()] = '\0';
-	tcp_server_out.Send(msg_bye);
-	delete[] msg_bye;
+	tcp_server_out.Send("bye");
 	usleep(10000);
 	tcp_server_out.Close();
 }
@@ -42,15 +37,11 @@ void State::IO(){
 void State::Job(){
 	Critical_receive();
 	thz = compas;
+	if(thz < -10 or thz > +10){thz -= floor(thz / 6.2832) * 6.2832;}
 	x = gps_x;
 	y = gps_y;
 	Critical_send();
-	char* msg_state = new char[1024];
 	ostringstream ss;
 	ss << setprecision(8) << x << "|" << setprecision(8) << y << "|" << setprecision(8) << thz << "|";
-	string str = ss.str();
-	copy(str.begin(), str.end(), msg_state);
-	msg_state[str.size()] = '\0';
-	tcp_server_out.Send(msg_state);
-	delete[] msg_state;
+	tcp_server_out.Send(ss.str());
 }

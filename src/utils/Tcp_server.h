@@ -17,7 +17,7 @@ public:
 	Tcp_server();
 	void Configure(int port);
 	char* Receive();
-	void Send(char* msg_out);
+	void Send(std::string msg_out);
 	void Close();
 
 private:

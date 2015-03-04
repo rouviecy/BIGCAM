@@ -11,6 +11,7 @@
 #ifndef STATE
 #define STATE
 
+#include <cmath>
 #include <iomanip>
 #include <sstream>
 #include "stereotypes/ComThread.h"

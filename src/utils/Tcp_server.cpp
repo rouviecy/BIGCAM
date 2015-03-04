@@ -17,7 +17,7 @@ void Tcp_server::Configure(int port){
 		perror(("Bind on port " + to_string(port)).c_str());
 		exit(errno);
 	}
-	if(listen(s, 20) != 0){
+	if(listen(s, 1) != 0){
 		perror(("Listen on port " + to_string(port)).c_str());
 		exit(errno);
 	}
@@ -32,8 +32,12 @@ char* Tcp_server::Receive(){
 	return buffer;
 }
 
-void Tcp_server::Send(char* msg_out){
-	send(cli, msg_out, BUFF_LEN, 0);
+void Tcp_server::Send(string msg_out){
+	char* msg = new char[1024];
+	copy(msg_out.begin(), msg_out.end(), msg);
+	msg[msg_out.size()] = '\0';
+	send(cli, msg, BUFF_LEN, 0);
+	delete[] msg;
 }
 
 void Tcp_server::Close(){
