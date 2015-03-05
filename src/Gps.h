@@ -11,6 +11,10 @@
 #ifndef GPS
 #define GPS
 
+#ifdef MODE_RASPI
+	#include <wiringPi.h>
+#endif
+
 #include "stereotypes/Proprioceptive.h"
 #include <cmath>
 

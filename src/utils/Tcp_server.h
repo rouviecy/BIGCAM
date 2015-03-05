@@ -22,12 +22,10 @@ public:
 
 private:
 
-	#define BUFF_LEN	1024
-
 	int s;
 	int cli;
 	struct sockaddr_in self;
-	char buffer[BUFF_LEN];
+	char buffer[TCP_BUFFER_LEN];
 
 };
 

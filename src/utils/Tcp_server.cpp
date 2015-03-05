@@ -28,15 +28,15 @@ void Tcp_server::Configure(int port){
 }
 
 char* Tcp_server::Receive(){
-	recv(cli, buffer, BUFF_LEN, 0);
+	recv(cli, buffer, TCP_BUFFER_LEN, 0);
 	return buffer;
 }
 
 void Tcp_server::Send(string msg_out){
-	char* msg = new char[1024];
+	char* msg = new char[TCP_BUFFER_LEN];
 	copy(msg_out.begin(), msg_out.end(), msg);
 	msg[msg_out.size()] = '\0';
-	send(cli, msg, BUFF_LEN, 0);
+	send(cli, msg, TCP_BUFFER_LEN, 0);
 	delete[] msg;
 }
 

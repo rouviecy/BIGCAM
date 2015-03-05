@@ -7,7 +7,7 @@ State::State() : ComThread(){
 	vx = 0.;	vy = 0.;	vz = 0.;
 	thx = 0.;	thy = 0.;	thz = 0.;
 	vthx = 0.;	vthy = 0.;	vthz = 0.;
-	tcp_server_out.Configure(4243);
+	tcp_server_out.Configure(TCP_PORT_OUT);
 }
 
 State::~State(){
@@ -41,7 +41,6 @@ void State::Job(){
 	y = gps_y;
 	ostringstream ss;
 	ss << setprecision(8) << x << "|" << setprecision(8) << y << "|" << setprecision(8) << z << "|" << setprecision(8) << thz << "|";
-cout << ss.str() << endl;
 	tcp_server_out.Send(ss.str());
 	Critical_send();
 }

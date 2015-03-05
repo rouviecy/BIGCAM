@@ -11,8 +11,6 @@
 #ifndef CAMERA
 #define CAMERA
 
-#include <ctime>
-#include <cstdlib>
 #include <opencv2/opencv.hpp>
 #include "stereotypes/Exteroceptive.h"
 #include "img_proc/Io_file.h"
@@ -26,9 +24,7 @@ public:
 
 private:
 
-	#define ADD_NOISE			true
-	#define MODE_SIMU_CAM		false
-	#define IMG_CAM_SIMU_PATH	"test/simucam.jpg"
+	#define IMG_CAM_SIMU_PATH "test/simucam.jpg"
 
 	float x, y, z, thz;
 	

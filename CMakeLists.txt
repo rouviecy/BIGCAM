@@ -1,11 +1,39 @@
 cmake_minimum_required(VERSION 2.8)
 project(BIGCAM)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-set(CMAKE_CXX_COMPILER g++-4.8.3)
-
 find_package(PkgConfig)
-find_package(OpenCV REQUIRED)
+
+set(MODE_RASPI OFF)
+set(MODE_SIMU_CAM ON)
+
+add_definitions(-DTCP_BUFFER_LEN=1024)
+add_definitions(-DTCP_PORT_IN=4242)
+add_definitions(-DTCP_PORT_OUT=4243)
+
+if(${MODE_RASPI})
+	add_definitions(-DMODE_RASPI)
+	pkg_check_modules(WIRINGPI REQUIRED wiringPi)
+	find_package(OpenCV REQUIRED)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+	set(CMAKE_CXX_COMPILER g++-4.8)
+	set(LIBS
+		${WIRINGPI}
+		${OpenCV_LIBS}
+	)
+	link_libraries(${LIBS})
+else(${MODE_RASPI})
+	find_package(OpenCV REQUIRED)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+	set(CMAKE_CXX_COMPILER g++-4.8.3)
+	set(LIBS
+		${OpenCV_LIBS}
+	)
+	link_libraries(${LIBS})
+endif(${MODE_RASPI})
+
+if(${MODE_SIMU_CAM})
+	add_definitions(-DMODE_SIMU_CAM)
+endif(${MODE_SIMU_CAM})
 
 add_library(MYLIBS
 	src/img_proc/Io_file.h				src/img_proc/Io_file.cpp
@@ -26,9 +54,7 @@ add_library(MYLIBS
 	src/Compas.h						src/Compas.cpp
 	src/Gps.h							src/Gps.cpp
 	src/Imu.h							src/Imu.cpp
-	src/Monitor.h						src/Monitor.cpp
 	src/Motor.h							src/Motor.cpp
-	src/Remote.h						src/Remote.cpp
 	src/Remote_tcp.h					src/Remote_tcp.cpp
 	src/Robot.h							src/Robot.cpp
 	src/Servo.h							src/Servo.cpp
@@ -38,7 +64,7 @@ add_library(MYLIBS
 )
 
 add_executable(drone src/mains/drone.cpp)
-target_link_libraries(drone ${OpenCV_LIBS} MYLIBS)
+target_link_libraries(drone ${LIBS} MYLIBS)
 
 add_executable(map_builder src/mains/map_builder.cpp)
-target_link_libraries(map_builder ${OpenCV_LIBS} MYLIBS)
+target_link_libraries(map_builder ${LIBS} MYLIBS)

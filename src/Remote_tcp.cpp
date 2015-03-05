@@ -6,7 +6,7 @@ Remote_tcp::Remote_tcp() : ComThread(){
 	is_remote = +1.;
 	remote_power = 0.;
 	remote_turn = 0.;
-	tcp_server_in.Configure(4242);
+	tcp_server_in.Configure(TCP_PORT_IN);
 }
 
 void Remote_tcp::IO(){
