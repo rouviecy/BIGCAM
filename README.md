@@ -32,7 +32,7 @@ Remember to adjust `MODE_RASPI` and `MODE_SIMU_CAM` in `CMakeLists.txt` to enabl
     cd BIGCAM/build
     cmake ..
     make
-    ./drone
+    sudo ./drone
     ./map_builder
 
 ## To execute on remote controller (client)
