@@ -5,9 +5,9 @@ Student project : designing, build and program an autonomous plane in order to m
 +    **[DONE]** Communication between threads
 +    **[TODO]** State management
 +    **[TODO]** Take decisions
-+    **[TODO]** Gathering data from sensors
++    **[GOON]** Gathering data from sensors
 +    **[TODO]** Control actuators
-+    **[TODO]** Remote control and monitoring by TCP and joystick/keyboard
++    **[DONE]** Remote control and monitoring by TCP and joystick/keyboard
 +    **[DONE]** Tag camera images
 +    **[DONE]** Assemble camera images to build a map
 +    **[DONE]** Easy UI to manage and monitor robot(s)
@@ -19,14 +19,14 @@ Student project : designing, build and program an autonomous plane in order to m
 +    **OpenCV** with **GTK** (Qt does not support GUI over multithreading)
 +    **V4L** driver for camera
 +    **DOT** library to generate connexion graph
++    **WiringPi** for Raspberry serial, I2C, ...
 +    **GNU/Linux** (not tested on Windows and MAC OS)
 
 ## Dependencies for remote controller
 +    **Python2.7** with **PyGame**, **OpenCV** and **NumPy**
 
 ## To compile and execute on robot (server)
-Remember to adjust `CMAKE_CXX_COMPILER` in `CMakeLists.txt` to your g++ version  
-Switch `MODE_SIMU_CAM` in `src/Camera.h` to enable or disable camera simulation  
+Remember to adjust `MODE_RASPI` and `MODE_SIMU_CAM` in `CMakeLists.txt` to enable/disable Raspberry management and camera simulator.  
 
     git clone https://github.com/rouviecy/BIGCAM
     cd BIGCAM/build
@@ -58,6 +58,10 @@ Enable camera (load `bcm2835-v4l2` and `v4l2-ctl` after each boot)
     sudo apt-get install v4l-utils
     sudo modprobe bcm2835-v4l2
     sudo v4l2-ctl --set-fmt-video=width=400,height=300,pixelformat="H264" -d /dev/video0
+
+Disable Serial over console
+
+    sudo raspi-config
 
 Enable I2C (load `i2c-dev` and `chmod` after each boot)
 
