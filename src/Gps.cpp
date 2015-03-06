@@ -51,8 +51,8 @@ void Gps::Job(){
 			if(valid_msg && !is_header){msg += nv;}
 			if(valid_msg && nv == '*'){Decode_NMEA(msg);}
 		}
-		gps_x = simu_gps_x;
-		gps_y = simu_gps_y;
+//		gps_x = simu_gps_x;
+//		gps_y = simu_gps_y;
 	#else
 		gps_x = simu_gps_x;
 		gps_y = simu_gps_y;
@@ -68,13 +68,20 @@ void Gps::Decode_NMEA(string msg_nmea){
 		next = msg_nmea.find_first_of(",", current);
 		tokens.push_back(msg_nmea.substr(current, next - current));
 	}
-	int hh			= stoi(tokens[0].substr(0, 2));
-	int mm			= stoi(tokens[0].substr(2, 2));
-	int ss			= stoi(tokens[0].substr(4, 2));
-	int lat_dd		= stoi(tokens[1].substr(0, 2));
-	float lat_mm	= stof(tokens[1].substr(2, 7));
-	int lon_dd		= stoi(tokens[3].substr(0, 3));
-	float lon_mm	= stof(tokens[3].substr(3, 7));
-	bool is_N		= (tokens[2].compare("N") == 0);
-	bool is_W		= (tokens[4].compare("W") == 0);
+	int hh			= stoi(tokens[1].substr(0, 2));
+	int mm			= stoi(tokens[1].substr(2, 2));
+	int ss			= stoi(tokens[1].substr(4, 2));
+	int lat_dd		= stoi(tokens[2].substr(0, 2));
+	float lat_mm	= stof(tokens[2].substr(2, 7));
+	int lon_dd		= stoi(tokens[4].substr(0, 3));
+	float lon_mm	= stof(tokens[4].substr(3, 7));
+	bool is_N		= (tokens[3].compare("N") == 0);
+	bool is_W		= (tokens[5].compare("W") == 0);
+	float lat_float = ((float) lat_dd) * M_PI / 180. + lat_mm * M_PI / 10800.;
+	float lon_float = ((float) lon_dd) * M_PI / 180. + lon_mm * M_PI / 10800.;
+	float x = (is_N ? +1. : -1.) * R_EARTH * cos(lat_float) * cos(lon_float);
+	float y = (is_W ? -1. : +1.) * R_EARTH * cos(lat_float) * sin(lon_float);
+	cout << x << "\t" << y << endl;
+	gps_x = x;
+	gps_y = y;
 }
