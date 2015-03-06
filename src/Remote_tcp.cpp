@@ -23,8 +23,8 @@ void Remote_tcp::Wait_quit_from_user(){
 		else if (key == 'Z')	{is_remote = -1.;}
 		else if (key == '+')	{remote_power += 0.1;}
 		else if (key == '-')	{remote_power -= 0.1;}
-		else if (key == 'L')	{remote_turn = -0.5;}
-		else if (key == 'R')	{remote_turn = +0.5;}
+		else if (key == 'L')	{remote_turn = (char) *(msg_in + sizeof(char)) == '1' ? -0.5 : 0.;}
+		else if (key == 'R')	{remote_turn = (char) *(msg_in + sizeof(char)) == '1' ? +0.5 : 0.;}
 		else if (key == 'Q')	{usleep(2000000); tcp_server_in.Close(); break;}
 		Smooth_order();
 		Critical_send();
