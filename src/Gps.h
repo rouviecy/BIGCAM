@@ -17,8 +17,8 @@
 #endif
 
 #include "stereotypes/Proprioceptive.h"
+#include <vector>
 #include <string>
-#include <cmath>
 #include <iostream>
 
 class Gps : public Proprioceptive{
@@ -43,6 +43,8 @@ private:
 		int index_header;
 		std::string msg;
 	#endif
+
+	void Decode_NMEA(std::string msg_nmea);
 
 };
 

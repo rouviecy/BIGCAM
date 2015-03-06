@@ -48,12 +48,8 @@ void Gps::Job(){
 				is_header = false;
 				continue;
 			}
-			if(valid_msg && !is_header){
-				msg += nv;
-			}
-			if(valid_msg && nv == '*'){
-				cout << msg << endl;
-			}
+			if(valid_msg && !is_header){msg += nv;}
+			if(valid_msg && nv == '*'){Decode_NMEA(msg);}
 		}
 		gps_x = simu_gps_x;
 		gps_y = simu_gps_y;
@@ -62,4 +58,23 @@ void Gps::Job(){
 		gps_y = simu_gps_y;
 	#endif
 	Critical_send();
+}
+
+void Gps::Decode_NMEA(string msg_nmea){
+	if(msg_nmea.size() < 37){return;}
+	size_t next;
+	vector <string> tokens;
+	for(size_t current = 0; tokens.size() < 6; current = next + 1){
+		next = msg_nmea.find_first_of(",", current);
+		tokens.push_back(msg_nmea.substr(current, next - current));
+	}
+	int hh			= stoi(tokens[0].substr(0, 2));
+	int mm			= stoi(tokens[0].substr(2, 2));
+	int ss			= stoi(tokens[0].substr(4, 2));
+	int lat_dd		= stoi(tokens[1].substr(0, 2));
+	float lat_mm	= stof(tokens[1].substr(2, 7));
+	int lon_dd		= stoi(tokens[3].substr(0, 3));
+	float lon_mm	= stof(tokens[3].substr(3, 7));
+	bool is_N		= (tokens[2].compare("N") == 0);
+	bool is_W		= (tokens[4].compare("W") == 0);
 }
