@@ -18,6 +18,7 @@ Gps::Gps() : Proprioceptive(){
 		index_header = 0;
 		serialFlush(tty);
 	#endif
+	first = true;
 }
 
 void Gps::IO(){
@@ -81,7 +82,12 @@ void Gps::Decode_NMEA(string msg_nmea){
 	float lon_float = ((float) lon_dd) * M_PI / 180. + lon_mm * M_PI / 10800.;
 	float x = (is_N ? +1. : -1.) * R_EARTH * cos(lat_float) * cos(lon_float);
 	float y = (is_W ? -1. : +1.) * R_EARTH * cos(lat_float) * sin(lon_float);
-	cout << x << "\t" << y << endl;
-	gps_x = x;
-	gps_y = y;
+	if(first){
+		offset_x = x;
+		offset_y = y;
+		first = false;
+	}
+	gps_x = x - offset_x;
+	gps_y = y - offset_y;
+	cout << gps_x << "\t" << gps_y << endl;
 }

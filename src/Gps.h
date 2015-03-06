@@ -36,6 +36,9 @@ private:
 	float gps_x, gps_y;
 	float simu_gps_x, simu_gps_y;
 
+	bool first;
+	float offset_x, offset_y;
+
 	#define R_EARTH 6378137.
 
 	#ifdef MODE_RASPI
