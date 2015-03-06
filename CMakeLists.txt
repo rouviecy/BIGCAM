@@ -3,8 +3,8 @@ project(BIGCAM)
 
 find_package(PkgConfig)
 
-set(MODE_RASPI OFF)
-set(MODE_SIMU_CAM ON)
+set(MODE_RASPI ON)
+set(MODE_SIMU_CAM OFF)
 
 add_definitions(-DTCP_BUFFER_LEN=1024)
 add_definitions(-DTCP_PORT_IN=4242)
@@ -12,12 +12,12 @@ add_definitions(-DTCP_PORT_OUT=4243)
 
 if(${MODE_RASPI})
 	add_definitions(-DMODE_RASPI)
-	pkg_check_modules(WIRINGPI REQUIRED wiringPi)
 	find_package(OpenCV REQUIRED)
+	set(WiringPi_LIBS "-lwiringPi")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 	set(CMAKE_CXX_COMPILER g++-4.8)
 	set(LIBS
-		${WIRINGPI}
+		${WiringPi_LIBS}
 		${OpenCV_LIBS}
 	)
 	link_libraries(${LIBS})

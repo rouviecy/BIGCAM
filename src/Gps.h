@@ -13,10 +13,13 @@
 
 #ifdef MODE_RASPI
 	#include <wiringPi.h>
+	#include <wiringSerial.h>
 #endif
 
 #include "stereotypes/Proprioceptive.h"
+#include <string>
 #include <cmath>
+#include <iostream>
 
 class Gps : public Proprioceptive{
 
@@ -31,8 +34,15 @@ private:
 	
 	float gps_x, gps_y;
 	float simu_gps_x, simu_gps_y;
-	
-	double i;
+
+	#ifdef MODE_RASPI
+		int tty;
+		char header[6];
+		bool is_header;
+		bool valid_msg;
+		int index_header;
+		std::string msg;
+	#endif
 
 };
 
