@@ -52,8 +52,6 @@ void Gps::Job(){
 			if(valid_msg && !is_header){msg += nv;}
 			if(valid_msg && nv == '*'){Decode_NMEA(msg);}
 		}
-//		gps_x = simu_gps_x;
-//		gps_y = simu_gps_y;
 	#else
 		gps_x = simu_gps_x;
 		gps_y = simu_gps_y;

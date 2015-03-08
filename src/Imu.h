@@ -1,6 +1,6 @@
 /*
  * @(#)		Imu.h
- * @version	1.4
+ * @version	1.5
  * @autor	C. Rouvière
  */
 
@@ -11,7 +11,16 @@
 #ifndef IMU
 #define IMU
 
+#ifdef MODE_RASPI
+	#include <wiringPi.h>
+	#include <wiringSerial.h>
+#endif
+
 #include "stereotypes/Proprioceptive.h"
+#include <vector>
+#include <string>
+#include <iostream>
+#include <cmath>
 
 class Imu : public Proprioceptive{
 
@@ -24,10 +33,10 @@ private:
 	void Job();
 	void IO();
 
-	float imu_x,	imu_y,		imu_z;
-	float imu_vx,	imu_vy,		imu_vz;
-	float imu_thx,	imu_thy,	imu_thz;
-	float imu_vthx,	imu_vthy,	imu_vthz;
+	float imu_thx, imu_thy, imu_thz;
+	float simu_compas;
+
+	void Decode_9DOF_RAZOR(std::string msg_ypr);
 
 };
 
