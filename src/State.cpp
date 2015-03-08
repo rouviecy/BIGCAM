@@ -23,6 +23,7 @@ void State::IO(){
 	Link_output("vthx", &vthx);	Link_output("vthy", &vthy);	Link_output("vthz", &vthz);
 
 	Link_input("t", &t);
+	Link_input("alti", &alti);
 	Link_input("gps_x", &gps_x);
 	Link_input("gps_y", &gps_y);
 	Link_input("imu_thx", &imu_thx);
@@ -32,6 +33,7 @@ void State::IO(){
 
 void State::Job(){
 	Critical_receive();
+	z = alti;
 	thz = imu_thz;
 	if(thz < -10 or thz > +10){thz -= floor(thz / 6.2832) * 6.2832;}
 	x = gps_x;

@@ -48,10 +48,10 @@ add_library(MYLIBS
 	src/stereotypes/Sensor.h			src/stereotypes/Sensor.cpp
 	src/utils/ComDraw.h					src/utils/ComDraw.cpp
 	src/utils/Tcp_server.h				src/utils/Tcp_server.cpp
+	src/Altimeter.h						src/Altimeter.cpp
 	src/Autonomy.h						src/Autonomy.cpp
 	src/Camera.h						src/Camera.cpp
 	src/Clock.h							src/Clock.cpp
-	src/Compas.h						src/Compas.cpp
 	src/Gps.h							src/Gps.cpp
 	src/Imu.h							src/Imu.cpp
 	src/Motor.h							src/Motor.cpp

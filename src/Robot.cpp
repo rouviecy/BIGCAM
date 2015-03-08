@@ -7,6 +7,7 @@ Robot::Robot(){
 
 	// Warning : pass-by-reference to avoid slicing !
 
+	threads.push_back(&altimeter);
 	threads.push_back(&autonomy);
 	threads.push_back(&camera);
 	threads.push_back(&clock);
@@ -19,6 +20,7 @@ Robot::Robot(){
 	threads.push_back(&state);
 
 	clock.Set_name("Internal clock");			clock.Set_freq(1000);		// 1 ms
+	altimeter.Set_name("Altimeter");			altimeter.Set_freq(10000);	// 10 ms
 	imu.Set_name("Inertial Measurement Unit");	imu.Set_freq(10000);		// 10 ms
 	gps.Set_name("Global Positioning System");	gps.Set_freq(10000);		// 10 ms
 	autonomy.Set_name("Autonomy");				autonomy.Set_freq(50000);	// 50 ms

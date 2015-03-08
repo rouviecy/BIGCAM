@@ -36,6 +36,7 @@ private:
 
 	float	imu_thx,	imu_thy,	imu_thz;
 
+	float	alti;
 	float	compas;
 	float	gps_x,	gps_y;
 

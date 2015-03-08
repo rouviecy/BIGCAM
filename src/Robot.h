@@ -13,6 +13,7 @@
 
 #include <vector>
 #include "utils/ComDraw.h"
+#include "Altimeter.h"
 #include "Autonomy.h"
 #include "Camera.h"
 #include "Clock.h"
@@ -42,6 +43,7 @@ private:
 	ComDraw drawer;
 	Share share;
 
+	Altimeter	altimeter;
 	Autonomy	autonomy;
 	Camera		camera;
 	Clock		clock;
