@@ -5,11 +5,16 @@
  */
 
 /**
- * Motor control
+ * Motor and servo-motors control by PWM
  */
 
 #ifndef MOTOR
 #define MOTOR
+
+#ifdef MODE_RASPI
+	#include <wiringPi.h>
+	#include <softPwm.h>
+#endif
 
 #include "stereotypes/Actuator.h"
 
@@ -27,6 +32,10 @@ private:
 	float v_motor;
 	float wing_left;
 	float wing_right;
+
+	#define GPIO_MOTOR		17
+	#define GPIO_SERVO_L	27
+	#define GPIO_SERVO_R	22
 
 };
 
