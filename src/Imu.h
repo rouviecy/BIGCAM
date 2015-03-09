@@ -36,6 +36,17 @@ private:
 	float imu_thx, imu_thy, imu_thz;
 	float simu_compas;
 
+	#define DEG_TO_RAD 0.0174533
+
+	#ifdef MODE_RASPI
+		int tty;
+		char header[5];
+		bool is_header;
+		bool valid_msg;
+		int index_header;
+		std::string msg;
+	#endif
+
 	void Decode_9DOF_RAZOR(std::string msg_ypr);
 
 };

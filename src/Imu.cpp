@@ -24,7 +24,7 @@ void Imu::IO(){
 	Link_output("imu_thx", &imu_thx);
 	Link_output("imu_thy", &imu_thy);
 	Link_output("imu_thz", &imu_thz);
-	Link_input("simu_compas", &simu_compas);	
+	Link_input("simu_compas", &simu_compas);
 }
 
 void Imu::Job(){
@@ -57,7 +57,7 @@ void Imu::Job(){
 }
 
 void Imu::Decode_9DOF_RAZOR(string msg_ypr){
-	if(msg_ypr.size() < 23){return;}
+	if(msg_ypr.size() < 19){return;}
 	size_t next;
 	vector <string> tokens;
 	for(size_t current = 0; tokens.size() < 3; current = next + 1){
@@ -67,8 +67,8 @@ void Imu::Decode_9DOF_RAZOR(string msg_ypr){
 	float yaw			= stof(tokens[0]);
 	float pitch			= stof(tokens[1]);
 	float roll			= stof(tokens[2]);
-	imu_thx = -pitch;
-	imu_thy = -roll;
-	imu_thz = -yaw;
+	imu_thx = -pitch * DEG_TO_RAD;
+	imu_thy = -roll * DEG_TO_RAD;
+	imu_thz = -yaw * DEG_TO_RAD;
 	cout << "thx, thy, thz = " << imu_thx << "\t" << imu_thy << "\t" << imu_thz << endl;
 }
