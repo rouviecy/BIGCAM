@@ -21,7 +21,6 @@ void Autonomy::IO(){
 	Link_input("remote_turn", &remote_turn);
 
 	Link_output("v_motor", &v_motor);
-	Link_output("steer", &steer);
 	Link_output("wing_left", &wing_left);
 	Link_output("wing_right", &wing_right);
 }
@@ -30,7 +29,6 @@ void Autonomy::Job(){
 	Critical_receive();
 	if(is_remote > 0){
 		v_motor = remote_power;
-		steer = 0.1 * remote_turn;
 		wing_left = -0.1 * remote_turn;
 		wing_right = 0.1 * remote_turn;
 	}

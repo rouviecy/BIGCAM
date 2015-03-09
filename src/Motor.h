@@ -25,6 +25,8 @@ private:
 	void IO();
 
 	float v_motor;
+	float wing_left;
+	float wing_right;
 
 };
 

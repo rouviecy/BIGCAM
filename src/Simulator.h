@@ -29,7 +29,6 @@ private:
 	float simu_compas;
 
 	float v_motor;
-	float steer;
 	float wing_left;
 	float wing_right;
 

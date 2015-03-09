@@ -1,23 +1,23 @@
 /*
- * @(#)		Altimeter.h
+ * @(#)		Pressure.h
  * @version	1.0
  * @autor	C. Rouvière
  */
 
 /**
- * Altitude sensor
+ * Altitude and wind sencor by I2C
  */
 
-#ifndef ALTIMETER
-#define ALTIMETER
+#ifndef PRESSURE
+#define PRESSURE
 
 #include "stereotypes/Proprioceptive.h"
 
-class Altimeter : public Proprioceptive{
+class Pressure : public Proprioceptive{
 
 public:
 
-	Altimeter();
+	Pressure();
 
 private:
 
@@ -25,6 +25,7 @@ private:
 	void IO();
 
 	float alti;
+	float v_wind;
 
 };
 

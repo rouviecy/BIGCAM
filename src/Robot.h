@@ -13,15 +13,14 @@
 
 #include <vector>
 #include "utils/ComDraw.h"
-#include "Altimeter.h"
 #include "Autonomy.h"
 #include "Camera.h"
 #include "Clock.h"
 #include "Gps.h"
 #include "Imu.h"
 #include "Motor.h"
+#include "Pressure.h"
 #include "Remote_tcp.h"
-#include "Servo.h"
 #include "Share.h"
 #include "Simulator.h"
 #include "State.h"
@@ -43,15 +42,14 @@ private:
 	ComDraw drawer;
 	Share share;
 
-	Altimeter	altimeter;
 	Autonomy	autonomy;
 	Camera		camera;
 	Clock		clock;
 	Gps			gps;
 	Imu			imu;
 	Motor		motor;
+	Pressure	pressure;
 	Remote_tcp	remote_tcp;
-	Servo		servo;
 	Simulator	simulator;
 	State		state;
 

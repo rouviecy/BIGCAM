@@ -48,16 +48,15 @@ add_library(MYLIBS
 	src/stereotypes/Sensor.h			src/stereotypes/Sensor.cpp
 	src/utils/ComDraw.h					src/utils/ComDraw.cpp
 	src/utils/Tcp_server.h				src/utils/Tcp_server.cpp
-	src/Altimeter.h						src/Altimeter.cpp
 	src/Autonomy.h						src/Autonomy.cpp
 	src/Camera.h						src/Camera.cpp
 	src/Clock.h							src/Clock.cpp
 	src/Gps.h							src/Gps.cpp
 	src/Imu.h							src/Imu.cpp
 	src/Motor.h							src/Motor.cpp
+	src/Pressure.h						src/Pressure.cpp
 	src/Remote_tcp.h					src/Remote_tcp.cpp
 	src/Robot.h							src/Robot.cpp
-	src/Servo.h							src/Servo.cpp
 	src/Simulator.h						src/Simulator.cpp
 	src/Share.h							src/Share.cpp
 	src/State.h							src/State.cpp

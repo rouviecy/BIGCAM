@@ -19,14 +19,13 @@ void Simulator::IO(){
 	Link_output("simu_compas", &simu_compas);
 
 	Link_input("v_motor", &v_motor);
-	Link_input("steer", &steer);
 	Link_input("wing_left", &wing_left);
 	Link_input("wing_right", &wing_right);
 }
 
 void Simulator::Job(){
 	Critical_receive();
-	simu_compas = thz + v_motor * (-wing_left + wing_right + steer);
+	simu_compas = thz + v_motor * (-wing_left + wing_right);
 	simu_gps_x = x + cos((float) thz) * v_motor;
 	simu_gps_y = y + sin((float) thz) * v_motor;
 	Critical_send();

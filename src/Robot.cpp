@@ -7,28 +7,26 @@ Robot::Robot(){
 
 	// Warning : pass-by-reference to avoid slicing !
 
-	threads.push_back(&altimeter);
 	threads.push_back(&autonomy);
 	threads.push_back(&camera);
 	threads.push_back(&clock);
 	threads.push_back(&gps);
 	threads.push_back(&imu);
 	threads.push_back(&motor);
+	threads.push_back(&pressure);
 	threads.push_back(&remote_tcp);
-	threads.push_back(&servo);
 	threads.push_back(&simulator);
 	threads.push_back(&state);
 
 	clock.Set_name("Internal clock");			clock.Set_freq(1000);		// 1 ms
-	altimeter.Set_name("Altimeter");			altimeter.Set_freq(10000);	// 10 ms
 	imu.Set_name("Inertial Measurement Unit");	imu.Set_freq(10000);		// 10 ms
 	gps.Set_name("Global Positioning System");	gps.Set_freq(10000);		// 10 ms
+	pressure.Set_name("Pressure");				pressure.Set_freq(100000);	// 100 ms
 	autonomy.Set_name("Autonomy");				autonomy.Set_freq(50000);	// 50 ms
 	state.Set_name("State");					state.Set_freq(50000);		// 50 ms
 	simulator.Set_name("Simulator");			simulator.Set_freq(10000);	// 10 ms
 	remote_tcp.Set_name("Remote TCP");			remote_tcp.Set_freq(-1);	// manual loop
 	motor.Set_name("Motor");					motor.Set_freq(100000);		// 100 ms
-	servo.Set_name("Servo");					servo.Set_freq(100000);		// 100 ms
 	camera.Set_name("Camera");					camera.Set_freq(100000);	// 100 ms
 
 	Link_all();

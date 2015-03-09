@@ -35,10 +35,9 @@ private:
 	float	vthx,	vthy,	vthz;
 
 	float	imu_thx,	imu_thy,	imu_thz;
-
+	float	gps_x,		gps_y;
 	float	alti;
-	float	compas;
-	float	gps_x,	gps_y;
+	float	v_wind;
 
 	void Job();
 	void IO();

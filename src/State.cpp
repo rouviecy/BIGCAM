@@ -24,6 +24,7 @@ void State::IO(){
 
 	Link_input("t", &t);
 	Link_input("alti", &alti);
+	Link_input("v_wind", &v_wind);
 	Link_input("gps_x", &gps_x);
 	Link_input("gps_y", &gps_y);
 	Link_input("imu_thx", &imu_thx);
