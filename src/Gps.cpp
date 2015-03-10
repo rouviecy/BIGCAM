@@ -3,6 +3,8 @@
 using namespace std;
 
 Gps::Gps() : Proprioceptive(){
+	gps_x = 0.;
+	gps_y = 0.;
 	#ifdef MODE_RASPI
 		tty = serialOpen("/dev/ttyAMA0", 4800);
 		if(tty < 0)					{cout << "Unable to open serial device" << endl;}
@@ -24,7 +26,7 @@ Gps::Gps() : Proprioceptive(){
 void Gps::IO(){
 	Link_output("gps_x", &gps_x);
 	Link_output("gps_y", &gps_y);
-	
+
 	Link_input("simu_gps_x", &simu_gps_x);
 	Link_input("simu_gps_y", &simu_gps_y);
 }
@@ -66,6 +68,14 @@ void Gps::Decode_NMEA(string msg_nmea){
 	for(size_t current = 0; tokens.size() < 6; current = next + 1){
 		next = msg_nmea.find_first_of(",", current);
 		tokens.push_back(msg_nmea.substr(current, next - current));
+	}
+	if(	tokens[1].size() < 6 or
+		tokens[2].size() < 7 or
+		tokens[3].size() < 1 or
+		tokens[4].size() < 7 or
+		tokens[5].size() < 1){
+			cout << "GPS ERROR" << endl;
+			return;
 	}
 	int hh			= stoi(tokens[1].substr(0, 2));
 	int mm			= stoi(tokens[1].substr(2, 2));

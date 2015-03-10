@@ -72,6 +72,8 @@ class Interface_client_in(Thread):
 		self.stop()
 
 	def draw_monitor(self, state):
+		if(len(state) < 4):
+			return
 		x, y, z, thz = state
 		img_monitor = np.zeros((self.MONITOR_SIZE, self.MONITOR_SIZE, 3), dtype=np.uint8)
 		if x < self.min_coord : self.min_coord = x
