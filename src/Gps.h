@@ -1,6 +1,6 @@
 /*
  * @(#)		Gps.h
- * @version	1.5
+ * @version	2.0
  * @autor	C. Rouvière
  */
 
@@ -42,6 +42,7 @@ private:
 	#define R_EARTH 6378137.
 
 	#ifdef MODE_RASPI
+		#define PATH_DEV "/dev/ttyAMA0"
 		int tty;
 		char header[6];
 		bool is_header;

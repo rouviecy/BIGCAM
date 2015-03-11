@@ -32,7 +32,7 @@ private:
 	float	remote_turn;
 
 	float	v_motor;
-	float	steer;
+	float	stab;
 	float	wing_left, wing_right;
 
 	void Job();

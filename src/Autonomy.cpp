@@ -4,7 +4,7 @@ using namespace std;
 
 Autonomy::Autonomy() : ComThread(){
 	v_motor = 0.;
-	steer = 0.;
+	stab = 0.;
 	wing_left = 0.;
 	wing_right = 0.;
 }
@@ -21,16 +21,35 @@ void Autonomy::IO(){
 	Link_input("remote_turn", &remote_turn);
 
 	Link_output("v_motor", &v_motor);
+	Link_output("stab", &stab);
 	Link_output("wing_left", &wing_left);
 	Link_output("wing_right", &wing_right);
 }
 
 void Autonomy::Job(){
 	Critical_receive();
-	if(is_remote > 0){
+	// SEMI-AUTO
+	if(is_remote > -0.5){
 		v_motor = remote_power;
-		wing_left = -0.1 * remote_turn;
-		wing_right = 0.1 * remote_turn;
+//		wing_left = -0.1 * remote_turn;
+//		wing_right = 0.1 * remote_turn;
+		stab = 0.0;
+		if(thx < -0.2){
+			wing_left = -1.;
+			wing_right = +1.;
+		}
+		else if(thx > +0.2){
+			wing_left = +1.;
+			wing_right = -1.;
+		}
+		else{
+			wing_left = 0.;
+			wing_right = 0.;
+		}
+	}
+	// FULL-AUTO
+	else{
+		
 	}
 	Critical_send();
 }

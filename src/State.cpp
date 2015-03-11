@@ -35,12 +35,21 @@ void State::IO(){
 void State::Job(){
 	Critical_receive();
 	z = alti;
+	thx = imu_thx;
+	thy = imu_thy;
 	thz = imu_thz;
 	if(thz < -10 or thz > +10){thz -= floor(thz / 6.2832) * 6.2832;}
 	x = gps_x;
 	y = gps_y;
-	ostringstream ss;
-	ss << setprecision(8) << x << "|" << setprecision(8) << y << "|" << setprecision(8) << z << "|" << setprecision(8) << thz << "|";
-	tcp_server_out.Send(ss.str());
+	Send_tcp();
 	Critical_send();
+}
+
+void State::Send_tcp(){
+	ostringstream ss;
+	ss	<< setprecision(8) << x << "|"
+		<< setprecision(8) << y << "|"
+		<< setprecision(8) << z << "|"
+		<< setprecision(8) << thz << "|";
+	tcp_server_out.Send(ss.str());	
 }

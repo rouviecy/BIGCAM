@@ -19,8 +19,8 @@ Robot::Robot(){
 	threads.push_back(&state);
 
 	clock.Set_name("Internal clock");			clock.Set_freq(1000);		// 1 ms
-	imu.Set_name("Inertial Measurement Unit");	imu.Set_freq(10000);		// 10 ms
-	gps.Set_name("Global Positioning System");	gps.Set_freq(10000);		// 10 ms
+	imu.Set_name("Inertial Measurement Unit");	imu.Set_freq(100000);		// 100 ms
+	gps.Set_name("Global Positioning System");	gps.Set_freq(100000);		// 100 ms
 	pressure.Set_name("Pressure");				pressure.Set_freq(100000);	// 100 ms
 	autonomy.Set_name("Autonomy");				autonomy.Set_freq(50000);	// 50 ms
 	state.Set_name("State");					state.Set_freq(50000);		// 50 ms

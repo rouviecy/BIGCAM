@@ -3,7 +3,8 @@
 using namespace std;
 
 Pressure::Pressure() : Proprioceptive(){
-
+	alti = 0.;
+	v_wind = 0.;
 }
 
 void Pressure::IO(){
@@ -13,5 +14,6 @@ void Pressure::IO(){
 
 void Pressure::Job(){
 	alti = 42;
+	v_wind = 0.;
 	Critical_send();
 }

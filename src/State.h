@@ -1,6 +1,6 @@
 /*
  * @(#)		State.h
- * @version	1.4
+ * @version	1.5
  * @autor	C. Rouvière
  */
 
@@ -41,6 +41,7 @@ private:
 
 	void Job();
 	void IO();
+	void Send_tcp();
 
 };
 

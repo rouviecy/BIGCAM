@@ -5,7 +5,7 @@ using namespace std;
 Imu::Imu() : Proprioceptive(){
 	imu_thx = 0.;	imu_thy = 0.;	imu_thz = 0.;
 	#ifdef MODE_RASPI
-		tty = serialOpen("/dev/ttyUSB0", 57600);
+		tty = serialOpen(PATH_DEV, 57600);
 		if(tty < 0)					{cout << "Unable to open serial device" << endl;}
 		if(wiringPiSetup () == -1)	{cout << "Unable to start wiringPi" << endl;}
 		header[0] = '#';
@@ -33,7 +33,10 @@ void Imu::Job(){
 		for(int i = 0; i < serialDataAvail(tty); i++){
 			char nv = char(serialGetchar(tty));
 			if(nv == '#'){
-				if(valid_msg){Decode_9DOF_RAZOR(msg);}
+				if(valid_msg){
+					Decode_9DOF_RAZOR(msg + ',');
+					serialFlush(tty);
+				}
 				is_header = true;
 				valid_msg = true;
 				index_header = 0;
@@ -64,11 +67,16 @@ void Imu::Decode_9DOF_RAZOR(string msg_ypr){
 		next = msg_ypr.find_first_of(",", current);
 		tokens.push_back(msg_ypr.substr(current, next - current));
 	}
+	if(tokens.size() < 3){return;}
+	if(	tokens[0].size() < 3 or
+		tokens[1].size() < 3 or
+		tokens[2].size() < 3){
+			return;
+	}
 	float yaw			= stof(tokens[0]);
 	float pitch			= stof(tokens[1]);
 	float roll			= stof(tokens[2]);
 	imu_thx = -pitch * DEG_TO_RAD;
 	imu_thy = -roll * DEG_TO_RAD;
 	imu_thz = -yaw * DEG_TO_RAD;
-	cout << "thx, thy, thz = " << imu_thx << "\t" << imu_thy << "\t" << imu_thz << endl;
 }
