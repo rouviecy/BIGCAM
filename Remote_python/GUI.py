@@ -85,29 +85,29 @@ class GUI(Thread):
 				elif	self.joystick_NS == +1:
 					self.joystick_NS = 0
 					self.serveur.go_down(False)
-		if		axe == c.J_AXIS_ROT:
-			if c.J_INTERVAL_L[0] <= valeur <= c.J_INTERVAL_L[1]:
-				if		self.joystick_ROT == 0:
-					self.joystick_ROT = -1
+		if		axe == c.J_AXIS_WE:
+			if c.J_INTERVAL_W[0] <= valeur <= c.J_INTERVAL_W[1]:
+				if		self.joystick_WE == 0:
+					self.joystick_WE = -1
 					self.serveur.go_left(True)
-				elif	self.joystick_ROT == 1:
-					self.joystick_ROT = -1
+				elif	self.joystick_WE == 1:
+					self.joystick_WE = -1
 					self.serveur.go_right(False)
 					self.serveur.go_left(True)
-			elif	c.J_INTERVAL_R[0] <= valeur <= c.J_INTERVAL_R[1]:
-				if		self.joystick_ROT == 0:
-					self.joystick_ROT = +1
+			elif	c.J_INTERVAL_E[0] <= valeur <= c.J_INTERVAL_E[1]:
+				if		self.joystick_WE == 0:
+					self.joystick_WE = +1
 					self.serveur.go_right(True)
-				elif	self.joystick_ROT == -1:
-					self.joystick_ROT = +1
+				elif	self.joystick_WE == -1:
+					self.joystick_WE = +1
 					self.serveur.go_left(False)
 					self.serveur.go_right(True)
-			elif	c.J_INTERVAL_0ROT[0] <= valeur <= c.J_INTERVAL_0ROT[1]:
-				if		self.joystick_ROT == -1:
-					self.joystick_ROT = 0
+			elif	c.J_INTERVAL_0WE[0] <= valeur <= c.J_INTERVAL_0WE[1]:
+				if		self.joystick_WE == -1:
+					self.joystick_WE = 0
 					self.serveur.go_left(False)
-				elif	self.joystick_ROT == +1:
-					self.joystick_ROT = 0
+				elif	self.joystick_WE == +1:
+					self.joystick_WE = 0
 					self.serveur.go_right(False)
 		return True
 
