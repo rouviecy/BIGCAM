@@ -5,7 +5,7 @@ using namespace std;
 Imu::Imu() : Proprioceptive(){
 	imu_thx = 0.;	imu_thy = 0.;	imu_thz = 0.;
 	#ifdef MODE_RASPI
-		tty = serialOpen(PATH_DEV, 57600);
+		tty = serialOpen(PATH_DEV_IMU, 57600);
 		if(tty < 0)					{cout << "Unable to open serial device" << endl;}
 		if(wiringPiSetup () == -1)	{cout << "Unable to start wiringPi" << endl;}
 		header[0] = '#';
@@ -73,6 +73,7 @@ void Imu::Decode_9DOF_RAZOR(string msg_ypr){
 		tokens[2].size() < 3){
 			return;
 	}
+cout << "imu_thy " << imu_thy << endl;
 	float yaw			= stof(tokens[0]);
 	float pitch			= stof(tokens[1]);
 	float roll			= stof(tokens[2]);

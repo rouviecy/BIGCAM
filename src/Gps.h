@@ -42,7 +42,7 @@ private:
 	#define R_EARTH 6378137.
 
 	#ifdef MODE_RASPI
-		#define PATH_DEV "/dev/ttyAMA0"
+		#define PATH_DEV_GPS "/dev/ttyAMA0"
 		int tty;
 		char header[6];
 		bool is_header;

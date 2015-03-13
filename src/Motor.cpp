@@ -3,7 +3,14 @@
 using namespace std;
 
 Motor::Motor() : Actuator(){
-	fd = open(PATH_DEV, O_RDWR | O_NOCTTY);
+	fd = open(PATH_DEV_MOTOR, O_RDWR | O_NOCTTY);
+}
+
+Motor::~Motor(){
+	Generate_order(0,	CHANNEL_MOTOR);
+	Generate_order(50,	CHANNEL_LEFT);
+	Generate_order(50,	CHANNEL_RIGHT);
+	Generate_order(50,	CHANNEL_BACK);
 }
 
 void Motor::IO(){

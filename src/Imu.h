@@ -39,7 +39,7 @@ private:
 	#define DEG_TO_RAD 0.0174533
 
 	#ifdef MODE_RASPI
-		#define PATH_DEV "/dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A20e27OC-if00-port0"
+		#define PATH_DEV_IMU "/dev/serial/by-id/usb-FTDI_FT232R_USB_UART_A20e27OC-if00-port0"
 		int tty;
 		char header[5];
 		bool is_header;

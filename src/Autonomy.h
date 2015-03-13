@@ -12,6 +12,7 @@
 #define AUTONOMY
 
 #include "stereotypes/ComThread.h"
+#include <cmath>
 
 class Autonomy : public ComThread{
 
@@ -30,6 +31,7 @@ private:
 	float	is_remote;
 	float	remote_power;
 	float	remote_turn;
+	float	remote_pitch;
 
 	float	v_motor;
 	float	stab;

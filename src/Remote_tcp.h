@@ -29,6 +29,7 @@ private:
 	float is_remote;
 	float remote_power;
 	float remote_turn;
+	float remote_pitch;
 
 	void Job();
 	void IO();

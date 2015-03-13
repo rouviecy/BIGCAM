@@ -6,7 +6,7 @@ Gps::Gps() : Proprioceptive(){
 	gps_x = 0.;
 	gps_y = 0.;
 	#ifdef MODE_RASPI
-		tty = serialOpen(PATH_DEV, 4800);
+		tty = serialOpen(PATH_DEV_GPS, 4800);
 		if(tty < 0)					{cout << "Unable to open serial device" << endl;}
 		if(wiringPiSetup () == -1)	{cout << "Unable to start wiringPi" << endl;}
 		header[0] = '$';

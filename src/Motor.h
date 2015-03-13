@@ -21,10 +21,11 @@ class Motor : public Actuator{
 public:
 
 	Motor();
+	~Motor();
 
 private:
 
-	#define PATH_DEV		"/dev/serial/by-id/usb-Pololu_Corporation_Pololu_Mini_Maestro_18-Channel_USB_Servo_Controller_00022159-if00"
+	#define PATH_DEV_MOTOR		"/dev/serial/by-id/usb-Pololu_Corporation_Pololu_Mini_Maestro_18-Channel_USB_Servo_Controller_00022159-if00"
 	#define CHANNEL_MOTOR	0
 	#define CHANNEL_LEFT	1
 	#define CHANNEL_RIGHT	2
@@ -41,6 +42,7 @@ private:
 	int fd;
 
 	void Generate_order(int pwm_0_to_100, int channel);
+	void Generate_order2(int pwm_0_to_100, int channel);
 
 };
 
