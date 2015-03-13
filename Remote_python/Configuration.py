@@ -27,6 +27,7 @@ class Configuration(object):
 	J_AXIS_WE =			0
 	J_AXIS_NS =			1
 	J_AXIS_ROT =		2
+	J_AXIS_SCROLL =		3
 	J_INTERVAL_W =		[-2.0, -0.5]
 	J_INTERVAL_E =		[+0.5, +2.0]
 	J_INTERVAL_0WE =	[-0.3, +0.3]
@@ -36,6 +37,8 @@ class Configuration(object):
 	J_INTERVAL_L =		[-2.0, -0.9]
 	J_INTERVAL_R =		[+0.9, +2.0]
 	J_INTERVAL_0ROT =	[-0.7, +0.7]
+	J_INTERVAL_SCROLL =	[-0.9, +0.9]
+	J_STEP_SCROLL =		10
 	J_HAT_HEAD =		0
 	J_HAT_0 =			(+0, +0)
 	J_HAT_N =			(+0, +1)

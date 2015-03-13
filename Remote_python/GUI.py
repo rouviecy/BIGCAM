@@ -10,6 +10,7 @@ https://github.com/rouviecy/NAO_TOOLS
 '''
 
 import pygame
+import math			as m
 from pygame.locals	import *
 from Configuration	import Configuration as c
 from threading		import Thread
@@ -21,6 +22,7 @@ class GUI(Thread):
 		self.joystick_WE = 0
 		self.joystick_NS = 0
 		self.joystick_ROT = 0
+		self.current_v = 0
 		self.clock = pygame.time.Clock()
 		self.serveur = serveur
 		self.initialisation()
@@ -61,6 +63,8 @@ class GUI(Thread):
 		return True
 
 	def action_joystick_axe(self, axe, valeur):
+		if		axe == c.J_AXIS_SCROLL:
+			self.action_scroll(valeur)
 		if		axe == c.J_AXIS_NS:
 			if c.J_INTERVAL_N[0] <= valeur <= c.J_INTERVAL_N[1]:
 				if		self.joystick_NS == 0:
@@ -112,13 +116,30 @@ class GUI(Thread):
 		return True
 
 	def action_hat(self, hat, valeur):
-		if hat != c.J_HAT_HEAD: return True
-		elif	valeur == c.J_HAT_N :	self.serveur.go_more(True)
-		elif	valeur == c.J_HAT_S :	self.serveur.go_less(True)
-		elif	valeur == c.J_HAT_NE :	self.serveur.go_more(True)
-		elif	valeur == c.J_HAT_SE :	self.serveur.go_less(True)
-		elif	valeur == c.J_HAT_SW :	self.serveur.go_less(True)
-		elif	valeur == c.J_HAT_NW :	self.serveur.go_more(True)
+#		if hat != c.J_HAT_HEAD: return True
+#		elif	valeur == c.J_HAT_N :	self.serveur.go_more(True)
+#		elif	valeur == c.J_HAT_S :	self.serveur.go_less(True)
+#		elif	valeur == c.J_HAT_NE :	self.serveur.go_more(True)
+#		elif	valeur == c.J_HAT_SE :	self.serveur.go_less(True)
+#		elif	valeur == c.J_HAT_SW :	self.serveur.go_less(True)
+#		elif	valeur == c.J_HAT_NW :	self.serveur.go_more(True)
+		return True
+
+	def action_scroll(self, valeur):
+		val_min = c.J_INTERVAL_SCROLL[0]
+		val_max = c.J_INTERVAL_SCROLL[1]
+		nb_steps = c.J_STEP_SCROLL
+		valeur_corrigee = -valeur
+		if valeur_corrigee > +0.9 : valeur_corrigee = +1.0
+		if valeur_corrigee < -0.9 : valeur_corrigee = -1.0
+		ecart = int(m.floor(valeur_corrigee * nb_steps / (val_max - val_min)) - self.current_v)
+		self.current_v += ecart
+		if ecart > 0:
+			for i in range(ecart):
+				self.serveur.go_more(True)
+		if ecart < 0:
+			for i in range(-ecart):
+				self.serveur.go_less(True)
 		return True
 
 	def run(self):

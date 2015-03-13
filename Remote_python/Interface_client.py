@@ -67,7 +67,6 @@ class Interface_client_in(Thread):
 					mini_buffer = ""
 				else:
 					mini_buffer += msg[i]
-			print state
 			self.draw_monitor(state)
 		self.stop()
 
