@@ -14,6 +14,7 @@ void Remote_tcp::IO(){
 	Link_output("remote_power", &remote_power);
 	Link_output("remote_turn", &remote_turn);
 	Link_output("remote_pitch", &remote_pitch);
+	Link_output("remote_deriv", &remote_deriv);
 }
 
 void Remote_tcp::Wait_quit_from_user(){
@@ -28,6 +29,8 @@ void Remote_tcp::Wait_quit_from_user(){
 		else if (key == 'R')	{remote_turn = (char) *(msg_in + sizeof(char)) == '1' ? +1.0 : 0.;}
 		else if (key == 'U')	{remote_pitch = (char) *(msg_in + sizeof(char)) == '1' ? +1.0 : 0.;}
 		else if (key == 'D')	{remote_pitch = (char) *(msg_in + sizeof(char)) == '1' ? -1.0 : 0.;}
+		else if (key == 'W')	{remote_deriv = (char) *(msg_in + sizeof(char)) == '1' ? -1.0 : 0.;}
+		else if (key == 'X')	{remote_deriv = (char) *(msg_in + sizeof(char)) == '1' ? +1.0 : 0.;}
 		else if (key == 'Q')	{usleep(2000000); tcp_server_in.Close(); break;}
 		Smooth_order();
 		Critical_send();

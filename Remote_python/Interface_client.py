@@ -28,6 +28,8 @@ class Interface_client_out(object):
 	def go_right(self, activer):		self.envoyer("R" + ("1" if activer else "0"))
 	def go_up(self, activer):			self.envoyer("U" + ("1" if activer else "0"))
 	def go_down(self, activer):			self.envoyer("D" + ("1" if activer else "0"))
+	def deriv_left(self, activer):		self.envoyer("W" + ("1" if activer else "0"))
+	def deriv_right(self, activer):		self.envoyer("X" + ("1" if activer else "0"))
 	def go_more(self, activer):			self.envoyer("+")
 	def go_less(self, activer):			self.envoyer("-")
 	def remote_enable(self, activer):	self.envoyer("A" if activer else "Z")

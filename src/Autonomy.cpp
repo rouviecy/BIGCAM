@@ -20,11 +20,13 @@ void Autonomy::IO(){
 	Link_input("remote_power", &remote_power);
 	Link_input("remote_turn", &remote_turn);
 	Link_input("remote_pitch", &remote_pitch);
+	Link_input("remote_deriv", &remote_deriv);
 
 	Link_output("v_motor", &v_motor);
 	Link_output("stab", &stab);
 	Link_output("wing_left", &wing_left);
 	Link_output("wing_right", &wing_right);
+	Link_output("deriv", &deriv);
  }
 
 void Autonomy::Job(){
@@ -33,10 +35,9 @@ void Autonomy::Job(){
 	if(is_remote > -0.5){
 		v_motor = remote_power;
 		stab = remote_pitch;
+		deriv = remote_deriv;
 		float Kp = 1./(M_PI/3.-0.2);
 		if(thy < -0.2){
-//cout << "remote " << endl;
-//cout << "autre " << Kp*(thy+0.2) << endl;
 			wing_left = -max(-1.,Kp*(thy+0.2)-remote_turn);
 			wing_right = min(1.,-Kp*(thy+0.2)+remote_turn);
 		}

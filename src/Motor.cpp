@@ -11,6 +11,7 @@ Motor::~Motor(){
 	Generate_order(50,	CHANNEL_LEFT);
 	Generate_order(50,	CHANNEL_RIGHT);
 	Generate_order(50,	CHANNEL_BACK);
+	Generate_order(50,	CHANNEL_DERIV);
 }
 
 void Motor::IO(){
@@ -18,6 +19,7 @@ void Motor::IO(){
 	Link_input("wing_left", &wing_left);
 	Link_input("wing_right", &wing_right);
 	Link_input("stab", &stab);
+	Link_input("deriv", &deriv);
 }
 
 void Motor::Job(){
@@ -26,10 +28,12 @@ void Motor::Job(){
 	int pwm_left	= (int) ((1. + wing_left) * 50.);
 	int pwm_right	= (int) ((1. + wing_right) * 50.);
 	int pwm_back	= (int) ((1. + stab) * 50.);
+	int pwm_deriv	= (int) ((1. + deriv) * 50.);
 	Generate_order(pwm_motor,	CHANNEL_MOTOR);
 	Generate_order(pwm_left,	CHANNEL_LEFT);
 	Generate_order(pwm_right,	CHANNEL_RIGHT);
 	Generate_order(pwm_back,	CHANNEL_BACK);
+	Generate_order(pwm_deriv,	CHANNEL_DERIV);
 }
 
 void Motor::Generate_order(int pwm_0_to_100, int channel){

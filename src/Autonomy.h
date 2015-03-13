@@ -32,10 +32,12 @@ private:
 	float	remote_power;
 	float	remote_turn;
 	float	remote_pitch;
+	float	remote_deriv;
 
 	float	v_motor;
 	float	stab;
 	float	wing_left, wing_right;
+	float	deriv;
 
 	void Job();
 	void IO();

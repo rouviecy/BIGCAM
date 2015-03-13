@@ -30,6 +30,7 @@ private:
 	float remote_power;
 	float remote_turn;
 	float remote_pitch;
+	float remote_deriv;
 
 	void Job();
 	void IO();

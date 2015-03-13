@@ -113,6 +113,30 @@ class GUI(Thread):
 				elif	self.joystick_WE == +1:
 					self.joystick_WE = 0
 					self.serveur.go_right(False)
+		if		axe == c.J_AXIS_ROT:
+			if c.J_INTERVAL_L[0] <= valeur <= c.J_INTERVAL_L[1]:
+				if		self.joystick_ROT == 0:
+					self.joystick_ROT = -1
+					self.serveur.deriv_left(True)
+				elif	self.joystick_ROT == 1:
+					self.joystick_ROT = -1
+					self.serveur.deriv_right(False)
+					self.serveur.deriv_left(True)
+			elif	c.J_INTERVAL_R[0] <= valeur <= c.J_INTERVAL_R[1]:
+				if		self.joystick_ROT == 0:
+					self.joystick_ROT = +1
+					self.serveur.deriv_right(True)
+				elif	self.joystick_ROT == -1:
+					self.joystick_ROT = +1
+					self.serveur.deriv_left(False)
+					self.serveur.deriv_right(True)
+			elif	c.J_INTERVAL_0ROT[0] <= valeur <= c.J_INTERVAL_0ROT[1]:
+				if		self.joystick_ROT == -1:
+					self.joystick_ROT = 0
+					self.serveur.deriv_left(False)
+				elif	self.joystick_ROT == +1:
+					self.joystick_ROT = 0
+					self.serveur.deriv_right(False)
 		return True
 
 	def action_hat(self, hat, valeur):

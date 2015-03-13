@@ -30,6 +30,7 @@ private:
 	#define CHANNEL_LEFT	1
 	#define CHANNEL_RIGHT	2
 	#define CHANNEL_BACK	3
+	#define CHANNEL_DERIV	4
 
 	void Job();
 	void IO();
@@ -38,11 +39,11 @@ private:
 	float wing_left;
 	float wing_right;
 	float stab;
+	float deriv;
 
 	int fd;
 
 	void Generate_order(int pwm_0_to_100, int channel);
-	void Generate_order2(int pwm_0_to_100, int channel);
 
 };
 
