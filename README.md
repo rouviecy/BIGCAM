@@ -4,9 +4,9 @@ Student project : designing, build and program an autonomous plane in order to m
 ## Status
 +    **[DONE]** Communication between threads
 +    **[TODO]** State management
-+    **[TODO]** Take decisions
-+    **[GOON]** Gathering data from sensors
-+    **[TODO]** Control actuators
++    **[DONE]** Take decisions
++    **[DONE]** Gathering data from sensors
++    **[DONE]** Control actuators
 +    **[DONE]** Remote control and monitoring by TCP and joystick/keyboard
 +    **[DONE]** Tag camera images
 +    **[DONE]** Assemble camera images to build a map
@@ -44,7 +44,7 @@ Remember to adjust `MODE_RASPI` and `MODE_SIMU_CAM` in `CMakeLists.txt` to enabl
 ## GUI on remote controller
 +    Press `q` to quit
 +    Press `a`/`z` (or `A`/`B` on joystick) to activate or desactivate remote control
-+    Press `LEFT`/`RIGHT` (or `axis_rot_left`/`axis_rot_right` on joystick) to turn to left or right
++    Press `LEFT`/`RIGHT` (or `axis_left`/`axis_right` on joystick) to turn to left or right
 +    Press `+`/`-` (or `hat_up`/`hat_down` on joystick) to step on the gas or slow down
 
 ## For Raspberry Pi
