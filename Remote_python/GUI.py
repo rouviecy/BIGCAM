@@ -66,7 +66,6 @@ class GUI(Thread):
 		if		axe == c.J_AXIS_SCROLL:	self.action_scroll(valeur)
 		if		axe == c.J_AXIS_NS:		self.action_NS(valeur)
 		if		axe == c.J_AXIS_WE:		self.action_WE(valeur)
-#		if		axe == c.J_AXIS_ROT:	self.action_ROT(valeur)
 		return True
 
 	def action_hat(self, hat, valeur):
@@ -83,56 +82,28 @@ class GUI(Thread):
 		return True
 
 	def action_scroll(self, valeur):
-		val_min = c.J_INTERVAL_SCROLL[0]
-		val_max = c.J_INTERVAL_SCROLL[1]
-		nb_steps = c.J_STEP_SCROLL
-		valeur_corrigee = -valeur
-		if valeur_corrigee > +0.95 : valeur_corrigee = +1.0
-		if valeur_corrigee < -0.95 : valeur_corrigee = -1.0
-		power = int(m.floor(valeur_corrigee * (nb_steps - 1) / (val_max - val_min)) + 5)
-		if power < 1:	power = 0
-		if power > 8:	power = 9
+		power = self.calib_power(-valeur, c.J_INTERVAL_SCROLL[0], c.J_INTERVAL_SCROLL[1], c.J_STEP_SCROLL)
 		self.serveur.set_velocity(power)
 		return True
 
 	def action_NS(self, valeur):
-		val_min = c.J_INTERVAL_NS[0]
-		val_max = c.J_INTERVAL_NS[1]
-		nb_steps = c.J_STEP_NS
-		valeur_corrigee = -valeur
-		if valeur_corrigee > +0.95 : valeur_corrigee = +1.0
-		if valeur_corrigee < -0.95 : valeur_corrigee = -1.0
-		power = int(m.floor(valeur_corrigee * (nb_steps - 1) / (val_max - val_min)) + 5)
-		if power < 1:	power = 0
-		if power > 8:	power = 9
+		power = self.calib_power(-valeur, c.J_INTERVAL_NS[0], c.J_INTERVAL_NS[1], c.J_STEP_NS)
 		self.serveur.set_back(power)
 		return True
 
 	def action_WE(self, valeur):
-		val_min = c.J_INTERVAL_WE[0]
-		val_max = c.J_INTERVAL_WE[1]
-		nb_steps = c.J_STEP_WE
-		valeur_corrigee = +valeur
-		if valeur_corrigee > +0.95 : valeur_corrigee = +1.0
-		if valeur_corrigee < -0.95 : valeur_corrigee = -1.0
-		power = int(m.floor(valeur_corrigee * (nb_steps - 1) / (val_max - val_min)) + 5)
-		if power < 1:	power = 0
-		if power > 8:	power = 9
+		power = self.calib_power(+valeur, c.J_INTERVAL_WE[0], c.J_INTERVAL_WE[1], c.J_STEP_WE)
 		self.serveur.set_turn(power)
 		return True
 
-	def action_ROT(self, valeur):
-		val_min = c.J_INTERVAL_ROT[0]
-		val_max = c.J_INTERVAL_ROT[1]
-		nb_steps = c.J_STEP_ROT
-		valeur_corrigee = -valeur
+	def calib_power(self, valeur, minimum, maximum, nb_steps):
+		valeur_corrigee = valeur
 		if valeur_corrigee > +0.95 : valeur_corrigee = +1.0
 		if valeur_corrigee < -0.95 : valeur_corrigee = -1.0
-		power = int(m.floor(valeur_corrigee * (nb_steps - 1) / (val_max - val_min)) + 5)
+		power = int(m.floor(valeur_corrigee * (nb_steps - 1) / (maximum - minimum) + nb_steps / 2))
 		if power < 1:	power = 0
 		if power > 8:	power = 9
-		self.serveur.set_deriv(power)
-		return True
+		return power
 
 	def run(self):
 		continuer = True
