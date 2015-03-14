@@ -22,7 +22,7 @@ class GUI(Thread):
 		self.joystick_WE = 0
 		self.joystick_NS = 0
 		self.joystick_ROT = 0
-		self.current_v = 0
+		self.last_ping_alive = 0
 		self.clock = pygame.time.Clock()
 		self.serveur = serveur
 		self.initialisation()
@@ -106,6 +106,11 @@ class GUI(Thread):
 	def run(self):
 		continuer = True
 		while continuer:
+			if self.last_ping_alive > 10:
+				self.last_ping_alive = 0
+				self.serveur.keep_connection_alive()
+			else:
+				self.last_ping_alive += 1
 			for event in pygame.event.get():
 				if		event.type == QUIT:				continuer = False
 				elif	event.type == KEYDOWN:			continuer = self.action_clavier(True, event.key)

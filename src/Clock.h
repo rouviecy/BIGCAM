@@ -26,6 +26,12 @@ private:
 	void IO();
 
 	float t;
+	float switch_alive;
+	float connection_alive;
+	float is_remote;
+	float prev_switch_alive;
+	float prev_t_alive;
+
 	std::chrono::high_resolution_clock::time_point start;
 	std::chrono::high_resolution_clock::time_point now;
 

@@ -26,7 +26,7 @@ private:
 
 	Tcp_server tcp_server_in;
 
-	float t;
+	float switch_alive;
 	float is_remote;
 	float remote_power;
 	float remote_turn;

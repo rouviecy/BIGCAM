@@ -17,6 +17,7 @@ void Autonomy::IO(){
 	Link_input("vthx", &vthx);	Link_input("vthy", &vthy);	Link_input("vthz", &vthz);
 
 	Link_input("is_remote", &is_remote);
+	Link_input("connection_alive", &connection_alive);
 	Link_input("remote_power", &remote_power);
 	Link_input("remote_turn", &remote_turn);
 	Link_input("remote_pitch", &remote_pitch);
@@ -31,8 +32,17 @@ void Autonomy::IO(){
 
 void Autonomy::Job(){
 	Critical_receive();
+	// LOST CONNECTION
+	if(connection_alive < 0.){
+		v_motor = 0.;
+		stab = 0.;
+		deriv = 0.;
+		wing_left = 0.;
+		wing_right = 0.;
+		cout << "Lost connection !" << endl;
+	}
 	// SEMI-AUTO
-	if(is_remote > -0.5){
+	else if(is_remote > -0.5){
 		v_motor = remote_power;
 		stab = remote_pitch;
 		deriv = remote_deriv;

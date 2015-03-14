@@ -3,7 +3,8 @@
 using namespace std;
 
 Remote_tcp::Remote_tcp() : ComThread(){
-	is_remote = +1.;
+	is_remote = -1.;
+	switch_alive = +1.;
 	remote_power = 0.;
 	remote_turn = 0.;
 	tcp_server_in.Configure(TCP_PORT_IN);
@@ -11,6 +12,7 @@ Remote_tcp::Remote_tcp() : ComThread(){
 
 void Remote_tcp::IO(){
 	Link_output("is_remote", &is_remote);
+	Link_output("switch_alive", &switch_alive);
 	Link_output("remote_power", &remote_power);
 	Link_output("remote_turn", &remote_turn);
 	Link_output("remote_pitch", &remote_pitch);
@@ -18,11 +20,13 @@ void Remote_tcp::IO(){
 }
 
 void Remote_tcp::Wait_quit_from_user(){
+	is_remote = +1.;
 	for(;;){
 		char* msg_in = tcp_server_in.Receive();
 		char key = (char) *msg_in;
 		if		(key == 'A')	{is_remote = +1.;}
 		else if (key == 'Z')	{is_remote = -1.;}
+		else if (key == 'S')	{switch_alive = switch_alive < 0 ? +1. : -1.;}
 		else if (key == '+')	{remote_power += 0.1;}
 		else if (key == '-')	{remote_power -= 0.1;}
 		else if (key == 'L')	{remote_turn = (char) *(msg_in + sizeof(char)) == '1' ? -1.0 : 0.;}

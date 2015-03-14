@@ -24,6 +24,7 @@ class Interface_client_out(object):
 		self.s	= socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.s.connect((host, port))
 
+	def keep_connection_alive(self):	self.envoyer("S")
 	def go_left(self, activer):			self.envoyer("L" + ("1" if activer else "0"))
 	def go_right(self, activer):		self.envoyer("R" + ("1" if activer else "0"))
 	def go_up(self, activer):			self.envoyer("U" + ("1" if activer else "0"))

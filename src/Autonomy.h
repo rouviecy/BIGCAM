@@ -29,6 +29,7 @@ private:
 	float	vthx,	vthy,	vthz;
 
 	float	is_remote;
+	float	connection_alive;
 	float	remote_power;
 	float	remote_turn;
 	float	remote_pitch;
