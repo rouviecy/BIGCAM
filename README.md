@@ -45,7 +45,9 @@ Remember to adjust `MODE_RASPI` and `MODE_SIMU_CAM` in `CMakeLists.txt` to enabl
 +    Press `q` to quit
 +    Press `a`/`z` (or `A`/`B` on joystick) to activate or desactivate remote control
 +    Press `LEFT`/`RIGHT` (or `axis_left`/`axis_right` on joystick) to turn to left or right
-+    Press `+`/`-` (or `hat_up`/`hat_down` on joystick) to step on the gas or slow down
++    Press `UP`/`DOWN` (or `axis_up`/`axis_down` on joystick) to control horizontal tailfin
++    Press [not implemented on keyboard yet] (or `hat_left`/`hat_right` on joystick) to control vertical tailfin
++    Press `+`/`-` (or scroll on joystick) to step on the gas or slow down
 
 ## For Raspberry Pi
 Install packages to compile
