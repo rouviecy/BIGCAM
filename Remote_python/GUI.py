@@ -63,90 +63,23 @@ class GUI(Thread):
 		return True
 
 	def action_joystick_axe(self, axe, valeur):
-		if		axe == c.J_AXIS_SCROLL:
-			self.action_scroll(valeur)
-		if		axe == c.J_AXIS_NS:
-			if c.J_INTERVAL_N[0] <= valeur <= c.J_INTERVAL_N[1]:
-				if		self.joystick_NS == 0:
-					self.joystick_NS = -1
-					self.serveur.go_up(True)
-				elif	self.joystick_NS == 1:
-					self.joystick_NS = -1
-					self.serveur.go_down(False)
-					self.serveur.go_up(True)
-			elif	c.J_INTERVAL_S[0] <= valeur <= c.J_INTERVAL_S[1]:
-				if		self.joystick_NS == 0:
-					self.joystick_NS = +1
-					self.serveur.go_down(True)
-				elif	self.joystick_NS == -1:
-					self.joystick_NS = +1
-					self.serveur.go_up(False)
-					self.serveur.go_down(True)
-			elif	c.J_INTERVAL_0NS[0] <= valeur <= c.J_INTERVAL_0NS[1]:
-				if		self.joystick_NS == -1:
-					self.joystick_NS = 0
-					self.serveur.go_up(False)
-				elif	self.joystick_NS == +1:
-					self.joystick_NS = 0
-					self.serveur.go_down(False)
-		if		axe == c.J_AXIS_WE:
-			if c.J_INTERVAL_W[0] <= valeur <= c.J_INTERVAL_W[1]:
-				if		self.joystick_WE == 0:
-					self.joystick_WE = -1
-					self.serveur.go_left(True)
-				elif	self.joystick_WE == 1:
-					self.joystick_WE = -1
-					self.serveur.go_right(False)
-					self.serveur.go_left(True)
-			elif	c.J_INTERVAL_E[0] <= valeur <= c.J_INTERVAL_E[1]:
-				if		self.joystick_WE == 0:
-					self.joystick_WE = +1
-					self.serveur.go_right(True)
-				elif	self.joystick_WE == -1:
-					self.joystick_WE = +1
-					self.serveur.go_left(False)
-					self.serveur.go_right(True)
-			elif	c.J_INTERVAL_0WE[0] <= valeur <= c.J_INTERVAL_0WE[1]:
-				if		self.joystick_WE == -1:
-					self.joystick_WE = 0
-					self.serveur.go_left(False)
-				elif	self.joystick_WE == +1:
-					self.joystick_WE = 0
-					self.serveur.go_right(False)
-		if		axe == c.J_AXIS_ROT:
-			if c.J_INTERVAL_L[0] <= valeur <= c.J_INTERVAL_L[1]:
-				if		self.joystick_ROT == 0:
-					self.joystick_ROT = -1
-					self.serveur.deriv_left(True)
-				elif	self.joystick_ROT == 1:
-					self.joystick_ROT = -1
-					self.serveur.deriv_right(False)
-					self.serveur.deriv_left(True)
-			elif	c.J_INTERVAL_R[0] <= valeur <= c.J_INTERVAL_R[1]:
-				if		self.joystick_ROT == 0:
-					self.joystick_ROT = +1
-					self.serveur.deriv_right(True)
-				elif	self.joystick_ROT == -1:
-					self.joystick_ROT = +1
-					self.serveur.deriv_left(False)
-					self.serveur.deriv_right(True)
-			elif	c.J_INTERVAL_0ROT[0] <= valeur <= c.J_INTERVAL_0ROT[1]:
-				if		self.joystick_ROT == -1:
-					self.joystick_ROT = 0
-					self.serveur.deriv_left(False)
-				elif	self.joystick_ROT == +1:
-					self.joystick_ROT = 0
-					self.serveur.deriv_right(False)
+		if		axe == c.J_AXIS_SCROLL:	self.action_scroll(valeur)
+		if		axe == c.J_AXIS_NS:		self.action_NS(valeur)
+		if		axe == c.J_AXIS_WE:		self.action_WE(valeur)
+#		if		axe == c.J_AXIS_ROT:	self.action_ROT(valeur)
 		return True
 
 	def action_hat(self, hat, valeur):
-#		if hat != c.J_HAT_HEAD: return True
-#		elif	valeur == c.J_HAT_N :	self.serveur.go_more(True)
-#		elif	valeur == c.J_HAT_S :	self.serveur.go_less(True)
-#		elif	valeur == c.J_HAT_NE :	self.serveur.go_more(True)
-#		elif	valeur == c.J_HAT_SE :	self.serveur.go_less(True)
-#		elif	valeur == c.J_HAT_SW :	self.serveur.go_less(True)
-#		elif	valeur == c.J_HAT_NW :	self.serveur.go_more(True)
+		if hat != c.J_HAT_HEAD: return True
+		elif	valeur == c.J_HAT_W :	self.serveur.deriv_right(True)
+		elif	valeur == c.J_HAT_E :	self.serveur.deriv_left(True)
+		elif	valeur == c.J_HAT_NW :	self.serveur.deriv_right(True)
+		elif	valeur == c.J_HAT_SW :	self.serveur.deriv_right(True)
+		elif	valeur == c.J_HAT_NE :	self.serveur.deriv_left(True)
+		elif	valeur == c.J_HAT_SE :	self.serveur.deriv_left(True)
+		elif	valeur == c.J_HAT_N :	self.serveur.deriv_left(False)
+		elif	valeur == c.J_HAT_S :	self.serveur.deriv_left(False)
+		elif	valeur == c.J_HAT_0 :	self.serveur.deriv_left(False)
 		return True
 
 	def action_scroll(self, valeur):
@@ -154,16 +87,51 @@ class GUI(Thread):
 		val_max = c.J_INTERVAL_SCROLL[1]
 		nb_steps = c.J_STEP_SCROLL
 		valeur_corrigee = -valeur
-		if valeur_corrigee > +0.9 : valeur_corrigee = +1.0
-		if valeur_corrigee < -0.9 : valeur_corrigee = -1.0
-		ecart = int(m.floor(valeur_corrigee * nb_steps / (val_max - val_min)) - self.current_v)
-		self.current_v += ecart
-		if ecart > 0:
-			for i in range(ecart):
-				self.serveur.go_more(True)
-		if ecart < 0:
-			for i in range(-ecart):
-				self.serveur.go_less(True)
+		if valeur_corrigee > +0.95 : valeur_corrigee = +1.0
+		if valeur_corrigee < -0.95 : valeur_corrigee = -1.0
+		power = int(m.floor(valeur_corrigee * (nb_steps - 1) / (val_max - val_min)) + 5)
+		if power < 1:	power = 0
+		if power > 8:	power = 9
+		self.serveur.set_velocity(power)
+		return True
+
+	def action_NS(self, valeur):
+		val_min = c.J_INTERVAL_NS[0]
+		val_max = c.J_INTERVAL_NS[1]
+		nb_steps = c.J_STEP_NS
+		valeur_corrigee = -valeur
+		if valeur_corrigee > +0.95 : valeur_corrigee = +1.0
+		if valeur_corrigee < -0.95 : valeur_corrigee = -1.0
+		power = int(m.floor(valeur_corrigee * (nb_steps - 1) / (val_max - val_min)) + 5)
+		if power < 1:	power = 0
+		if power > 8:	power = 9
+		self.serveur.set_back(power)
+		return True
+
+	def action_WE(self, valeur):
+		val_min = c.J_INTERVAL_WE[0]
+		val_max = c.J_INTERVAL_WE[1]
+		nb_steps = c.J_STEP_WE
+		valeur_corrigee = +valeur
+		if valeur_corrigee > +0.95 : valeur_corrigee = +1.0
+		if valeur_corrigee < -0.95 : valeur_corrigee = -1.0
+		power = int(m.floor(valeur_corrigee * (nb_steps - 1) / (val_max - val_min)) + 5)
+		if power < 1:	power = 0
+		if power > 8:	power = 9
+		self.serveur.set_turn(power)
+		return True
+
+	def action_ROT(self, valeur):
+		val_min = c.J_INTERVAL_ROT[0]
+		val_max = c.J_INTERVAL_ROT[1]
+		nb_steps = c.J_STEP_ROT
+		valeur_corrigee = -valeur
+		if valeur_corrigee > +0.95 : valeur_corrigee = +1.0
+		if valeur_corrigee < -0.95 : valeur_corrigee = -1.0
+		power = int(m.floor(valeur_corrigee * (nb_steps - 1) / (val_max - val_min)) + 5)
+		if power < 1:	power = 0
+		if power > 8:	power = 9
+		self.serveur.set_deriv(power)
 		return True
 
 	def run(self):
