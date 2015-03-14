@@ -15,8 +15,10 @@ Robot::Robot(){
 	threads.push_back(&motor);
 	threads.push_back(&pressure);
 	threads.push_back(&remote_tcp);
-	threads.push_back(&simulator);
 	threads.push_back(&state);
+	#ifndef MODE_RASPI
+		threads.push_back(&simulator);
+	#endif
 
 	clock.Set_name("Internal clock");			clock.Set_freq(1000);		// 1 ms
 	imu.Set_name("Inertial Measurement Unit");	imu.Set_freq(50000);		// 50 ms

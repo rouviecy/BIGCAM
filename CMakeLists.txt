@@ -3,8 +3,8 @@ project(BIGCAM)
 
 find_package(PkgConfig)
 
-set(MODE_RASPI OFF)
-set(MODE_SIMU_CAM ON)
+set(MODE_RASPI ON)
+set(MODE_SIMU_CAM OFF)
 
 add_definitions(-DTCP_BUFFER_LEN=1024)
 add_definitions(-DTCP_PORT_IN=4242)

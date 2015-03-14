@@ -24,16 +24,18 @@ void Motor::IO(){
 
 void Motor::Job(){
 	Critical_receive();
-	int pwm_motor	= (int) (v_motor * 100.);
-	int pwm_left	= (int) ((1. + wing_left) * 50.);
-	int pwm_right	= (int) ((1. + wing_right) * 50.);
-	int pwm_back	= (int) ((1. + stab) * 50.);
-	int pwm_deriv	= (int) ((1. + deriv) * 50.);
-	Generate_order(pwm_motor,	CHANNEL_MOTOR);
-	Generate_order(pwm_left,	CHANNEL_LEFT);
-	Generate_order(pwm_right,	CHANNEL_RIGHT);
-	Generate_order(pwm_back,	CHANNEL_BACK);
-	Generate_order(pwm_deriv,	CHANNEL_DERIV);
+	#ifdef MODE_RASPI
+		int pwm_motor	= (int) (v_motor * 100.);
+		int pwm_left	= (int) ((1. + wing_left) * 50.);
+		int pwm_right	= (int) ((1. + wing_right) * 50.);
+		int pwm_back	= (int) ((1. + stab) * 50.);
+		int pwm_deriv	= (int) ((1. + deriv) * 50.);
+		Generate_order(pwm_motor,	CHANNEL_MOTOR);
+		Generate_order(pwm_left,	CHANNEL_LEFT);
+		Generate_order(pwm_right,	CHANNEL_RIGHT);
+		Generate_order(pwm_back,	CHANNEL_BACK);
+		Generate_order(pwm_deriv,	CHANNEL_DERIV);
+	#endif
 }
 
 void Motor::Generate_order(int pwm_0_to_100, int channel){
