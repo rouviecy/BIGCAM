@@ -98,11 +98,9 @@ class GUI(Thread):
 
 	def calib_power(self, valeur, minimum, maximum, nb_steps):
 		valeur_corrigee = valeur
-		if valeur_corrigee > +0.95 : valeur_corrigee = +1.0
-		if valeur_corrigee < -0.95 : valeur_corrigee = -1.0
-		power = int(m.floor(valeur_corrigee * (nb_steps - 1) / (maximum - minimum) + nb_steps / 2))
-		if power < 1:	power = 0
-		if power > 8:	power = 9
+		if valeur_corrigee > maximum - 0.05 : valeur_corrigee = maximum
+		if valeur_corrigee < minimum + 0.05 : valeur_corrigee = minimum
+		power = min(max(int(m.floor(valeur_corrigee * (nb_steps - 1) / (maximum - minimum) + nb_steps / 2)), 0), 9)
 		return power
 
 	def run(self):
