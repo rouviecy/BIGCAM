@@ -24,7 +24,9 @@ void Imu::IO(){
 	Link_output("imu_thx", &imu_thx);
 	Link_output("imu_thy", &imu_thy);
 	Link_output("imu_thz", &imu_thz);
-	Link_input("simu_compas", &simu_compas);
+	#ifndef MODE_RASPI
+		Link_input("simu_compas", &simu_compas);
+	#endif
 }
 
 void Imu::Job(){

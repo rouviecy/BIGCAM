@@ -26,9 +26,10 @@ Gps::Gps() : Proprioceptive(){
 void Gps::IO(){
 	Link_output("gps_x", &gps_x);
 	Link_output("gps_y", &gps_y);
-
-	Link_input("simu_gps_x", &simu_gps_x);
-	Link_input("simu_gps_y", &simu_gps_y);
+	#ifndef MODE_RASPI
+		Link_input("simu_gps_x", &simu_gps_x);
+		Link_input("simu_gps_y", &simu_gps_y);
+	#endif
 }
 
 void Gps::Job(){

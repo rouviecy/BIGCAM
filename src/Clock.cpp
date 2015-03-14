@@ -12,7 +12,8 @@ Clock::Clock() : Proprioceptive(){
 void Clock::IO(){
 	Link_input("switch_alive", &switch_alive);
 	Link_input("is_remote", &is_remote);
-	Link_output("t", &t);	
+	Link_output("connection_alive", &connection_alive);
+	Link_output("t", &t);
 }
 
 void Clock::Job(){
