@@ -8,6 +8,7 @@ Student project : designing, build and program an autonomous plane in order to m
 +    **[DONE]** Gathering data from sensors
 +    **[DONE]** Control actuators
 +    **[DONE]** Remote control and monitoring by TCP and joystick/keyboard
++    **[TODO]** Autonomous control
 +    **[DONE]** Tag camera images
 +    **[DONE]** Assemble camera images to build a map
 +    **[DONE]** Easy UI to manage and monitor robot(s)
@@ -46,7 +47,7 @@ Remember to adjust `MODE_RASPI` and `MODE_SIMU_CAM` in `CMakeLists.txt` to enabl
 +    Press `a`/`z` (or `A`/`B` on joystick) to activate or desactivate remote control
 +    Press `LEFT`/`RIGHT` (or `axis_left`/`axis_right` on joystick) to turn to left or right
 +    Press `UP`/`DOWN` (or `axis_up`/`axis_down` on joystick) to control horizontal tailfin
-+    Press [not implemented on keyboard yet] (or `hat_left`/`hat_right` on joystick) to control vertical tailfin
++    Press `not implemented on keyboard yet` (or `hat_left`/`hat_right` on joystick) to control vertical tailfin
 +    Press `+`/`-` (or scroll on joystick) to step on the gas or slow down
 
 ## For Raspberry Pi
