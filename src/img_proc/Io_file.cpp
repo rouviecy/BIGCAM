@@ -36,7 +36,8 @@ vector <struct_img> Io_file::Read(){
 			struct_img nv_img;
 			nv_img.path =	tokens[0] + tokens[1] + ".png";
 			nv_img.number =	stof(tokens[1]);
-			nv_img.img =	cv::imread(nv_img.path);
+			nv_img.img =	cv::imread(nv_img.path).t();
+			cv::flip(nv_img.img, nv_img.img, 0);
 			nv_img.x =		stof(tokens[2]);
 			nv_img.y =		stof(tokens[3]);
 			nv_img.z =		stof(tokens[4]);
