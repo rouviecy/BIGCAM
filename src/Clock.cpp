@@ -25,6 +25,7 @@ void Clock::Job(){
 	if(prev_switch_alive * switch_alive < 0.5){
 		prev_switch_alive = switch_alive;
 		prev_t_alive = t;
+		connection_alive = +1.;
 	}
 	else if(t - prev_t_alive > 2. && is_remote > 0.5){
 		connection_alive = -1.;
