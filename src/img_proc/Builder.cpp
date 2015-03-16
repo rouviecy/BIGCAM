@@ -12,8 +12,8 @@ void Builder::Retrieve_pictures(){
 
 void Builder::Build(){
 	for(size_t i = 0; i < list_img.size(); i++){
-		list_img[i].x_map = (int) ((float) list_img[i].x * 600.);
-		list_img[i].y_map = (int) ((float) list_img[i].y * 600.);
+		list_img[i].x_map = (int) ((float) list_img[i].x * 10.);
+		list_img[i].y_map = (int) ((float) list_img[i].y * 10.);
 	}
 	int x_offset = list_img[0].x_map; int x_max = x_offset;
 	int y_offset = list_img[0].y_map; int y_max = y_offset;
@@ -31,7 +31,7 @@ void Builder::Build(){
 		if(last_position == position){continue;}
 		last_position = position;
 		Mask::Pick_and_place(list_img[i].img, bigmap, position, list_img[i].thz * 57.296);
-		tracking.Set_img_next(list_img[i].img);
+/*		tracking.Set_img_next(list_img[i].img);
 		if(i > 0){
 			tracking.Set_img_prev(list_img[i - 1].img);
 			tracking.GoodFeatures(50);
@@ -49,7 +49,7 @@ void Builder::Build(){
 				amers.push_back(new_link);
 			}
 		}
-	}
+*/	}
 	for(size_t i = 0; i < amers.size(); i++){
 		for(size_t j = 0; j < amers[i].amers_next.size(); j++){
 			// TODO : corriger erreur de formule ... peut-être cos() * (truc + ???)
