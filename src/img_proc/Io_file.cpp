@@ -38,15 +38,17 @@ vector <struct_img> Io_file::Read(){
 			nv_img.number =	stof(tokens[1]);
 			#ifdef MODE_SIMU_CAM
 				nv_img.img = cv::imread(nv_img.path);
+				nv_img.x = stof(tokens[2]);
 			#else
 				#ifdef MODE_RASPI
 					nv_img.img = cv::imread(nv_img.path).t();
 	//				cv::flip(nv_img.img, nv_img.img, 0);
+					nv_img.x = -stof(tokens[2]);
 				#else
 					nv_img.img = cv::imread(nv_img.path).t();
 				#endif
 			#endif
-			nv_img.x =		-stof(tokens[2]);
+
 			nv_img.y =		stof(tokens[3]);
 			nv_img.z =		stof(tokens[4]);
 			nv_img.thz =	stof(tokens[5]);
