@@ -7,6 +7,8 @@ Autonomy::Autonomy() : ComThread(){
 	stab = 0.;
 	wing_left = 0.;
 	wing_right = 0.;
+	secu_on = false;
+	t_begin_motor = 0.;
 }
 
 void Autonomy::IO(){
@@ -64,5 +66,14 @@ void Autonomy::Job(){
 	else{
 		
 	}
-	Critical_send();
+/*	if(!secu_on && v_motor > 0.1){
+		secu_on = true;
+		t_begin = t;
+	}
+	if(secu_on){
+		if(t > t_begin + 3.){
+			v_motor = 0.;
+		}
+	}
+*/	Critical_send();
 }

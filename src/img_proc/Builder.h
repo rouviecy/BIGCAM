@@ -52,6 +52,7 @@ private:
 	std::vector <struct_link_amers> amers;
 	
 	cv::Point last_position;
+	int compteur;
 
 };
 

@@ -4,6 +4,7 @@ using namespace std;
 
 Builder::Builder(){
 	last_position = cv::Point(0, 0);
+	compteur = 0;
 }
 
 void Builder::Retrieve_pictures(){
@@ -12,8 +13,13 @@ void Builder::Retrieve_pictures(){
 
 void Builder::Build(){
 	for(size_t i = 0; i < list_img.size(); i++){
-		list_img[i].x_map = (int) ((float) list_img[i].x * 10.);
-		list_img[i].y_map = (int) ((float) list_img[i].y * 10.);
+		#ifdef MODE_SIMU_CAM
+			list_img[i].x_map = (int) ((float) list_img[i].x * 10.);
+			list_img[i].y_map = (int) ((float) list_img[i].y * 10.);
+		#else
+			list_img[i].x_map = (int) ((float) list_img[i].x * 230.);
+			list_img[i].y_map = (int) ((float) list_img[i].y * 230.);
+		#endif
 	}
 	int x_offset = list_img[0].x_map; int x_max = x_offset;
 	int y_offset = list_img[0].y_map; int y_max = y_offset;
@@ -28,7 +34,9 @@ void Builder::Build(){
 	cv::Mat bigmap = cv::Mat::zeros(y_max - y_offset + MARGIN_X / 2, x_max - x_offset + MARGIN_Y / 2, CV_8UC3);
 	for(size_t i = 0; i < list_img.size(); i++){
 		cv::Point position(list_img[i].x_map - x_offset, list_img[i].y_map - y_offset);
-		if(last_position == position){continue;}
+		compteur++;
+		if(compteur == 3){compteur = 0;}
+		if(last_position == position || compteur != 0){continue;}
 		last_position = position;
 		Mask::Pick_and_place(list_img[i].img, bigmap, position, list_img[i].thz * 57.296);
 /*		tracking.Set_img_next(list_img[i].img);

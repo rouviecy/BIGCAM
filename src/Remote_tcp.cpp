@@ -29,8 +29,8 @@ void Remote_tcp::Wait_quit_from_user(){
 		else if (key == 'S')	{switch_alive = switch_alive < 0 ? +1. : -1.;}
 		else if (key == '+')	{remote_power += 0.1;}
 		else if (key == '-')	{remote_power -= 0.1;}
-		else if (key == 'L')	{remote_turn = (char) *(msg_in + sizeof(char)) == '1' ? -1.0 : 0.;}
-		else if (key == 'R')	{remote_turn = (char) *(msg_in + sizeof(char)) == '1' ? +1.0 : 0.;}
+		else if (key == 'L')	{remote_turn += (char) *(msg_in + sizeof(char)) == '1' ? -0.2 : 0.;}
+		else if (key == 'R')	{remote_turn += (char) *(msg_in + sizeof(char)) == '1' ? +0.2 : 0.;}
 		else if (key == 'U')	{remote_pitch = (char) *(msg_in + sizeof(char)) == '1' ? +1.0 : 0.;}
 		else if (key == 'D')	{remote_pitch = (char) *(msg_in + sizeof(char)) == '1' ? -1.0 : 0.;}
 		else if (key == 'W')	{remote_deriv = (char) *(msg_in + sizeof(char)) == '1' ? -1.0 : 0.;}

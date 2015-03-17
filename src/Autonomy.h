@@ -40,6 +40,9 @@ private:
 	float	wing_left, wing_right;
 	float	deriv;
 
+	float	t_begin_motor;
+	bool	secu_on;
+
 	void Job();
 	void IO();
 
