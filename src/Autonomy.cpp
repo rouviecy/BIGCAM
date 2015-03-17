@@ -47,7 +47,7 @@ void Autonomy::Job(){
 	else if(is_remote > -0.5){
 		v_motor = remote_power;
 		stab = remote_pitch;
-		deriv = remote_deriv;
+		//deriv = remote_deriv;
 		float Kp = 1./(M_PI/3.-0.2);
 		if(thy < -0.2){
 			wing_left = -max(-1.,Kp*(thy+0.2)-remote_turn);
@@ -61,6 +61,14 @@ void Autonomy::Job(){
 			wing_left = remote_turn;
 			wing_right = remote_turn;
 		}
+		
+		if(abs(remote_deriv - thz) > 0.1){
+			float angle =remote_deriv - thz;
+			if (angle > 0) angle = angle - 2*M_PI * ceil(angle/(2*M_PI));
+			deriv = -atan(fmod(angle - M_PI, 2*M_PI) + M_PI)*2/M_PI;
+		}
+		
+		
 	}
 	// FULL-AUTO
 	else{
