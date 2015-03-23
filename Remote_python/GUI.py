@@ -23,6 +23,9 @@ class GUI(Thread):
 		self.joystick_NS = 0
 		self.joystick_ROT = 0
 		self.last_ping_alive = 0
+		self.last_scroll = -42
+		self.last_NS = -42
+		self.last_WE = -42
 		self.clock = pygame.time.Clock()
 		self.serveur = serveur
 		self.initialisation()
@@ -83,17 +86,23 @@ class GUI(Thread):
 
 	def action_scroll(self, valeur):
 		power = self.calib_power(-valeur, c.J_INTERVAL_SCROLL[0], c.J_INTERVAL_SCROLL[1], c.J_STEP_SCROLL)
-		self.serveur.set_velocity(power)
+		if not power == self.last_scroll:
+			self.last_scroll = power
+			self.serveur.set_velocity(power)
 		return True
 
 	def action_NS(self, valeur):
 		power = self.calib_power(-valeur, c.J_INTERVAL_NS[0], c.J_INTERVAL_NS[1], c.J_STEP_NS)
-		self.serveur.set_back(power)
+		if not power == self.last_NS:
+			self.last_NS = power
+			self.serveur.set_back(power)
 		return True
 
 	def action_WE(self, valeur):
 		power = self.calib_power(+valeur, c.J_INTERVAL_WE[0], c.J_INTERVAL_WE[1], c.J_STEP_WE)
-		self.serveur.set_turn(power)
+		if not power == self.last_WE:
+			self.last_WE = power
+			self.serveur.set_turn(power)
 		return True
 
 	def calib_power(self, valeur, minimum, maximum, nb_steps):
