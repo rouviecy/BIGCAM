@@ -3,8 +3,8 @@ project(BIGCAM)
 
 find_package(PkgConfig)
 
-set(MODE_RASPI ON)
-set(MODE_SIMU_CAM OFF)
+set(MODE_RASPI OFF)
+set(MODE_SIMU_CAM ON)
 
 add_definitions(-DTCP_BUFFER_LEN=1024)
 add_definitions(-DTCP_PORT_IN=4242)
@@ -55,7 +55,7 @@ add_library(MYLIBS
 	src/Imu.h							src/Imu.cpp
 	src/Motor.h							src/Motor.cpp
 	src/Pressure.h						src/Pressure.cpp
-	src/Remote_tcp.h					src/Remote_tcp.cpp
+	src/Remote_rf.h					src/Remote_rf.cpp
 	src/Robot.h							src/Robot.cpp
 	src/Simulator.h						src/Simulator.cpp
 	src/Share.h							src/Share.cpp

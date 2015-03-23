@@ -11,6 +11,8 @@ https://github.com/rouviecy/NAO_TOOLS
 
 from threading import Thread
 import socket
+import serial
+import io
 import time
 import locale
 import cv2
@@ -20,9 +22,10 @@ import math as m
 class Interface_client_out(object):
 
 	def __init__(self, host):
-		port = 4242
-		self.s	= socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		self.s.connect((host, port))
+#		port = 4242
+#		self.s	= socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#		self.s.connect((host, port))
+		self.ser = serial.Serial("/dev/serial/by-id/usb-FTDI_TTL232R-3V3_FTH0D7TW-if00-port0", 4800, timeout=None)
 
 	def keep_connection_alive(self):	self.envoyer("S")
 	def go_left(self, activer):			self.envoyer("L" + ("1" if activer else "0"))
@@ -41,10 +44,16 @@ class Interface_client_out(object):
 	def quitter(self):
 		self.envoyer("Q")
 		time.sleep(1)
-		self.s.close()
+#		self.s.close()
+		self.ser.close()
 
 	def envoyer(self, message):
-		self.s.send(message.encode())
+#		self.s.send(message.encode())
+		if self.ser.isOpen():
+			self.ser.write(message + "\n")
+			print "send message" + message
+		else:
+			print "Serial not opened"
 
 class Interface_client_in(Thread):
 

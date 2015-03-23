@@ -14,7 +14,7 @@ Robot::Robot(){
 	threads.push_back(&imu);
 	threads.push_back(&motor);
 	threads.push_back(&pressure);
-	threads.push_back(&remote_tcp);
+	threads.push_back(&remote_rf);
 	threads.push_back(&state);
 	#ifndef MODE_RASPI
 		threads.push_back(&simulator);
@@ -27,14 +27,14 @@ Robot::Robot(){
 	autonomy.Set_name("Autonomy");				autonomy.Set_freq(10000);	// 10 ms
 	state.Set_name("State");					state.Set_freq(50000);		// 50 ms
 	simulator.Set_name("Simulator");			simulator.Set_freq(10000);	// 10 ms
-	remote_tcp.Set_name("Remote TCP");			remote_tcp.Set_freq(-1);	// manual loop
+	remote_rf.Set_name("Remote RF");			remote_rf.Set_freq(-1);		// manual loop
 	motor.Set_name("Motor");					motor.Set_freq(20000);		// 20 ms
 	camera.Set_name("Camera");					camera.Set_freq(100000);	// 100 ms
 
 	Link_all();
 	Launch_all();
 
-	remote_tcp.Wait_quit_from_user();
+	remote_rf.Wait_quit_from_user();
 
 	Join_all();
 }

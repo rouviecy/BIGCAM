@@ -20,7 +20,7 @@
 #include "Imu.h"
 #include "Motor.h"
 #include "Pressure.h"
-#include "Remote_tcp.h"
+#include "Remote_rf.h"
 #include "Share.h"
 #include "Simulator.h"
 #include "State.h"
@@ -49,7 +49,7 @@ private:
 	Imu			imu;
 	Motor		motor;
 	Pressure	pressure;
-	Remote_tcp	remote_tcp;
+	Remote_rf	remote_rf;
 	Simulator	simulator;
 	State		state;
 
