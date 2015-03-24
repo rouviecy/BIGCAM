@@ -12,33 +12,33 @@ add_definitions(-DTCP_PORT_OUT=4243)
 
 if(${MODE_RASPI})
 	add_definitions(-DMODE_RASPI)
-	find_package(OpenCV REQUIRED)
 	set(WiringPi_LIBS "-lwiringPi")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 	set(CMAKE_CXX_COMPILER g++-4.8)
 	set(LIBS
 		${WiringPi_LIBS}
-		${OpenCV_LIBS}
 	)
-	link_libraries(${LIBS})
 else(${MODE_RASPI})
 	find_package(OpenCV REQUIRED)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 	set(CMAKE_CXX_COMPILER g++-4.8.3)
-	set(LIBS
-		${OpenCV_LIBS}
-	)
-	link_libraries(${LIBS})
 endif(${MODE_RASPI})
 
 if(${MODE_SIMU_CAM})
 	add_definitions(-DMODE_SIMU_CAM)
 endif(${MODE_SIMU_CAM})
 
-find_package(SDL REQUIRED)
+pkg_search_module(SDL2 REQUIRED sdl2)
+pkg_search_module(SDL2TTF REQUIRED SDL2_ttf)
+find_package(OpenCV REQUIRED)
 set(LIBS
-	${SDL_LIBRARY}
+	${SDL2TTF_LIBRARIES}
+	${SDL2_LIBRARIES}
+	${OpenCV_LIBS}
 )
+link_libraries(${LIBS})
+
+include_directories(${SDL2TTF_INCLUDE_DIRS} ${SDL2_INCLUDE_DIRS})
 
 add_library(MYLIBS
 	src/img_proc/Io_file.h				src/img_proc/Io_file.cpp
@@ -61,6 +61,7 @@ add_library(MYLIBS
 	src/CPP_Remote.h					src/CPP_Remote.cpp
 	src/Gps.h							src/Gps.cpp
 	src/Imu.h							src/Imu.cpp
+	src/Monitor.h						src/Monitor.cpp
 	src/Motor.h							src/Motor.cpp
 	src/Pressure.h						src/Pressure.cpp
 	src/Remote_Joystick.h				src/Remote_Joystick.cpp

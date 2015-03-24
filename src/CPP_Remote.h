@@ -12,8 +12,10 @@
 #define CPP_REMOTE
 
 #include <vector>
+#include <SDL2/SDL.h>
 #include "utils/ComDraw.h"
 #include "utils/Serial.h"
+#include "Monitor.h"
 #include "Remote_Joystick.h"
 #include "Share.h"
 
@@ -36,6 +38,7 @@ private:
 	Share	share;
 
 	Remote_Joystick	joystick;
+	Monitor			monitor;
 
 };
 

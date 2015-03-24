@@ -14,7 +14,6 @@
 #include "stereotypes/ComThread.h"
 #include "utils/Joystick.h"
 #include "utils/Serial.h"
-#include <queue>
 
 class Remote_Joystick : public ComThread{
 

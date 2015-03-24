@@ -18,16 +18,11 @@ void Remote_Joystick::Wait_quit_from_user(){
 	int* buttons = joystick.Get_buttons();
 	int* axes = joystick.Get_axes();
 	int* hats = joystick.Get_hats();
-	queue <char> *keys = joystick.Get_keys();
 	bool continuer = true;
 	axes[3] = +36000; // force motor stopped at the begining
 	while(continuer){
 		joystick.Update_event();
-		for(int i = 0; i < keys->size(); i++){
-			char key = keys->front();
-			keys->pop();
-			if(key == 'q'){continuer = false; break;}
-		}
+		if(buttons[0]){continuer = false; break;}
 		Update_motor(Calib_power(-axes[3]));
 		Update_turn(Calib_power(axes[0]));
 		Update_balance(Calib_power(axes[1]));

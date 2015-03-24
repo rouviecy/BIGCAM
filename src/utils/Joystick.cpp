@@ -18,7 +18,6 @@ Joystick::~Joystick(){
 bool Joystick::Connect_joystick(int num_device){
 	if(SDL_Init(SDL_INIT_JOYSTICK) < 0){return false;}
 	if(SDL_NumJoysticks() < num_device - 1){return false;}
-	screen = SDL_SetVideoMode(640, 480, 32, SDL_HWSURFACE);
 	joystick = SDL_JoystickOpen(num_device);
 	this->num_device = num_device;
 	nb_buttons	= SDL_JoystickNumButtons(joystick);
@@ -50,7 +49,6 @@ void Joystick::Update_event(){
 			case SDL_JOYBUTTONUP:	buttons[event.jbutton.button] = 0;			break;
 			case SDL_JOYAXISMOTION:	axes[event.jaxis.axis] = event.jaxis.value;	break;
 			case SDL_JOYHATMOTION:	hats[event.jhat.hat] = event.jhat.value;	break;
-			case SDL_KEYDOWN:		keys.push(event.key.keysym.sym);			break;
 			default:															break;
 		}
 	}
@@ -61,7 +59,7 @@ void Joystick::Print_infos(){
 		cout << "Joystick disconnected" << endl;
 	}
 	else{
-		cout << "Joystick connected : " << SDL_JoystickName(num_device) << endl;
+		cout << "Joystick connected : " << SDL_JoystickName(joystick) << endl;
 		cout << "\tNb buttons : " << nb_buttons << endl;
 		cout << "\tNb axes : " << nb_axes << endl;
 		cout << "\tNb hats : " << nb_hats << endl;
@@ -74,4 +72,3 @@ int Joystick::Get_nb_hats(){return nb_hats;}
 int *(Joystick::Get_buttons()){return buttons;}
 int *(Joystick::Get_axes()){return axes;}
 int *(Joystick::Get_hats()){return hats;}
-std::queue<char> *(Joystick::Get_keys()){return &keys;}
