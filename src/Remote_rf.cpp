@@ -7,27 +7,6 @@ Remote_rf::Remote_rf() : ComThread(){
 	switch_alive = +1.;
 	remote_power = 0.;
 	remote_turn = 0.;
-	fd = open(PATH_DEV_RF, O_RDWR | O_NOCTTY); //  | O_NDELAY | O_NONBLOCK
-	memset(&tio_new, 0, sizeof(tio_new));
-	tcgetattr(fd, &tio_old);
-	cfsetispeed(&tio_new, B4800);
-	cfsetospeed(&tio_new, B4800);
-	tio_new.c_cflag		&= ~PARENB;
-	tio_new.c_cflag		&= ~CSTOPB;
-	tio_new.c_cflag		&= ~CSIZE;
-	tio_new.c_cflag		|= CS8;
-	tio_new.c_cflag		&= ~CRTSCTS;
-	tio_new.c_cflag		|= CREAD | CLOCAL;
-	tio_new.c_iflag		&= ~(IXON | IXOFF | IXANY);
-	tio_new.c_iflag		&= ~(ICANON | ECHO | ECHOE | ISIG);
-	tio_new.c_oflag		&= ~OPOST;
-	tio_new.c_cc[VMIN]	= 1;
-	tcsetattr(fd, TCSANOW, &tio_new);
-	tcflush(fd, TCIFLUSH);
-}
-
-Remote_rf::~Remote_rf(){
-	tcsetattr(fd, TCSANOW, &tio_old);
 }
 
 void Remote_rf::IO(){
@@ -44,7 +23,8 @@ void Remote_rf::Wait_quit_from_user(){
 	int res;
 	is_remote = +1.;
 	for(;;){
-		res = read(fd, msg_in, 255);
+		res = read(serial_port, msg_in, 255);
+cout << "Received : " << msg_in[0] << msg_in[1] << endl;
 		if		(msg_in[0] == 'A')	{is_remote = +1.;}
 		else if (msg_in[0] == 'Z')	{is_remote = -1.;}
 		else if (msg_in[0] == 'S')	{switch_alive = switch_alive < 0 ? +1. : -1.;}
@@ -128,3 +108,5 @@ void Remote_rf::Smooth_order(){
 	if		(remote_turn > +1.)		{remote_turn = +1.;}
 	else if	(remote_turn < -1.)		{remote_turn = -1.;}
 }
+
+void Remote_rf::Set_serial_port(int serial_port){this->serial_port = serial_port;}

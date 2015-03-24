@@ -10,9 +10,9 @@ https://github.com/rouviecy/NAO_TOOLS
 '''
 
 from threading import Thread
-import socket
+#import socket
 import serial
-import io
+#import io
 import time
 import locale
 import cv2
@@ -21,11 +21,11 @@ import math as m
 
 class Interface_client_out(object):
 
-	def __init__(self, host):
+	def __init__(self, host, ser):
 #		port = 4242
 #		self.s	= socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #		self.s.connect((host, port))
-		self.ser = serial.Serial("/dev/serial/by-id/usb-FTDI_TTL232R-3V3_FTH0D7TW-if00-port0", 4800, timeout=None)
+		self.ser = ser
 
 	def keep_connection_alive(self):	self.envoyer("S")
 	def go_left(self, activer):			self.envoyer("L" + ("1" if activer else "0"))
@@ -45,24 +45,21 @@ class Interface_client_out(object):
 		self.envoyer("Q")
 		time.sleep(1)
 #		self.s.close()
-		self.ser.close()
 
 	def envoyer(self, message):
 #		self.s.send(message.encode())
-		if self.ser.isOpen():
-			self.ser.write(message + "\n")
-			print "send message" + message
-		else:
-			print "Serial not opened"
+		self.ser.write(message + '\r\n')
+		print "send message : " + message
 
 class Interface_client_in(Thread):
 
-	def __init__(self, host):
+	def __init__(self, host, ser):
 		Thread.__init__(self)
 		cv2.startWindowThread()
-		port = 4243
-		self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		self.s.connect((host, port))
+		self.ser = ser
+#		port = 4243
+#		self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#		self.s.connect((host, port))
 		cv2.namedWindow('Monitor')
 		self.MONITOR_SIZE = 700
 		self.MONITOR_BORDER = 100
@@ -73,12 +70,14 @@ class Interface_client_in(Thread):
 
 	def run(self):
 		while True:
-			msg = self.s.recv(1024).split('\0')[0]
+#			msg = self.s.recv(1024).split('\0')[0]
+			msg = self.ser.readline()
+			print msg
 			if msg == "bye" : break
 			state = []
 			mini_buffer = ""
 			for i in range(len(msg)):
-				if msg[i] == '|':
+				if msg[i] == '@':
 					state.append(locale.atof(mini_buffer))
 					mini_buffer = ""
 				else:
@@ -120,5 +119,5 @@ class Interface_client_in(Thread):
 		cv2.imshow('Monitor', img_monitor)
 
 	def stop(self):
-		self.s.close()
+#		self.s.close()
 		cv2.destroyAllWindows()

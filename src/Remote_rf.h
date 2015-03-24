@@ -12,9 +12,6 @@
 #define REMOTE_RF
 
 #include <cstring>
-#include <fcntl.h>
-#include <unistd.h>
-#include <termios.h>
 #include "stereotypes/ComThread.h"
 
 class Remote_rf : public ComThread{
@@ -22,12 +19,10 @@ class Remote_rf : public ComThread{
 public:
 
 	Remote_rf();
-	~Remote_rf();
 	void Wait_quit_from_user();
+	void Set_serial_port(int serial_port);
 
 private:
-
-	#define PATH_DEV_RF "/dev/serial/by-id/usb-Arduino__www.arduino.cc__Arduino_USB-Serial_A4131363239351D070E0-if00"
 
 	float switch_alive;
 	float is_remote;
@@ -40,8 +35,7 @@ private:
 	void IO();
 	void Smooth_order();
 
-	int fd;
-	struct termios tio_new, tio_old;
+	int serial_port;
 
 };
 
