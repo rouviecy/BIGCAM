@@ -58,10 +58,12 @@ add_library(MYLIBS
 	src/Autonomy.h						src/Autonomy.cpp
 	src/Camera.h						src/Camera.cpp
 	src/Clock.h							src/Clock.cpp
+	src/CPP_Remote.h					src/CPP_Remote.cpp
 	src/Gps.h							src/Gps.cpp
 	src/Imu.h							src/Imu.cpp
 	src/Motor.h							src/Motor.cpp
 	src/Pressure.h						src/Pressure.cpp
+	src/Remote_Joystick.h				src/Remote_Joystick.cpp
 	src/Remote_rf.h						src/Remote_rf.cpp
 	src/Robot.h							src/Robot.cpp
 	src/Simulator.h						src/Simulator.cpp

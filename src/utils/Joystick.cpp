@@ -74,4 +74,4 @@ int Joystick::Get_nb_hats(){return nb_hats;}
 int *(Joystick::Get_buttons()){return buttons;}
 int *(Joystick::Get_axes()){return axes;}
 int *(Joystick::Get_hats()){return hats;}
-std::queue<char> Joystick::Get_keys(){return keys;}
+std::queue<char> *(Joystick::Get_keys()){return &keys;}

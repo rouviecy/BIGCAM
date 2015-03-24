@@ -25,7 +25,7 @@ public:
 	int *Get_buttons();
 	int *Get_axes();
 	int *Get_hats();
-	std::queue<char> Get_keys();
+	std::queue<char> *Get_keys();
 
 private:
 
